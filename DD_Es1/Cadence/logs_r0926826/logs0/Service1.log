@@ -1,0 +1,127 @@
+\# Program start time:     UTC 2025.03.04 09:58:46.506
+\# Local time: CET (UTC+01:00) 2025.03.04 10:58:46.506
+\o Program:		@(#)$CDS: virtuoso version 6.1.8-64b 03/13/2021 15:49 (cpgsrv07) $
+\o Hierarchy:		/esat/micas-data/software/Cadence/ic_6.1.8.170/tools.lnx86/dfII/
+\o Sub version:		sub-version  IC6.1.8-64b.500.17  (64-bit addresses)
+\# Command line:	/esat/micas-data/software/Cadence/ic_6.1.8.170/tools.lnx86/dfII/bin/64bit/virtuoso -beanhost pc-klas1-13.esat.kuleuven.be -beanport 11300 -beanbinlog  -mpssession virtuoso105334 -mpshost pc-klas1-13.esat.kuleuven.be -davinciService DaVinciService_105334_1741082321 -axlSession fnxSession0 -axlServiceIdFlag 1 -uuid 16a58674-c39d-4f24-8d7d-df1cea8dd051 -heartbeat /dev/shm/swift-heartbeat.GoajmC6KXj -log /users/students/r0926826/kuleuven/6/DDIC/DD_Es1/Cadence/logs_r0926826/logs0/Service1.log -noautostart -nographE -lscs 000175E1894CBE06FF0966E38F1FFC06BC4D69E9CF19CE308A7527E98C4D8F37D02C6FFFA22EFC06867F66E38F1FFC06BC4D66E38F1FFC06BC4D012541CA32D3DB8B00001E70 -interactive -offlineExprEval -fenixMode explorer -heartbeatTimeout  -lingerTimeout 300
+\# Host name (type):	pc-klas1-13.esat.kuleuven.be (x86_64)
+\# Operating system:	Linux 5.14.0-503.26.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Wed Feb 19 16:28:19 UTC 2025
+\# Linux /etc/issue:	\S
+\# Linux /etc/issue:	Kernel \r on an \m
+\# X display name (WxH):	:5652 (1024x868)
+\# Available geometry:			TL(0:0) BR(1023:867)
+\# X server:			The X.Org Foundation
+\# Depth of Visual (Root):	24 (24)
+\# Number of Planes Used:	24
+\# X version:		11.0 (vendor release 12011000)
+\# X resource pool:	base 0x400000, mask 0x1fffff (2097151), shift 0
+\# 			current id 0x0, current max 0x1ffffa (2097146)
+\# Max data seg size:	     unlimited
+\# Max process size:	     unlimited
+\# Initial sbrk value:	        572 MB
+\# Available memory:	     33,170 MB
+\# System memory:	     48,245 MB
+\# Maximum memory size:	     47,938 MB
+\# Max mem available:	     33,435 MB
+\# Initial memory used:	        265 MB
+\#        process size:	      1,366 MB
+\# Thread usage limits (effective/default):	maxthreads 5166/5166 maxload 12.00/12.00
+\# Qt version:		5.9.1
+\# Window Manager:	other
+\# User Name:		r0926826
+\o Working Directory:	pc-klas1-13.esat.kuleuven.be:/users/students/r0926826/kuleuven/6/DDIC/DD_Es1/Cadence
+\# Process Id:		107510
+\o 
+\o COPYRIGHT (C) 1992-2021  CADENCE DESIGN SYSTEMS INC.  ALL RIGHTS RESERVED.
+\o           (C) 1992-2021  UNIX SYSTEMS Laboratories INC.,
+\o                          Reproduced with permission.
+\o 
+\o This Cadence Design Systems program and online documentation are
+\o proprietary/confidential information and may be disclosed/used only
+\o as authorized in a license agreement controlling such use and disclosure.
+\o 
+\o           RESTRICTED RIGHTS NOTICE (SHORT FORM)
+\o Use/reproduction/disclosure is subject to restriction
+\o set forth at FAR 1252.227-19 or its equivalent.
+\o Loading geView.cxt 
+\o Loading menuBuilder.cxt 
+\o Loading schView.cxt 
+\o Loading selectSv.cxt 
+\o Loading wireEdit.cxt 
+\o Loading pte2.cxt 
+\o Loading xlUI.cxt 
+\o Loading auCore.cxt 
+\o Loading vhdl.cxt 
+\# Memory report: using         384 MB, process size 1,442 MB at UTC 2025.03.04 09:58:47.109
+\o Loading seismic.cxt 
+\o Loading ci.cxt 
+\o Loading ams.cxt 
+\o Loading oasis.cxt 
+\o Loading analog.cxt 
+\o Loading asimenv.cxt 
+\o Loading dal.cxt 
+\o Loading awv.cxt 
+\o Loading socket.cxt 
+\o Loading par.cxt 
+\o Loading alvs.cxt 
+\o Loading caa.cxt 
+\o Loading amps.cxt 
+\o Loading adexlCore.cxt 
+\o Loading adexl.cxt 
+\o *Info*    Exporting services from client ... 
+\o 
+\o Loading adexlDM.cxt 
+\o Loading cpf.cxt 
+\o Loading cli.cxt 
+\o Loading lp.cxt 
+\o INFO (ELI-00302) Connecting to parent process (session=virtuoso105334, host=pc-klas1-13.esat.kuleuven.be). Connection mode is LSCS. Total timeout is 180 seconds. Connection timeout is 90 seconds.
+\o INFO (ELI-00303) Step 1: Connecting to parent. Time spent is 0 seconds.
+\o INFO (ELI-00304) The registration of the child 107510 within 90 seconds is being processed...
+\o INFO (ELI-00305) The result of registration is true. Time spent is 0 seconds.
+\o INFO (ELI-00308) The connection has ended. Result is true. Total time spent is 0 seconds.
+\# Memory report: using         512 MB, process size 1,628 MB at UTC 2025.03.04 09:58:48.315
+\p > 
+\a _treeSetOpcGUI(t)
+\r t
+\i _axlRunServices()
+\o Loading gpdk045/libInit.il ...
+\o 	Loading gpdk045/loadCxt.ile ... done!
+\o 	Loading context 'gpdk045' from library 'gpdk045' ... done!
+\o 	Loading context 'pdkUtils' from library 'gpdk045' ... done!
+\e 	Loading gpdk045/gpdk045_customFilter.il ... *Error* eval: unbound variable - axlRegisterCustomDeviceFilter
+\o failed!
+\o 	Loading gpdk045/libInitCustomExit.il ... 
+\o 	Loading Environment Settings ...
+\o 	Loading Model Management File ...
+\o Loading spectrei.cxt 
+\o Loading devCheck.cxt 
+\o Loading relXpert.cxt 
+\o Loading vdsil.cxt 
+\o Loading hspiceD.cxt 
+\o Loading spectreinl.cxt 
+\o Loading UltraSim.cxt 
+\o Loading msgHandler.cxt 
+\o Loading AMSOSS.cxt 
+\o Loading AMS.cxt 
+\o 	Loading gpdk045/gpdk045_PDKRegistrations.il ... done!
+\o 
+\o   *************************************************************           
+\o   *              Cadence Design Systems, Inc.                 *           
+\o   *                                                           *           
+\o   *                    Generic 45nm PDK                       *           
+\o   *                        (gpdk045)                          *           
+\o   *                                                           *           
+\o   *************************************************************           
+\o 	
+\o 
+\o 	VERSION: 4.0 (17-June-2014)
+\o 
+\o done!
+\o Failed to load gpdk045/libInit.il successfully![2025-03-04 10:58:49.065 +0100] [process] - Netlist Service has successfully started. Waiting for incoming messages ... [Attributes] {"hostname": "pc-klas1-13.esat.kuleuven.be", "processid": 107510, "logfile": "/users/students/r0926826/kuleuven/6/DDIC/DD_Es1/Cadence/logs_r0926826/logs0/Service1.log"}
+\# Available memory:         32,991 MB at UTC 2025.03.04 09:58:57.080
+\# Memory report: Maximum memory size now 33,601 MB at UTC 2025.03.04 09:58:57.080
+\# Thread usage report: 13 active threads, active load 1.00 at UTC 2025.03.04 09:58:57.080
+\# Memory report: Maximum memory size now 34,305 MB at UTC 2025.03.04 10:02:58.459
+\o Loading simui.cxt 
+\# Memory report: on exit            616 MB, process size 1,796 MB at UTC 2025.03.04 10:03:51.222
+\# Memory report: peak usage         616 MB, process size 1,796 MB

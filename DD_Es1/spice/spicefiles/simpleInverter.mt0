@@ -1,0 +1,6 @@
+$DATA1 SOURCE='HSPICE' VERSION='O-2018.09-SP2 linux64' PARAM_COUNT=0
+.TITLE '*--------------------------------------'
+ delaynot1_fr     delaynot1_rf     iavg             energynot1      
+ temper           alter#          
+  1.417e-10        1.409e-10       -7.625e-06        1.525e-14      
+   25.0000        1               

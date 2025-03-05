@@ -1,0 +1,3 @@
+[Logging Service: 0]
+[2025-03-04 10:58:45.697 +0100] [INFO] [cadence.virtuoso.ade.loggingservice] - HistoryRecorderManager init : {"dbBasePath": "/users/students/r0926826/kuleuven/6/DDIC/DD_Es1/Cadence/DDIC/invertor/maestro/results/maestro"}
+[2025-03-04 10:58:45.697 +0100] [PROCESS] [cadence.virtuoso.ade.loggingservice] - Logging Service has successfully started. Waiting for incoming messages ... : {"hostname": "pc-klas1-13.esat.kuleuven.be", "processid": 107291, "logfile": "/users/students/r0926826/kuleuven/6/DDIC/DD_Es1/Cadence/logs_r0926826/logs0/LoggingService0.log"}

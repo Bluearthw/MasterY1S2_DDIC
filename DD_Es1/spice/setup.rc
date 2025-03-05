@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# simulator: synopsys hspice
+source ~micasusr/design/scripts/hspice.rc
+
+# waveform viewer: siemens ezwave
+source ~micasusr/design/scripts/amsv_2022.4.rc 
+
