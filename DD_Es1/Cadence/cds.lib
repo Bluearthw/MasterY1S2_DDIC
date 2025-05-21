@@ -7,4 +7,3 @@ DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
 ASSIGN basic libMode readOnly
 DEFINE gpdk045 ./gpdk045
 ASSIGN gpdk045 libMode readOnly
-DEFINE DDIC /users/students/r0926826/kuleuven/6/DDIC/DD_Es1/Cadence/DDIC

@@ -1,0 +1,2452 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v21.17-s075_1, built Wed Mar 15 11:17:40 PDT 2023
+Options:	-overwrite -init scripts/innoFloorplan.tcl -log logs/innoFloorplan.log -cmd logs/innoFloorplan.cmdlog 
+Date:		Thu May  8 11:26:34 2025
+Host:		pc-klas2-9.esat.kuleuven.be (x86_64 w/Linux 5.14.0-503.40.1.el9_5.x86_64) (6cores*12cpus*12th Gen Intel(R) Core(TM) i5-12500 18432KB)
+OS:		Rocky Linux 9.5 (Blue Onyx)
+
+License:
+		[11:26:34.179081] Configured Lic search path (21.01-s002): /esat/micas-data/software/Cadence/innovus_21.17/share/license/license.dat
+
+		invs	Innovus Implementation System	21.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (30 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+Sourcing file "scripts/innoFloorplan.tcl" ...
+<CMD> set defHierChar /
+<CMD> set init_cpf_file ../DesignDataIn/cpf/sparc_exu_alu.cpf
+<CMD> set init_lef_file {../Library/lef/gsclib045_tech.lef  ../Library/lef/gsclib045_macro.lef  ../Library/lef/gsclib045_hvt_macro.lef  ../Library/lef/gsclib045_lvt_macro.lef}
+<CMD> set init_pwr_net {VDD VDD1}
+<CMD> set init_gnd_net VSS
+<CMD> set init_top_cell sparc_exu_alu
+<CMD> set init_verilog ../DesignDataIn/netlist/compile.v
+<CMD> init_design
+Using init_cpf_file to initialize a design only uses MMMC components from the CPF file. For low power implementation, Please run 'read_power_intent -cpf ../DesignDataIn/cpf/sparc_exu_alu.cpf' and 'commit_power_intent' commands after init_design.
+Loading CPF file ../DesignDataIn/cpf/sparc_exu_alu.cpf ...
+gpdk045_wc_lib
+wc_rc125_virtual
+AV_0100_wc_rc125_hold_dc
+AV_0100_wc_rc125_setup_dc AV_0100_wc_rc125_hold_dc
+AV_0100_wc_rc125_setup_dc AV_0100_bc_rc0_hold_dc AV_0100_wc_rc125_hold_dc
+
+Loading LEF file ../Library/lef/gsclib045_tech.lef ...
+
+Loading LEF file ../Library/lef/gsclib045_macro.lef ...
+Set DBUPerIGU to M2 pitch 400.
+
+Loading LEF file ../Library/lef/gsclib045_hvt_macro.lef ...
+
+Loading LEF file ../Library/lef/gsclib045_lvt_macro.lef ...
+**WARN: (IMPLF-200):	Pin 'A' in macro 'ANTENNALVT' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+Type 'man IMPLF-200' for more detail.
+**WARN: (IMPLF-200):	Pin 'A' in macro 'ANTENNAHVT' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+Type 'man IMPLF-200' for more detail.
+**WARN: (IMPLF-200):	Pin 'A' in macro 'ANTENNA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+Type 'man IMPLF-200' for more detail.
+
+##  Check design process and node:  
+##  Both design process and tech node are not set.
+
+Reading gpdk045_wc_lib timing library '/esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib' ...
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP9'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP8'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP7'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP6'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP5'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP4'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP3'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP2'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP10'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'ANTENNA'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+Read 489 cells in library 'slow_vdd1v0' 
+Reading gpdk045_wc_lib timing library '/esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib' ...
+**WARN: (TECHLIB-459):	Appending library 'slow_vdd1v0' to the previously read library of the same name and nominal PVT. Cell definitions from the previously read library will not be overridden. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'ANTENNALVT'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP9'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP8'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP7'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP6'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP5'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP4'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP3'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP2'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+**WARN: (TECHLIB-302):	No function defined for cell 'DECAP10'. The cell will only be used for analysis. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/slow_vdd1v0_basicCells_lvt.lib)
+Message <TECHLIB-302> has exceeded the message display limit of '20'. Use 'set_message -no_limit -id list_of_msgIDs' to reset the message limit.
+Read 480 cells in library 'slow_vdd1v0' 
+*** End library_loading (cpu=0.01min, real=0.00min, mem=40.5M, fe_cpu=0.23min, fe_real=0.30min, fe_mem=1040.0M) ***
+#% Begin Load netlist data ... (date=05/08 11:26:53, mem=990.0M)
+*** Begin netlist parsing (mem=1040.0M) ***
+Created 969 new cells from 1 timing libraries.
+Reading netlist ...
+Backslashed names will retain backslash and a trailing blank character.
+Reading verilog netlist '../DesignDataIn/netlist/compile.v'
+
+*** Memory Usage v#1 (Current mem = 1039.977M, initial mem = 485.867M) ***
+*** End netlist parsing (cpu=0:00:00.0, real=0:00:00.0, mem=1040.0M) ***
+#% End Load netlist data ... (date=05/08 11:26:53, total cpu=0:00:00.0, real=0:00:00.0, peak res=1005.0M, current mem=1005.0M)
+Set top cell to sparc_exu_alu.
+Hooked 969 DB cells to tlib cells.
+Starting recursive module instantiation check.
+No recursion found.
+Building hierarchical netlist for Cell sparc_exu_alu ...
+*** Netlist is unique.
+** info: there are 1568 modules.
+** info: there are 1820 stdCell insts.
+
+*** Memory Usage v#1 (Current mem = 1099.391M, initial mem = 485.867M) ***
+**WARN: (IMPFP-3961):	The techSite 'CornerSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'IOSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+Start create_tracks
+AV_0100_wc_rc125_setup AV_0100_wc_rc125_hold AV_0100_bc_rc0_hold
+Extraction setup Started 
+Initializing multi-corner RC extraction with 1 active RC Corners ...
+**WARN: (IMPEXT-2773):	The via resistance between layers M0 and M1 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M1 and M2 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M2 and M3 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M3 and M4 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M4 and M5 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M5 and M6 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M6 and M7 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M7 and M8 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M8 and M9 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M9 and M10 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M10 and M11 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M1 is not defined in the cap table. Therefore, the LEF value 0.0736 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M2 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M3 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M4 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M5 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M6 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M7 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M8 is not defined in the cap table. Therefore, the LEF value 0.0214 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M9 is not defined in the cap table. Therefore, the LEF value 0.0214 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M10 is not defined in the cap table. Therefore, the LEF value 0.0214 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M11 is not defined in the cap table. Therefore, the LEF value 0.021 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+Summary of Active RC-Corners : 
+ 
+ Analysis View: AV_0100_wc_rc125_hold
+    RC-Corner Name        : default_rc_corner
+    RC-Corner Index       : 0
+    RC-Corner Temperature : 25 Celsius
+    RC-Corner Cap Table   : ''
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from Cap Table]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from Cap Table]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+Updating RC grid for preRoute extraction ...
+Initializing multi-corner resistance tables ...
+*Info: initialize multi-corner CTS.
+Reading timing constraints file '../DesignDataIn/sdc/alu.sdc' ...
+Current (total cpu=0:00:14.0, real=0:00:19.0, peak res=1307.4M, current mem=1307.4M)
+INFO (CTE): Constraints read successfully.
+Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1327.0M, current mem=1327.0M)
+Current (total cpu=0:00:14.1, real=0:00:19.0, peak res=1327.0M, current mem=1327.0M)
+**WARN: (TA-976):	Path groups asserted by the group_path constraint are considered by the software to be global in nature - they cannot be restricted to specific constraint modes. Due to this restriction, the group_path constraint is not supported directly in the constraint files which are configured in mode-specific commands such as create_constraint_mode. The current group_path entry will be ignored. You can enter the group_path constraint interactively or as part of a general command script -  where it will be interpreted as global and will be in effect for all modes.
+Total number of combinational cells: 636
+Total number of sequential cells: 304
+Total number of tristate cells: 20
+Total number of level shifter cells: 0
+Total number of power gating cells: 0
+Total number of isolation cells: 0
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 0
+Total number of retention cells: 0
+Total number of physical cells: 9
+List of usable buffers: BUFX2 BUFX12 BUFX16 BUFX20 CLKBUFX2 BUFX3 BUFX4 BUFX6 BUFX8 CLKBUFX12 CLKBUFX16 CLKBUFX20 CLKBUFX3 CLKBUFX4 CLKBUFX6 CLKBUFX8 BUFX2LVT BUFX12LVT BUFX16LVT BUFX20LVT CLKBUFX2LVT BUFX3LVT BUFX4LVT BUFX6LVT BUFX8LVT CLKBUFX12LVT CLKBUFX16LVT CLKBUFX20LVT CLKBUFX3LVT CLKBUFX4LVT CLKBUFX6LVT CLKBUFX8LVT
+Total number of usable buffers: 32
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: CLKINVX1 CLKINVX2 CLKINVX12 CLKINVX16 CLKINVX20 CLKINVX4 CLKINVX3 CLKINVX6 CLKINVX8 INVX1 INVX2 INVX12 INVX16 INVX20 INVX3 INVX4 INVX6 INVX8 INVXL CLKINVX1LVT CLKINVX2LVT CLKINVX12LVT CLKINVX16LVT CLKINVX20LVT CLKINVX4LVT CLKINVX3LVT CLKINVX6LVT CLKINVX8LVT INVX1LVT INVX2LVT INVX12LVT INVX16LVT INVX20LVT INVXLLVT INVX3LVT INVX4LVT INVX6LVT INVX8LVT
+Total number of usable inverters: 38
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells: DLY1X1 DLY1X4 DLY2X1 DLY2X4 DLY3X1 DLY3X4 DLY4X1 DLY4X4 DLY1X1LVT DLY1X4LVT DLY2X1LVT DLY2X4LVT DLY3X1LVT DLY3X4LVT DLY4X1LVT DLY4X4LVT
+Total number of identified usable delay cells: 16
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary                                  
+WARNING   IMPLF-200            3  Pin '%s' in macro '%s' has no ANTENNAGAT...
+WARNING   IMPFP-3961           2  The techSite '%s' has no related standar...
+WARNING   IMPEXT-2766         11  The sheet resistance for layer %s is not...
+WARNING   IMPEXT-2773         11  The via resistance between layers %s and...
+WARNING   TA-976               1  Path groups asserted by the group_path c...
+WARNING   TECHLIB-302         21  No function defined for cell '%s'. The c...
+WARNING   TECHLIB-459          1  Appending library '%s' to the previously...
+*** Message Summary: 50 warning(s), 0 error(s)
+
+<CMD> suppressMessage TECHLIB 436 302
+<CMD> suppressMessage IMPEXT 2773
+<CMD> suppressMessage IMPOAX 124 332
+<CMD> setDesignMode -process 45
+##  Process: 45            (User Set)               
+##     Node: (not set)                           
+
+##  Check design process and node:  
+##  Design tech node is not set.
+
+Applying the recommended capacitance filtering threshold values for 45nm process node: total_c_th=0, relative_c_th=1 and coupling_c_th=0.1.
+	These values will be used by all post-route extraction engines, including TQuantus, IQuantus and Quantus QRC extraction.
+	Capacitance filtering mode(-capFilterMode option of the setExtractRCMode) is 'relAndCoup' for all engines.
+	The accuracy mode for postRoute effortLevel low extraction will be set to 'high'.
+	Default value for EffortLevel(-effortLevel option of the setExtractRCMode) in postRoute extraction mode will be 'medium' if Quantus QRC technology file is specified else 'low'.
+<CMD> setRouteMode -earlyGlobalMaxRouteLayer 4
+**WARN: (IMPPSP-1003):	Found use of 'setRouteMode -earlyGlobalMaxRouteLayer'. This will continue to work in this release; however, it is recommended to use 'setDesignMode -topRoutingLayer' instead.
+<CMD> setPinAssignMode -maxLayer 4
+**WARN: (IMPPTN-867):	Found use of setPinAssignMode -maxLayer. This will continue to work in this release; however, it is recommended to use setDesignMode -topRoutingLayer instead.
+<CMD> setNanoRouteMode -routeTopRoutingLayer 4
+#WARNING (NRIF-91) Option setNanoRouteMode -routeTopRoutingLayer is obsolete. It will continue to work for the current release. To ensure compatibility with future releases, use option setDesignMode -topRoutingLayer instead.
+<CMD> setDesignMode -topRoutingLayer Metal4
+**WARN: (IMPSYT-21024):	Command "setMaxRouteLayer" has become obsolete. It will be removed in the next release and is replaced by "setDesignMode -topRoutingLayer". The obsolete command still works in this release, but to avoid this warning and to ensure compatibility with future releases, update your scripts.
+<CMD> setAnalysisMode -analysisType onChipVariation -cppr both -checkType setup
+<CMD> set_global report_timing_format {instance pin cell net fanout load slew delay arrival edge incr_delay user_derate }
+<CMD> create_rc_corner -name rc125 \
+ -qx_tech_file ../Library/qrc/qrcTechFile \
+ -T 125
+<CMD> create_rc_corner -name rc0 \
+ -qx_tech_file ../Library/qrc/qrcTechFile \
+ -T 0
+<CMD> update_delay_corner -name AV_0100_wc_rc125_setup_dc \
+    -rc_corner rc125
+Extraction setup Started 
+Initializing multi-corner RC extraction with 1 active RC Corners ...
+**WARN: (EMS-42):	Message (IMPEXT-2773) has been suppressed from output.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M1 is not defined in the cap table. Therefore, the LEF value 0.0736 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M2 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M3 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M4 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M5 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M6 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M7 is not defined in the cap table. Therefore, the LEF value 0.0604 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M8 is not defined in the cap table. Therefore, the LEF value 0.0214 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M9 is not defined in the cap table. Therefore, the LEF value 0.0214 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M10 is not defined in the cap table. Therefore, the LEF value 0.0214 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M11 is not defined in the cap table. Therefore, the LEF value 0.021 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+Summary of Active RC-Corners : 
+ 
+ Analysis View: AV_0100_wc_rc125_hold
+    RC-Corner Name        : default_rc_corner
+    RC-Corner Index       : 0
+    RC-Corner Temperature : 25 Celsius
+    RC-Corner Cap Table   : ''
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from Cap Table]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from Cap Table]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+Updating RC grid for preRoute extraction ...
+Initializing multi-corner resistance tables ...
+<CMD> update_delay_corner -name AV_0100_wc_rc125_hold_dc \
+    -rc_corner rc125
+Extraction setup Started 
+Initializing multi-corner RC extraction with 1 active RC Corners ...
+Captable file(s) not specified in multi-corner setup. PreRoute extraction will use technology file. For postRoute extraction, default value for effort level would be 'medium' and effort level 'low' would not be allowed.
+Generating auto layer map file.
+Importing multi-corner technology file(s) for preRoute extraction...
+../Library/qrc/qrcTechFile
+Generating auto layer map file.
+Completed (cpu: 0:00:02.6 real: 0:00:03.0)
+Set Shrink Factor to 1.00000
+Summary of Active RC-Corners : 
+ 
+ Analysis View: AV_0100_wc_rc125_hold
+    RC-Corner Name        : rc125
+    RC-Corner Index       : 0
+    RC-Corner Temperature : 125 Celsius
+    RC-Corner Cap Table   : ''
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+    RC-Corner Technology file: '../Library/qrc/qrcTechFile'
+Updating RC grid for preRoute extraction ...
+Initializing multi-corner resistance tables ...
+Default value for postRoute extraction mode's effortLevel (-effortLevel option of setExtractRCMode) changed to 'medium'.
+<CMD> update_delay_corner -name AV_0100_bc_rc0_hold_dc \
+    -rc_corner rc0
+Extraction setup Started 
+Initializing multi-corner RC extraction with 1 active RC Corners ...
+Captable file(s) not specified in multi-corner setup. PreRoute extraction will use technology file. For postRoute extraction, default value for effort level would be 'medium' and effort level 'low' would not be allowed.
+Completed (cpu: 0:00:00.0 real: 0:00:00.0)
+Set Shrink Factor to 1.00000
+Summary of Active RC-Corners : 
+ 
+ Analysis View: AV_0100_wc_rc125_hold
+    RC-Corner Name        : rc125
+    RC-Corner Index       : 0
+    RC-Corner Temperature : 125 Celsius
+    RC-Corner Cap Table   : ''
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+    RC-Corner Technology file: '../Library/qrc/qrcTechFile'
+Updating RC grid for preRoute extraction ...
+Initializing multi-corner resistance tables ...
+<CMD> set_analysis_view -setup {AV_0100_wc_rc125_setup} -hold {AV_0100_bc_rc0_hold}
+Extraction setup Started 
+Initializing multi-corner RC extraction with 2 active RC Corners ...
+Captable file(s) not specified in multi-corner setup. PreRoute extraction will use technology file. For postRoute extraction, default value for effort level would be 'medium' and effort level 'low' would not be allowed.
+Generating auto layer map file.
+Importing multi-corner technology file(s) for preRoute extraction...
+../Library/qrc/qrcTechFile
+Generating auto layer map file.
+Completed (cpu: 0:00:01.0 real: 0:00:01.0)
+Set Shrink Factor to 1.00000
+Summary of Active RC-Corners : 
+ 
+ Analysis View: AV_0100_wc_rc125_setup
+    RC-Corner Name        : rc125
+    RC-Corner Index       : 0
+    RC-Corner Temperature : 125 Celsius
+    RC-Corner Cap Table   : ''
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+    RC-Corner Technology file: '../Library/qrc/qrcTechFile'
+ 
+ Analysis View: AV_0100_bc_rc0_hold
+    RC-Corner Name        : rc0
+    RC-Corner Index       : 1
+    RC-Corner Temperature : 0 Celsius
+    RC-Corner Cap Table   : ''
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+    RC-Corner Technology file: '../Library/qrc/qrcTechFile'
+Updating RC grid for preRoute extraction ...
+Initializing multi-corner resistance tables ...
+*Info: initialize multi-corner CTS.
+Reading gpdk045_bc_lib timing library '/esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045/timing/fast_vdd1v0_basicCells.lib' ...
+Read 489 cells in library 'fast_vdd1v0' 
+Reading gpdk045_bc_lib timing library '/esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/fast_vdd1v0_basicCells_lvt.lib' ...
+**WARN: (TECHLIB-459):	Appending library 'fast_vdd1v0' to the previously read library of the same name and nominal PVT. Cell definitions from the previously read library will not be overridden. (File /esat/micas-data/data/design/generic/Cadence_kits_2023/GPDK045/gsclib045_all_v4.7/gsclib045_lvt/timing/fast_vdd1v0_basicCells_lvt.lib)
+Read 480 cells in library 'fast_vdd1v0' 
+Reading timing constraints file '../DesignDataIn/sdc/alu.sdc' ...
+Current (total cpu=0:00:18.7, real=0:00:24.0, peak res=1560.1M, current mem=1437.3M)
+INFO (CTE): Constraints read successfully.
+Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1448.7M, current mem=1448.7M)
+Current (total cpu=0:00:18.7, real=0:00:24.0, peak res=1560.1M, current mem=1448.7M)
+**WARN: (TA-976):	Path groups asserted by the group_path constraint are considered by the software to be global in nature - they cannot be restricted to specific constraint modes. Due to this restriction, the group_path constraint is not supported directly in the constraint files which are configured in mode-specific commands such as create_constraint_mode. The current group_path entry will be ignored. You can enter the group_path constraint interactively or as part of a general command script -  where it will be interpreted as global and will be in effect for all modes.
+Total number of combinational cells: 636
+Total number of sequential cells: 304
+Total number of tristate cells: 20
+Total number of level shifter cells: 0
+Total number of power gating cells: 0
+Total number of isolation cells: 0
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 0
+Total number of retention cells: 0
+Total number of physical cells: 9
+List of usable buffers: BUFX2 BUFX12 BUFX16 BUFX20 CLKBUFX2 BUFX3 BUFX4 BUFX6 BUFX8 CLKBUFX12 CLKBUFX16 CLKBUFX20 CLKBUFX3 CLKBUFX4 CLKBUFX6 CLKBUFX8 BUFX2LVT BUFX12LVT BUFX16LVT BUFX20LVT CLKBUFX2LVT BUFX3LVT BUFX4LVT BUFX6LVT BUFX8LVT CLKBUFX12LVT CLKBUFX16LVT CLKBUFX20LVT CLKBUFX3LVT CLKBUFX4LVT CLKBUFX6LVT CLKBUFX8LVT
+Total number of usable buffers: 32
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: CLKINVX1 CLKINVX2 CLKINVX12 CLKINVX16 CLKINVX20 CLKINVX4 CLKINVX3 CLKINVX6 CLKINVX8 INVX1 INVX2 INVX12 INVX16 INVX20 INVX3 INVX4 INVX6 INVX8 INVXL CLKINVX1LVT CLKINVX2LVT CLKINVX12LVT CLKINVX16LVT CLKINVX20LVT CLKINVX4LVT CLKINVX3LVT CLKINVX6LVT CLKINVX8LVT INVX1LVT INVX2LVT INVX12LVT INVX16LVT INVX20LVT INVXLLVT INVX3LVT INVX4LVT INVX6LVT INVX8LVT
+Total number of usable inverters: 38
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells: DLY1X1 DLY1X4 DLY2X1 DLY2X4 DLY3X1 DLY3X4 DLY4X1 DLY4X4 DLY1X1LVT DLY1X4LVT DLY2X1LVT DLY2X4LVT DLY3X1LVT DLY3X4LVT DLY4X1LVT DLY4X4LVT
+Total number of identified usable delay cells: 16
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+<CMD> set_timing_derate -early 0.925 -late 1.0 -delay_corner AV_0100_wc_rc125_setup_dc
+<CMD> set_timing_derate -early 1.0 -late 1.12 -delay_corner AV_0100_bc_rc0_hold_dc
+<CMD> update_library_set -name gpdk045_wc_lib -si [ list ../Library/cdb/slow.cdb ]
+<CMD> update_library_set -name gpdk045_bc_lib -si [ list ../Library/cdb/fast.cdb ]
+<CMD> read_power_intent -cpf ../DesignDataIn/cpf/sparc_exu_alu.cpf
+Loading CPF file ../DesignDataIn/cpf/sparc_exu_alu.cpf ...
+INFO: processed 24 CPF commands in 108 lines from file ../DesignDataIn/cpf/sparc_exu_alu.cpf, with 0 errors
+Checking CPF file ...
+<CMD> commit_power_intent
+CPF_RUNTIME: freeTimingGraph: cpu=0:00:00.08 real=0:00:00.00
+CPF_RUNTIME: clean_up_msv: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: commit_pg_nets: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: switchable_pg_nets: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: virtual_ports: cpu=0:00:00.00 real=0:00:00.00
+gpdk045_bc_lib gpdk045_wc_lib
+gpdk045_bc_lib gpdk045_wc_lib
+0100_mode
+bc_rc0_virtual wc_rc125_virtual
+bc_rc0_virtual wc_rc125_virtual
+AV_0100_wc_rc125_setup_dc AV_0100_bc_rc0_hold_dc AV_0100_wc_rc125_hold_dc
+AV_0100_wc_rc125_setup_dc AV_0100_bc_rc0_hold_dc AV_0100_wc_rc125_hold_dc
+AV_0100_wc_rc125_setup_dc AV_0100_bc_rc0_hold_dc AV_0100_wc_rc125_hold_dc
+AV_0100_wc_rc125_setup_dc AV_0100_bc_rc0_hold_dc AV_0100_wc_rc125_hold_dc
+Current (total cpu=0:00:18.9, real=0:00:24.0, peak res=1560.1M, current mem=1439.9M)
+Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1450.9M, current mem=1450.9M)
+Current (total cpu=0:00:19.0, real=0:00:24.0, peak res=1560.1M, current mem=1450.9M)
+Current (total cpu=0:00:19.0, real=0:00:24.0, peak res=1560.1M, current mem=1450.9M)
+Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1452.8M, current mem=1452.8M)
+Current (total cpu=0:00:19.0, real=0:00:24.0, peak res=1560.1M, current mem=1452.8M)
+Current (total cpu=0:00:19.0, real=0:00:24.0, peak res=1560.1M, current mem=1452.8M)
+Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1454.6M, current mem=1454.6M)
+Current (total cpu=0:00:19.0, real=0:00:24.0, peak res=1560.1M, current mem=1454.6M)
+CPF_RUNTIME: cpfToMmmc: cpu=0:00:00.15 real=0:00:00.00
+CPF_RUNTIME: make_secondary_pgconn: cpu=0:00:00.01 real=0:00:00.00
+Total 0 new pin(s) connected to net 'VDD'
+Total 0 new pin(s) connected to net 'VSS'
+AV_0100_wc_rc125_setup_dc AV_0100_bc_rc0_hold_dc AV_0100_wc_rc125_hold_dc
+CPF_RUNTIME: commit_power_domain: cpu=0:00:00.01 real=0:00:00.00
+CPF_RUNTIME: assignSNetVoltages: cpu=0:00:00.03 real=0:00:01.00
+CPF_RUNTIME: define_low_power_cells: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: buildTimingGraph: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: commit_retention: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: applyDefaultGncRules: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: commit_global_connect: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: replaceWithAlwaysOnBuffer: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: commit_iso: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: commitEnbConn: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: commit_shifter: cpu=0:00:00.00 real=0:00:00.00
+CPF_RUNTIME: commit_pso: cpu=0:00:00.00 real=0:00:00.00
+Total number of combinational cells: 636
+Total number of sequential cells: 304
+Total number of tristate cells: 20
+Total number of level shifter cells: 0
+Total number of power gating cells: 0
+Total number of isolation cells: 0
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 0
+Total number of retention cells: 0
+Total number of physical cells: 9
+List of usable buffers: BUFX2 BUFX12 BUFX16 BUFX20 CLKBUFX2 BUFX3 BUFX4 BUFX6 BUFX8 CLKBUFX12 CLKBUFX16 CLKBUFX20 CLKBUFX3 CLKBUFX4 CLKBUFX6 CLKBUFX8 BUFX2LVT BUFX12LVT BUFX16LVT BUFX20LVT CLKBUFX2LVT BUFX3LVT BUFX4LVT BUFX6LVT BUFX8LVT CLKBUFX12LVT CLKBUFX16LVT CLKBUFX20LVT CLKBUFX3LVT CLKBUFX4LVT CLKBUFX6LVT CLKBUFX8LVT
+Total number of usable buffers: 32
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: CLKINVX1 CLKINVX2 CLKINVX12 CLKINVX16 CLKINVX20 CLKINVX4 CLKINVX3 CLKINVX6 CLKINVX8 INVX1 INVX2 INVX12 INVX16 INVX20 INVX3 INVX4 INVX6 INVX8 INVXL CLKINVX1LVT CLKINVX2LVT CLKINVX12LVT CLKINVX16LVT CLKINVX20LVT CLKINVX4LVT CLKINVX3LVT CLKINVX6LVT CLKINVX8LVT INVX1LVT INVX2LVT INVX12LVT INVX16LVT INVX20LVT INVXLLVT INVX3LVT INVX4LVT INVX6LVT INVX8LVT
+Total number of usable inverters: 38
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells: DLY1X1 DLY1X4 DLY2X1 DLY2X4 DLY3X1 DLY3X4 DLY4X1 DLY4X4 DLY1X1LVT DLY1X4LVT DLY2X1LVT DLY2X4LVT DLY3X1LVT DLY3X4LVT DLY4X1LVT DLY4X4LVT
+Total number of identified usable delay cells: 16
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+No isolation cell in libraries.
+No level shifter cell in libraries.
+**WARN: (IMPFP-3961):	The techSite 'CornerSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'IOSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'CornerSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'IOSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+<CMD> setPinConstraint -side {top bottom} -layer M2
+**WARN: (IMPPTN-3837):	setPinConstraint command usage without specifying top-cell name will be obsolete in next major release. Command will enforce top-cell name using -cell option.
+Constraint is applied to top level cell sparc_exu_alu.
+<CMD> setPinConstraint -side {right left} -layer M3
+**WARN: (IMPPTN-3837):	setPinConstraint command usage without specifying top-cell name will be obsolete in next major release. Command will enforce top-cell name using -cell option.
+Constraint is applied to top level cell sparc_exu_alu.
+<CMD> floorPlan -site CoreSite -s 230 204 30.0 30.0 30.0 30.0
+**WARN: (IMPFP-4026):	Adjusting core to 'Bottom' to 30.020000 due to track/row misalignment. To force the value, specify the -noSnapToGrid option or use fpiSetSnapRule command to specify the die/core to different grid.
+**WARN: (IMPFP-4026):	Adjusting core to 'Top' to 30.020000 due to track/row misalignment. To force the value, specify the -noSnapToGrid option or use fpiSetSnapRule command to specify the die/core to different grid.
+**WARN: (IMPFP-3961):	The techSite 'CornerSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+**WARN: (IMPFP-3961):	The techSite 'IOSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+Type 'man IMPFP-3961' for more detail.
+Start create_tracks
+**WARN: (IMPFP-325):	Floorplan of the design is resized. All current floorplan objects are automatically derived based on specified new floorplan. This may change blocks, fixed standard cells, existing routes and blockages.
+<CMD> loadIoFile ../DesignDataIn/misc/sparc_exu_alu.save.io
+Reading IO assignment file "../DesignDataIn/misc/sparc_exu_alu.save.io" ...
+<CMD> addRing -around default_power_domain -nets {VDD VSS} -layer {bottom M5 top M5 right M6 left M6} -width 12 -spacing 2 -offset 1
+#% Begin addRing (date=05/08 11:26:59, mem=1462.2M)
+
+
+viaInitial starts at Thu May  8 11:26:59 2025
+viaInitial ends at Thu May  8 11:26:59 2025
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Ring generation is complete.
+vias are now being generated.
+addRing created 8 wires.
+ViaGen created 8 vias, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+| Metal5 |        4       |       NA       |
+|  Via5  |        8       |        0       |
+| Metal6 |        4       |       NA       |
++--------+----------------+----------------+
+#% End addRing (date=05/08 11:26:59, total cpu=0:00:00.0, real=0:00:00.0, peak res=1465.6M, current mem=1465.6M)
+<CMD> addStripe -set_to_set_distance 12 -spacing 12 -xleft_offset 5.05 -direction vertical -layer M6 -width 2.3 -nets VSS
+#% Begin addStripe (date=05/08 11:26:59, mem=1465.6M)
+**WARN: (IMPPP-4022):	Option "-xleft_offset" is obsolete and has been replaced by "-start_offset". The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update your script to use "-start_offset"..
+
+Initialize fgc environment(mem: 1534.7M) ...  fail and won't use fgc to check drc(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading wires (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading via instances (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Starting stripe generation ...
+Non-Default Mode Option Settings :
+  NONE
+Completing 10% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 20% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 30% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 40% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 50% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 60% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 70% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 80% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 90% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Stripe generation is complete.
+vias are now being generated.
+addStripe created 19 wires.
+ViaGen created 38 vias, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+|  Via5  |       38       |        0       |
+| Metal6 |       19       |       NA       |
++--------+----------------+----------------+
+#% End addStripe (date=05/08 11:26:59, total cpu=0:00:00.0, real=0:00:00.0, peak res=1466.8M, current mem=1466.8M)
+<CMD> addStripe -set_to_set_distance 10.26 -spacing 10.26 -ybottom_offset 3.980 -direction horizontal -layer M5 -width 2.3 -nets VSS -area_blockage {49.35 164.08 239.05 212.08}
+#% Begin addStripe (date=05/08 11:26:59, mem=1466.8M)
+**WARN: (IMPPP-4022):	Option "-ybottom_offset" is obsolete and has been replaced by "-start_offset". The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update your script to use "-start_offset"..
+
+Initialize fgc environment(mem: 1534.7M) ...  fail and won't use fgc to check drc(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading wires (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading via instances (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Starting stripe generation ...
+Non-Default Mode Option Settings :
+  NONE
+Completing 10% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 20% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 30% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 40% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 50% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 60% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 70% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 80% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 90% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 100% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Stripe generation is complete.
+vias are now being generated.
+addStripe created 25 wires.
+ViaGen created 345 vias, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+| Metal5 |       25       |       NA       |
+|  Via5  |       345      |        0       |
++--------+----------------+----------------+
+#% End addStripe (date=05/08 11:26:59, total cpu=0:00:00.0, real=0:00:00.0, peak res=1466.8M, current mem=1466.8M)
+<CMD> addStripe -extend_to design_boundary -set_to_set_distance 96 -spacing 96 -xleft_offset 69.7 -direction vertical -layer M4 -width 5 -area_blockage {0 105.02  290.0 264.1 } -nets VDD1
+#% Begin addStripe (date=05/08 11:26:59, mem=1466.8M)
+**WARN: (IMPPP-4022):	Option "-xleft_offset" is obsolete and has been replaced by "-start_offset". The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update your script to use "-start_offset"..
+
+Initialize fgc environment(mem: 1534.7M) ...  fail and won't use fgc to check drc(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading wires (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading via instances (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Starting stripe generation ...
+Non-Default Mode Option Settings :
+  NONE
+Stripe generation is complete.
+vias are now being generated.
+addStripe created 2 wires.
+ViaGen created 0 via, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+| Metal4 |        2       |       NA       |
++--------+----------------+----------------+
+#% End addStripe (date=05/08 11:26:59, total cpu=0:00:00.0, real=0:00:00.0, peak res=1466.8M, current mem=1466.8M)
+<CMD> addStripe -nets VDD -direction vertical -layer M6 -xleft_offset 11.05 -width 2.3 -spacing 12 -set_to_set_distance 12
+#% Begin addStripe (date=05/08 11:26:59, mem=1466.8M)
+**WARN: (IMPPP-4022):	Option "-xleft_offset" is obsolete and has been replaced by "-start_offset". The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update your script to use "-start_offset"..
+
+Initialize fgc environment(mem: 1534.7M) ...  fail and won't use fgc to check drc(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading cell geometries (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading wires (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Loading via instances (cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Starting stripe generation ...
+Non-Default Mode Option Settings :
+  NONE
+Completing 10% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 20% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 30% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 40% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 50% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 60% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 70% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 80% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Completing 90% stripe generation(cpu: 0:00:00.0, real: 0:00:00.0, peak mem: 1534.7M)
+Stripe generation is complete.
+vias are now being generated.
+addStripe created 19 wires.
+ViaGen created 38 vias, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+|  Via5  |       38       |        0       |
+| Metal6 |       19       |       NA       |
++--------+----------------+----------------+
+#% End addStripe (date=05/08 11:26:59, total cpu=0:00:00.0, real=0:00:00.0, peak res=1466.8M, current mem=1466.8M)
+<CMD> setSrouteMode -corePinJoinLimit 6
+<CMD> sroute -connect corePin -nets VSS -allowJogging 0 -corePinMaxViaWidth 60
+#% Begin sroute (date=05/08 11:26:59, mem=1467.0M)
+**WARN: (IMPSR-4053):	Option -corePinMaxViaWidth is obsolete and has been replaced by -corePinMaxViaScale. The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update the script to use -corePinMaxViaScale.
+*** Begin SPECIAL ROUTE on Thu May  8 11:26:59 2025 ***
+SPECIAL ROUTE ran on directory: /users/students/r0926826/kuleuven/6/DDIC/ALU_flow/02_FLOORPLAN
+SPECIAL ROUTE ran on machine: pc-klas2-9.esat.kuleuven.be (Linux 5.14.0-503.40.1.el9_5.x86_64 x86_64 1.04Ghz)
+
+Begin option processing ...
+srouteConnectPowerBump set to false
+routeSelectNet set to "VSS"
+routeSpecial set to true
+srouteConnectBlockPin set to false
+srouteConnectConverterPin set to false
+srouteConnectPadPin set to false
+srouteConnectStripe set to false
+srouteCorePinMaxViaWidth set to 60
+srouteFollowCorePinEnd set to 3
+srouteFollowPadPin set to false
+srouteFollowpinJoinLimit set to 12000
+sroutePadPinAllPorts set to true
+sroutePreserveExistingRoutes set to true
+srouteRoutePowerBarPortOnBothDir set to true
+srouteStraightConnections set to "straightWithChanges"
+End option processing: cpu: 0:00:00, real: 0:00:00, peak: 2812.00 megs.
+
+Reading DB technology information...
+Finished reading DB technology information.
+Reading floorplan and netlist information...
+Finished reading floorplan and netlist information.
+**WARN: (IMPSR-4302):	Cap-table/qrcTechFile is found in the design, so the same information from the technology file will be ignored.
+Read in 24 layers, 11 routing layers, 1 overlap layer
+Read in 2 nondefault rules, 0 used
+Read in 1559 macros, 62 used
+Read in 62 components
+  62 core components: 62 unplaced, 0 placed, 0 fixed
+Read in 534 physical pins
+  534 physical pins: 0 unplaced, 0 placed, 534 fixed
+Read in 514 nets
+Read in 3 special nets, 3 routed
+Read in 658 terminals
+1 net selected.
+
+Begin power routing ...
+CPU time for VSS FollowPin 0 seconds
+  Number of Core ports routed: 120
+  Number of Followpin connections: 60
+End power routing: cpu: 0:00:00, real: 0:00:00, peak: 2815.00 megs.
+
+
+
+ Begin updating DB with routing results ...
+ Updating DB with 534 io pins ...
+ Updating DB with 0 via definition ...Extracting standard cell pins and blockage ...... 
+Pin and blockage extraction finished
+
+sroute created 180 wires.
+ViaGen created 5955 vias, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+| Metal1 |       180      |       NA       |
+|  Via1  |      1260      |        0       |
+|  Via2  |      1260      |        0       |
+|  Via3  |      1260      |        0       |
+|  Via4  |      1260      |        0       |
+|  Via5  |       915      |        0       |
++--------+----------------+----------------+
+#% End sroute (date=05/08 11:27:00, total cpu=0:00:00.6, real=0:00:01.0, peak res=1485.0M, current mem=1485.0M)
+<CMD> sroute -connect corePin -nets VDD -powerDomains TOP -allowJogging 0 -corePinMaxViaWidth 60
+#% Begin sroute (date=05/08 11:27:00, mem=1485.0M)
+**WARN: (IMPSR-4053):	Option -corePinMaxViaWidth is obsolete and has been replaced by -corePinMaxViaScale. The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update the script to use -corePinMaxViaScale.
+*** Begin SPECIAL ROUTE on Thu May  8 11:27:00 2025 ***
+SPECIAL ROUTE ran on directory: /users/students/r0926826/kuleuven/6/DDIC/ALU_flow/02_FLOORPLAN
+SPECIAL ROUTE ran on machine: pc-klas2-9.esat.kuleuven.be (Linux 5.14.0-503.40.1.el9_5.x86_64 x86_64 1.37Ghz)
+
+Begin option processing ...
+srouteConnectPowerBump set to false
+routeSelectNet set to "VDD"
+routeSpecial set to true
+srouteConnectBlockPin set to false
+srouteConnectConverterPin set to false
+srouteConnectPadPin set to false
+srouteConnectStripe set to false
+srouteCorePinMaxViaWidth set to 60
+srouteFollowCorePinEnd set to 3
+srouteFollowPadPin set to false
+srouteFollowpinJoinLimit set to 12000
+sroutePadPinAllPorts set to true
+sroutePowerDomain set to "TOP"
+sroutePreserveExistingRoutes set to true
+srouteRoutePowerBarPortOnBothDir set to true
+srouteStraightConnections set to "straightWithChanges"
+End option processing: cpu: 0:00:00, real: 0:00:00, peak: 2815.00 megs.
+
+Reading DB technology information...
+Finished reading DB technology information.
+Reading floorplan and netlist information...
+Finished reading floorplan and netlist information.
+**WARN: (IMPSR-4302):	Cap-table/qrcTechFile is found in the design, so the same information from the technology file will be ignored.
+Read in 24 layers, 11 routing layers, 1 overlap layer
+Read in 2 nondefault rules, 0 used
+Read in 1559 macros, 62 used
+Read in 62 components
+  62 core components: 62 unplaced, 0 placed, 0 fixed
+Read in 534 physical pins
+  534 physical pins: 0 unplaced, 0 placed, 534 fixed
+Read in 514 nets
+Read in 3 special nets, 3 routed
+Read in 658 terminals
+1 net selected.
+
+Begin power routing ...
+**WARN: (IMPPP-531):	ViaGen Warning: Due to SPACING rule violation, viaGen fail to generate via on layer Via3 at (197.51, 105.27) (198.89, 105.32).
+**WARN: (IMPPP-531):	ViaGen Warning: Due to SPACING rule violation, viaGen fail to generate via on layer Via3 at (101.51, 105.27) (102.89, 105.32).
+CPU time for VDD FollowPin 0 seconds
+  Number of Core ports routed: 120
+  Number of Followpin connections: 60
+End power routing: cpu: 0:00:00, real: 0:00:00, peak: 2817.00 megs.
+
+
+
+ Begin updating DB with routing results ...
+ Updating DB with 534 io pins ...
+ Updating DB with 0 via definition ...
+sroute created 184 wires.
+ViaGen created 6070 vias, deleted 0 via to avoid violation.
++--------+----------------+----------------+
+|  Layer |     Created    |     Deleted    |
++--------+----------------+----------------+
+| Metal1 |       180      |       NA       |
+|  Via1  |      1214      |        0       |
+|  Via2  |      1214      |        0       |
+| Metal3 |        2       |       NA       |
+|  Via3  |      1214      |        0       |
+|  Via4  |      1214      |        0       |
+|  Via5  |      1214      |        0       |
+| Metal6 |        2       |       NA       |
++--------+----------------+----------------+
+#% End sroute (date=05/08 11:27:00, total cpu=0:00:00.6, real=0:00:00.0, peak res=1485.0M, current mem=1484.8M)
+<CMD> sroute -connect { secondaryPowerPin } -layerChangeRange { M1 M6 } -blockPinTarget { nearestTarget } -secondaryPinRailVerticalStripeGrid { M6 0 0 } -checkAlignedSecondaryPin 1 -powerDomains { KERNEL_PSO } -allowJogging 0 -crossoverViaBottomLayer M1 -secondaryPinRailLayer M6 -allowLayerChange 1 -secondaryPinNet { VDD } -targetViaTopLayer M6 -crossoverViaTopLayer M6 -targetViaBottomLayer M1 -nets { VDD } -viaConnectToShape stripe
+#% Begin sroute (date=05/08 11:27:00, mem=1484.8M)
+**WARN: (IMPSR-4054):	Option -checkAlignedSecondaryPin is obsolete. The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, remove -checkAlignedSecondaryPin from the script.
+**WARN: (IMPSR-4053):	Option -crossoverViaBottomLayer is obsolete and has been replaced by -crossoverViaLayerRange. The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update the script to use -crossoverViaLayerRange.
+**WARN: (IMPSR-4053):	Option -targetViaTopLayer is obsolete and has been replaced by -targetViaLayerRange. The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update the script to use -targetViaLayerRange.
+**WARN: (IMPSR-4053):	Option -crossoverViaTopLayer is obsolete and has been replaced by -crossoverViaLayerRange. The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update the script to use -crossoverViaLayerRange.
+**WARN: (IMPSR-4053):	Option -targetViaBottomLayer is obsolete and has been replaced by -targetViaLayerRange. The obsolete option still works in this release, but to avoid this warning and to ensure compatibility with future releases, update the script to use -targetViaLayerRange.
+**WARN: (IMPSR-4058):	Sroute option: blockPinTarget should be used in conjunction with option: -connect blockPin. 
+*** Begin SPECIAL ROUTE on Thu May  8 11:27:00 2025 ***
+SPECIAL ROUTE ran on directory: /users/students/r0926826/kuleuven/6/DDIC/ALU_flow/02_FLOORPLAN
+SPECIAL ROUTE ran on machine: pc-klas2-9.esat.kuleuven.be (Linux 5.14.0-503.40.1.el9_5.x86_64 x86_64 799Mhz)
+
+Begin option processing ...
+srouteConnectPowerBump set to false
+routeSelectNet set to "VDD"
+routeSpecial set to true
+srouteBottomLayerLimit set to 1
+srouteBottomTargetLayerLimit set to 1
+srouteConnectBlockPin set to false
+srouteConnectCorePin set to false
+srouteConnectPadPin set to false
+srouteConnectStripe set to false
+srouteCrossoverViaBottomLayer set to 1
+srouteCrossoverViaTopLayer set to 6
+srouteFollowCorePinEnd set to 3
+srouteFollowPadPin set to false
+srouteFollowpinJoinLimit set to 12000
+srouteLevelShifterMaxGap set to 1
+srouteLevelShifterReinforcementLayer set to 6
+srouteLevelShifterReinforcementPitch set to 0
+srouteLevelShifterReinforcementWidth set to 0
+srouteLevelShifterSecondaryRailLayer set to 6
+srouteNoViaOnWireShape set to "padring ring blockring blockpin coverpin noshape blockwire corewire followpin iowire"
+sroutePadPinAllPorts set to true
+sroutePowerDomain set to "KERNEL_PSO"
+sroutePreserveExistingRoutes set to true
+srouteRoutePowerBarPortOnBothDir set to true
+srouteStopBlockPin set to "nearestTarget"
+srouteStraightConnections set to "straightWithChanges"
+srouteTopLayerLimit set to 6
+srouteTopTargetLayerLimit set to 6
+End option processing: cpu: 0:00:00, real: 0:00:00, peak: 2817.00 megs.
+
+Reading DB technology information...
+Finished reading DB technology information.
+Reading floorplan and netlist information...
+Finished reading floorplan and netlist information.
+**WARN: (IMPSR-4302):	Cap-table/qrcTechFile is found in the design, so the same information from the technology file will be ignored.
+Read in 24 layers, 11 routing layers, 1 overlap layer
+Read in 2 nondefault rules, 0 used
+Read in 1559 macros, 62 used
+Read in 62 components
+  62 core components: 62 unplaced, 0 placed, 0 fixed
+Read in 534 physical pins
+  534 physical pins: 0 unplaced, 0 placed, 534 fixed
+Read in 514 nets
+Read in 3 special nets, 3 routed
+Read in 658 terminals
+1 net selected.
+
+Begin power routing ...
+**WARN: (IMPSR-1003):	Unknown power domain name KERNEL_PSO.
+  Number of Core ports routed: 0
+End power routing: cpu: 0:00:00, real: 0:00:00, peak: 2817.00 megs.
+
+
+
+ Begin updating DB with routing results ...
+ Updating DB with 534 io pins ...
+ Updating DB with 0 via definition ...
+sroute created 0 wire.
+ViaGen created 0 via, deleted 0 via to avoid violation.
+#% End sroute (date=05/08 11:27:01, total cpu=0:00:00.5, real=0:00:01.0, peak res=1484.8M, current mem=1482.3M)
+<CMD> timeDesign -prePlace -outDir timingReports -prefix floorplan
+*** timeDesign #1 [begin] : totSession cpu/real = 0:00:21.0/0:00:24.0 (0.9), mem = 1537.6M
+Setting timing_disable_library_data_to_data_checks to 'true'.
+Setting timing_disable_user_data_to_data_checks to 'true'.
+Set Using Default Delay Limit as 101.
+**WARN: (IMPDC-1629):	The default delay limit was set to 101. This is less than the default of 1000 and may result in inaccurate delay calculation for nets with a fanout higher than the setting.  If needed, the default delay limit may be adjusted by running the command 'set delaycal_use_default_delay_limit'.
+Setting High Fanout Nets ( > 100 ) as ideal temporarily for -prePlace option
+Set Default Net Delay as 0 ps.
+Set Default Net Load as 0 pF. 
+Set Default Input Pin Transition as 1 ps.
+Starting delay calculation for Setup views
+AAE_INFO: opIsDesignInPostRouteState() is 0
+AAE DB initialization (MEM=1686.12 CPU=0:00:00.0 REAL=0:00:00.0) 
+#################################################################################
+# Design Stage: PreRoute
+# Design Name: sparc_exu_alu
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: No SPEF/RCDB 
+# Signoff Settings: SI Off 
+#################################################################################
+Start delay calculation (fullDC) (1 T). (MEM=1793.88)
+AAE_INFO: Cdb files are: 
+ 	../Library/cdb/slow.cdb
+	../Library/cdb/fast.cdb
+ 
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin S of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin S of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin S of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin S of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin S of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin S of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin S of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin S of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (IMPESI-3311):	Pin CO of Cell ADDFHX2 for timing library slow_vdd1v0 has different voltage for the vivo between CDB(1.08) and timing library(0.9). This vivo will be ignored.
+Type 'man IMPESI-3311' for more detail.
+**WARN: (EMS-27):	Message (IMPESI-3311) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+**WARN: (IMPESI-3086):	The cell 'DFFQXLLVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'DFFQXLLVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'ADDFXLLVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'ADDFXLLVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'AO22XLLVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'AO22XLLVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'XOR2XLLVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'XOR2XLLVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'OAI21XLLVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'OAI21XLLVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'AOI21XLLVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'AOI21XLLVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'OAI21X1LVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'OAI21X1LVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'OAI31X1LVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'OAI31X1LVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'OAI2BB1X1LVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'OAI2BB1X1LVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'AOI21X1LVT' does not have characterized noise model(s) for 'slow_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (IMPESI-3086):	The cell 'AOI21X1LVT' does not have characterized noise model(s) for 'fast_vdd1v0' lib(s). Missing noise information could compromise the accuracy of analysis.
+Type 'man IMPESI-3086' for more detail.
+**WARN: (EMS-27):	Message (IMPESI-3086) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+Total number of fetched objects 2160
+End delay calculation. (MEM=1963.44 CPU=0:00:00.1 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1963.44 CPU=0:00:00.7 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:01.2 real=0:00:01.0 totSessionCpu=0:00:22.5 mem=1963.4M)
+
+------------------------------------------------------------------
+          timeDesign Summary
+------------------------------------------------------------------
+
+Setup views included:
+ AV_0100_wc_rc125_setup 
+
++--------------------+---------+---------+---------+---------+
+|     Setup mode     |   all   | reg2reg |reg2cgate| default |
++--------------------+---------+---------+---------+---------+
+|           WNS (ns):| -0.051  | -0.051  |   N/A   | -0.041  |
+|           TNS (ns):| -0.051  | -0.051  |   N/A   | -0.041  |
+|    Violating Paths:|    1    |    1    |   N/A   |    1    |
+|          All Paths:|   380   |   64    |   N/A   |   380   |
++--------------------+---------+---------+---------+---------+
+
+Density: 8.573%
+------------------------------------------------------------------
+Set Using Default Delay Limit as 1000.
+Resetting back High Fanout Nets as non-ideal
+Set Default Net Delay as 1000 ps.
+Set Default Input Pin Transition as 0.1 ps.
+Set Default Net Load as 0.5 pF. 
+Reported timing to dir timingReports
+Total CPU time: 1.91 sec
+Total Real time: 2.0 sec
+Total Memory Usage: 1903.710938 Mbytes
+*** timeDesign #1 [finish] : cpu/real = 0:00:01.9/0:00:02.3 (0.8), totSession cpu/real = 0:00:22.9/0:00:26.2 (0.9), mem = 1903.7M
+<CMD> report_timing -format {instance pin cell net  load slew delay arrival}
+AAE_INFO: opIsDesignInPostRouteState() is 0
+#################################################################################
+# Design Stage: PreRoute
+# Design Name: sparc_exu_alu
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: No SPEF/RCDB 
+# Signoff Settings: SI Off 
+#################################################################################
+Start delay calculation (fullDC) (1 T). (MEM=1930.73)
+Total number of fetched objects 2160
+End delay calculation. (MEM=1979.43 CPU=0:00:00.1 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1979.43 CPU=0:00:00.1 REAL=0:00:00.0)
+Path 1: VIOLATED Setup Check with Pin addsub_adder_pipe_reg[63]/CK 
+Endpoint:   addsub_adder_pipe_reg[63]/D  (^) checked with  leading edge of 
+'RCLK'
+Beginpoint: addsub_sub_dff_sw/q_reg[0]/Q (^) triggered by  leading edge of 
+'RCLK'
+Path Groups: {RCLK}
+Analysis View: AV_0100_wc_rc125_setup
+Other End Arrival Time          0.000
+- Setup                         0.117
++ Phase Shift                   4.000
++ CPPR Adjustment               0.000
+- Uncertainty                   0.025
+= Required Time                 3.858
+- Arrival Time                  3.909
+= Slack Time                   -0.051
+     Clock Rise Edge                 0.000
+     + Clock Network Latency (Ideal) 0.000
+     = Beginpoint Arrival Time       0.000
+     +----------------------------------------------------------------------------------------------------------------------------------+ 
+     |              Instance               | Pin |     Cell     |                 Net                 |  Load |  Slew | Delay | Arrival | 
+     |                                     |     |              |                                     |       |       |       |  Time   | 
+     |-------------------------------------+-----+--------------+-------------------------------------+-------+-------+-------+---------| 
+     | addsub_sub_dff_sw/q_reg[0]          | CK  |              | rclk                                | 0.000 | 0.040 |       |   0.000 | 
+     | addsub_sub_dff_sw/q_reg[0]          | Q   | DFFQXLLVT    | addsub_subtract_sw_e[0]             | 0.000 | 0.012 | 0.118 |   0.118 | 
+     | g3583                               | Y   | NAND2XL      | n_956                               | 0.000 | 0.079 | 0.069 |   0.188 | 
+     | g17552                              | Y   | XOR2XLLVT    | n_1909                              | 0.001 | 0.035 | 0.098 |   0.285 | 
+     | addinc_addsub_adder_add_53_73_g2687 | CO  | ADDFXLLVT    | addinc_addsub_adder_add_53_73_n_124 | 0.001 | 0.027 | 0.111 |   0.397 | 
+     | addinc_addsub_adder_add_53_73_g2686 | Y   | INVXL        | addinc_addsub_adder_add_53_73_n_126 | 0.000 | 0.024 | 0.034 |   0.430 | 
+     | addinc_addsub_adder_add_53_73_g2681 | Y   | OAI21XLLVT   | addinc_addsub_adder_add_53_73_n_131 | 0.001 | 0.063 | 0.052 |   0.483 | 
+     | addinc_addsub_adder_add_53_73_g2676 | Y   | AOI21XLLVT   | addinc_addsub_adder_add_53_73_n_136 | 0.001 | 0.086 | 0.091 |   0.574 | 
+     | addinc_addsub_adder_add_53_73_g2672 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_53_73_n_140 | 0.001 | 0.053 | 0.071 |   0.644 | 
+     | addinc_addsub_adder_add_53_73_g2670 | Y   | INVX1LVT     | addinc_addsub_adder_add_53_73_n_142 | 0.001 | 0.025 | 0.039 |   0.684 | 
+     | addinc_addsub_adder_add_53_73_g2667 | Y   | OAI31X1LVT   | addinc_addsub_adder_add_53_73_n_145 | 0.001 | 0.074 | 0.061 |   0.745 | 
+     | addinc_addsub_adder_add_53_73_g2664 | Y   | OAI2BB1X1LVT | addinc_addsub_adder_add_53_73_n_148 | 0.001 | 0.034 | 0.099 |   0.844 | 
+     | addinc_addsub_adder_add_53_73_g2662 | Y   | OAI2BB1X1LVT | addinc_addsub_adder_add_53_73_n_150 | 0.001 | 0.040 | 0.087 |   0.931 | 
+     | addinc_addsub_adder_add_53_73_g2657 | Y   | AOI221X1LVT  | addinc_addsub_adder_add_53_73_n_155 | 0.001 | 0.101 | 0.069 |   1.001 | 
+     | addinc_addsub_adder_add_53_73_g2653 | Y   | OAI31X1LVT   | addinc_addsub_adder_add_53_73_n_159 | 0.001 | 0.076 | 0.092 |   1.093 | 
+     | addinc_addsub_adder_add_53_73_g2648 | CO  | ADDFXLLVT    | addinc_addsub_adder_add_53_73_n_164 | 0.001 | 0.027 | 0.128 |   1.220 | 
+     | addinc_addsub_adder_add_53_73_g2647 | CO  | ADDFXLLVT    | addinc_addsub_adder_add_53_73_n_168 | 0.001 | 0.038 | 0.114 |   1.334 | 
+     | addinc_addsub_adder_add_53_73_g2646 | Y   | INVX1LVT     | addinc_addsub_adder_add_53_73_n_167 | 0.001 | 0.026 | 0.034 |   1.368 | 
+     | addinc_addsub_adder_add_53_73_g2637 | Y   | OAI211X1LVT  | alu_ecl_cout32_e                    | 0.001 | 0.057 | 0.053 |   1.421 | 
+     | g17554                              | Y   | AO22XLLVT    | n_1911                              | 0.001 | 0.027 | 0.099 |   1.520 | 
+     | addinc_addsub_adder_add_56_34_g2247 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_101 | 0.000 | 0.021 | 0.028 |   1.548 | 
+     | addinc_addsub_adder_add_56_34_g2246 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_56_34_n_102 | 0.001 | 0.049 | 0.042 |   1.590 | 
+     | addinc_addsub_adder_add_56_34_g2244 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_104 | 0.000 | 0.025 | 0.040 |   1.629 | 
+     | addinc_addsub_adder_add_56_34_g2243 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_56_34_n_105 | 0.001 | 0.049 | 0.044 |   1.673 | 
+     | addinc_addsub_adder_add_56_34_g2241 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_107 | 0.000 | 0.019 | 0.037 |   1.710 | 
+     | addinc_addsub_adder_add_56_34_g2240 | Y   | OAI21XLLVT   | addinc_addsub_adder_add_56_34_n_108 | 0.000 | 0.052 | 0.044 |   1.754 | 
+     | addinc_addsub_adder_add_56_34_g2238 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_110 | 0.000 | 0.025 | 0.042 |   1.796 | 
+     | addinc_addsub_adder_add_56_34_g2236 | Y   | OAI21XLLVT   | addinc_addsub_adder_add_56_34_n_112 | 0.000 | 0.052 | 0.047 |   1.843 | 
+     | addinc_addsub_adder_add_56_34_g2235 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_113 | 0.000 | 0.025 | 0.042 |   1.885 | 
+     | addinc_addsub_adder_add_56_34_g2233 | Y   | OAI21XLLVT   | addinc_addsub_adder_add_56_34_n_115 | 0.000 | 0.052 | 0.047 |   1.932 | 
+     | addinc_addsub_adder_add_56_34_g2232 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_116 | 0.001 | 0.031 | 0.045 |   1.977 | 
+     | addinc_addsub_adder_add_56_34_g2230 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_56_34_n_118 | 0.001 | 0.054 | 0.050 |   2.027 | 
+     | addinc_addsub_adder_add_56_34_g2228 | Y   | AOI21X1LVT   | addinc_addsub_adder_add_56_34_n_120 | 0.001 | 0.055 | 0.066 |   2.093 | 
+     | addinc_addsub_adder_add_56_34_g2226 | Y   | OAI211X1LVT  | addinc_addsub_adder_add_56_34_n_122 | 0.001 | 0.066 | 0.069 |   2.162 | 
+     | addinc_addsub_adder_add_56_34_g2223 | Y   | AOI21X1LVT   | addinc_addsub_adder_add_56_34_n_125 | 0.000 | 0.050 | 0.068 |   2.230 | 
+     | addinc_addsub_adder_add_56_34_g2218 | Y   | OAI21XLLVT   | addinc_addsub_adder_add_56_34_n_130 | 0.000 | 0.053 | 0.059 |   2.289 | 
+     | addinc_addsub_adder_add_56_34_g2217 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_131 | 0.000 | 0.026 | 0.042 |   2.331 | 
+     | addinc_addsub_adder_add_56_34_g2215 | Y   | OAI21XLLVT   | addinc_addsub_adder_add_56_34_n_133 | 0.000 | 0.052 | 0.047 |   2.379 | 
+     | addinc_addsub_adder_add_56_34_g2214 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_134 | 0.001 | 0.031 | 0.045 |   2.423 | 
+     | addinc_addsub_adder_add_56_34_g2212 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_56_34_n_136 | 0.001 | 0.049 | 0.046 |   2.470 | 
+     | addinc_addsub_adder_add_56_34_g2211 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_137 | 0.000 | 0.019 | 0.037 |   2.507 | 
+     | addinc_addsub_adder_add_56_34_g2210 | Y   | OAI21XLLVT   | addinc_addsub_adder_add_56_34_n_138 | 0.001 | 0.063 | 0.050 |   2.557 | 
+     | addinc_addsub_adder_add_56_34_g2207 | Y   | OAI2BB1X1LVT | addinc_addsub_adder_add_56_34_n_141 | 0.001 | 0.036 | 0.096 |   2.653 | 
+     | addinc_addsub_adder_add_56_34_g2206 | Y   | NAND2X1LVT   | addinc_addsub_adder_add_56_34_n_142 | 0.001 | 0.042 | 0.045 |   2.698 | 
+     | addinc_addsub_adder_add_56_34_g2203 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_56_34_n_145 | 0.001 | 0.049 | 0.051 |   2.750 | 
+     | addinc_addsub_adder_add_56_34_g2201 | Y   | OAI2BB1X1LVT | addinc_addsub_adder_add_56_34_n_147 | 0.001 | 0.033 | 0.090 |   2.839 | 
+     | addinc_addsub_adder_add_56_34_g2199 | Y   | INVXL        | addinc_addsub_adder_add_56_34_n_149 | 0.000 | 0.033 | 0.042 |   2.881 | 
+     | addinc_addsub_adder_add_56_34_g2198 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_56_34_n_150 | 0.001 | 0.049 | 0.047 |   2.929 | 
+     | addinc_addsub_adder_add_56_34_g2196 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_152 | 0.000 | 0.025 | 0.040 |   2.968 | 
+     | addinc_addsub_adder_add_56_34_g2195 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_56_34_n_153 | 0.001 | 0.049 | 0.044 |   3.012 | 
+     | addinc_addsub_adder_add_56_34_g2193 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_155 | 0.000 | 0.025 | 0.040 |   3.051 | 
+     | addinc_addsub_adder_add_56_34_g2192 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_56_34_n_156 | 0.001 | 0.049 | 0.044 |   3.095 | 
+     | addinc_addsub_adder_add_56_34_g2190 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_158 | 0.000 | 0.019 | 0.037 |   3.132 | 
+     | addinc_addsub_adder_add_56_34_g2189 | Y   | OAI21XLLVT   | addinc_addsub_adder_add_56_34_n_159 | 0.000 | 0.052 | 0.044 |   3.176 | 
+     | addinc_addsub_adder_add_56_34_g2187 | Y   | INVXLLVT     | addinc_addsub_adder_add_56_34_n_161 | 0.001 | 0.031 | 0.045 |   3.221 | 
+     | addinc_addsub_adder_add_56_34_g2185 | Y   | OAI21X1LVT   | addinc_addsub_adder_add_56_34_n_163 | 0.001 | 0.054 | 0.050 |   3.271 | 
+     | addinc_addsub_adder_add_56_34_g2184 | Y   | NAND2X1LVT   | addinc_addsub_adder_add_56_34_n_164 | 0.001 | 0.044 | 0.053 |   3.324 | 
+     | addinc_addsub_adder_add_56_34_g2181 | Y   | OAI221X1LVT  | addinc_addsub_adder_add_56_34_n_167 | 0.001 | 0.081 | 0.066 |   3.390 | 
+     | addinc_addsub_adder_add_56_34_g2179 | Y   | OAI2BB1XLLVT | addinc_addsub_adder_add_56_34_n_169 | 0.001 | 0.040 | 0.091 |   3.481 | 
+     | addinc_addsub_adder_add_56_34_g2177 | Y   | OAI2BB1X1LVT | addinc_addsub_adder_add_56_34_n_171 | 0.001 | 0.034 | 0.086 |   3.567 | 
+     | addinc_addsub_adder_add_56_34_g2175 | Y   | OAI2BB1X1LVT | addinc_addsub_adder_add_56_34_n_173 | 0.001 | 0.033 | 0.084 |   3.651 | 
+     | addinc_addsub_adder_add_56_34_g2173 | CO  | ADDFXLLVT    | addinc_addsub_adder_add_56_34_n_176 | 0.001 | 0.028 | 0.111 |   3.762 | 
+     | addinc_addsub_adder_add_56_34_g2171 | Y   | OAI2BB1XLLVT | addinc_addsub_adder_add_56_34_n_178 | 0.001 | 0.040 | 0.073 |   3.835 | 
+     | addinc_addsub_adder_add_56_34_g2170 | Y   | NAND2XLLVT   | addinc_addsub_adder_add_56_34_n_179 | 0.000 | 0.037 | 0.046 |   3.880 | 
+     | addinc_addsub_adder_add_56_34_g2169 | Y   | OAI21XLLVT   | addsub_adder_pipe[63]               | 0.000 | 0.042 | 0.029 |   3.909 | 
+     | addsub_adder_pipe_reg[63]           | D   | DFFQXL       |                                     | 0.000 | 0.042 | 0.000 |   3.909 | 
+     +----------------------------------------------------------------------------------------------------------------------------------+ 
+
+<CMD> timeDesign -prePlace -expandedViews -numPaths 10 -outDir timingReports -prefix floorplan
+Info: The option -ignoreNetLoad is different with the value of internal variable, sync the option -ignoreNetLoad to true based on the value of internal variable.
+*** timeDesign #2 [begin] : totSession cpu/real = 0:00:23.2/0:00:26.6 (0.9), mem = 1987.4M
+**WARN: (IMPOPT-7319):	setDelayCalMode ignoreNetLoad true detected, reverting to false for non PrePlace flow
+Set Using Default Delay Limit as 101.
+**WARN: (IMPDC-1629):	The default delay limit was set to 101. This is less than the default of 1000 and may result in inaccurate delay calculation for nets with a fanout higher than the setting.  If needed, the default delay limit may be adjusted by running the command 'set delaycal_use_default_delay_limit'.
+Setting High Fanout Nets ( > 100 ) as ideal temporarily for -prePlace option
+Set Default Net Delay as 0 ps.
+Set Default Net Load as 0 pF. 
+Starting delay calculation for Setup views
+AAE_INFO: opIsDesignInPostRouteState() is 0
+#################################################################################
+# Design Stage: PreRoute
+# Design Name: sparc_exu_alu
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: No SPEF/RCDB 
+# Signoff Settings: SI Off 
+#################################################################################
+Start delay calculation (fullDC) (1 T). (MEM=1940.72)
+Total number of fetched objects 2160
+End delay calculation. (MEM=1988.41 CPU=0:00:00.1 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1988.41 CPU=0:00:00.1 REAL=0:00:01.0)
+*** Done Building Timing Graph (cpu=0:00:00.3 real=0:00:01.0 totSessionCpu=0:00:23.6 mem=1996.4M)
+
+------------------------------------------------------------------
+          timeDesign Summary
+------------------------------------------------------------------
+
+Setup views included:
+ AV_0100_wc_rc125_setup 
+
++--------------------+---------+---------+---------+---------+
+|     Setup mode     |   all   | reg2reg |reg2cgate| default |
++--------------------+---------+---------+---------+---------+
+|           WNS (ns):| -0.051  | -0.051  |   N/A   | -0.041  |
+|           TNS (ns):| -0.051  | -0.051  |   N/A   | -0.041  |
+|    Violating Paths:|    1    |    1    |   N/A   |    1    |
+|          All Paths:|   380   |   64    |   N/A   |   380   |
++--------------------+---------+---------+---------+---------+
+|AV_0100_wc_rc125_setup
+|                    | -0.051  | -0.051  |   N/A   | -0.041  |
+|                    | -0.051  | -0.051  |   N/A   | -0.041  |
+|                    |    1    |    1    |   N/A   |    1    |
+|                    |   380   |   64    |   N/A   |   380   |
++--------------------+---------+---------+---------+---------+
+
+Density: 8.573%
+------------------------------------------------------------------
+Set Using Default Delay Limit as 1000.
+Resetting back High Fanout Nets as non-ideal
+Set Default Net Delay as 1000 ps.
+Set Default Net Load as 0.5 pF. 
+Reported timing to dir timingReports
+Total CPU time: 0.67 sec
+Total Real time: 1.0 sec
+Total Memory Usage: 1917.6875 Mbytes
+*** timeDesign #2 [finish] : cpu/real = 0:00:00.7/0:00:00.7 (1.0), totSession cpu/real = 0:00:23.9/0:00:27.3 (0.9), mem = 1917.7M
+<CMD> timeDesign -prePlace -hold -expandedViews -numPaths 10 -outDir timingReports -prefix floorplan
+*** timeDesign #3 [begin] : totSession cpu/real = 0:00:23.9/0:00:27.3 (0.9), mem = 1917.7M
+Set Using Default Delay Limit as 101.
+**WARN: (IMPDC-1629):	The default delay limit was set to 101. This is less than the default of 1000 and may result in inaccurate delay calculation for nets with a fanout higher than the setting.  If needed, the default delay limit may be adjusted by running the command 'set delaycal_use_default_delay_limit'.
+Setting High Fanout Nets ( > 100 ) as ideal temporarily for -prePlace option
+Set Default Net Delay as 0 ps.
+Set Default Net Load as 0 pF. 
+OPTC: user 20.0
+Starting delay calculation for Hold views
+AAE_INFO: opIsDesignInPostRouteState() is 0
+#################################################################################
+# Design Stage: PreRoute
+# Design Name: sparc_exu_alu
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: No SPEF/RCDB 
+# Signoff Settings: SI Off 
+#################################################################################
+Start delay calculation (fullDC) (1 T). (MEM=1943.44)
+Total number of fetched objects 2160
+End delay calculation. (MEM=1991.13 CPU=0:00:00.1 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1991.13 CPU=0:00:00.1 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:00.3 real=0:00:00.0 totSessionCpu=0:00:24.3 mem=1999.1M)
+
+------------------------------------------------------------------
+          timeDesign Summary
+------------------------------------------------------------------
+
+Hold views included:
+ AV_0100_bc_rc0_hold 
+
++--------------------+---------+---------+---------+---------+
+|     Hold mode      |   all   | reg2reg |reg2cgate| default |
++--------------------+---------+---------+---------+---------+
+|           WNS (ns):|  0.052  |  0.052  |   N/A   |  0.067  |
+|           TNS (ns):|  0.000  |  0.000  |   N/A   |  0.000  |
+|    Violating Paths:|    0    |    0    |   N/A   |    0    |
+|          All Paths:|   380   |   64    |   N/A   |   380   |
++--------------------+---------+---------+---------+---------+
+|AV_0100_bc_rc0_hold |  0.052  |  0.052  |   N/A   |  0.067  |
+|                    |  0.000  |  0.000  |   N/A   |  0.000  |
+|                    |    0    |    0    |   N/A   |    0    |
+|                    |   380   |   64    |   N/A   |   380   |
++--------------------+---------+---------+---------+---------+
+
+Density: 8.573%
+------------------------------------------------------------------
+Set Using Default Delay Limit as 1000.
+Resetting back High Fanout Nets as non-ideal
+Set Default Net Delay as 1000 ps.
+Set Default Net Load as 0.5 pF. 
+Reported timing to dir timingReports
+Total CPU time: 0.57 sec
+Total Real time: 1.0 sec
+Total Memory Usage: 1919.40625 Mbytes
+*** timeDesign #3 [finish] : cpu/real = 0:00:00.6/0:00:00.6 (1.0), totSession cpu/real = 0:00:24.5/0:00:27.9 (0.9), mem = 1919.4M
+<CMD> reportGateCount -stdCellOnly -outfile ./reports/stdGateCount.rpt
+Gate area 1.0260 um^2
+[0] sparc_exu_alu Gates=3910 Cells=1820 Area=4012.3 um^2
+**WARN: (IMPAFPU-9006):	Command 'analyzeFloorplan' is obsolete. Please use commands 'placeDesign + earlyGlobalRoute + create_ps_per_micron_model + timeDesign -proto + load_timing_debug_report -proto' to analyze congestion and timing for the floorplan.
+<CMD> get_proto_model -type_match {flex_module flex_instgroup blackbox} -committed -name -tcl
+<CMD> getNanoRouteMode -user -routeTopRoutingLayer
+<CMD> getNanoRouteMode -quiet -routeTopRoutingLayer
+<CMD> unplaceAllInsts
+<CMD> editDelete -type signal
+Start to collect the design information.
+Build netlist information for Cell sparc_exu_alu.
+Finished collecting the design information.
+Average module density = 0.086.
+Density for the design = 0.086.
+       = stdcell_area 11732 sites (4012 um^2) / alloc_area 136850 sites (46803 um^2).
+Pin Density = 0.05263.
+            = total # of pins 7202 / total area 136850.
+************************* Analyze Floorplan **************************
+    Die Area(um^2)            : 76589.00
+    Core Area(um^2)           : 46933.80
+    Chip Density (Counting Std Cells and MACROs and IOs): 5.239%
+    Core Density (Counting Std Cells and MACROs): 8.549%
+    Average utilization       : 8.573%
+    Number of instance(s)     : 1820
+    Number of Macro(s)        : 0
+    Number of IO Pin(s)       : 532
+    Number of Power Domain(s) : 2
+************************* Estimation Results *************************
+**********************************************************************
+ *** Starting Verify Geometry (MEM: 1919.4) ***
+
+**WARN: (IMPVFG-257):	setVerifyGeometryMode/verifyGeometry command is obsolete and should not be used any more. It still works in this release but will be removed in future release. You should change to use set_verify_drc_mode/verify_drc which is the replacement tool for verifyGeometry.
+  VERIFY GEOMETRY ...... Starting Verification
+  VERIFY GEOMETRY ...... Initializing
+  VERIFY GEOMETRY ...... Deleting Existing Violations
+  VERIFY GEOMETRY ...... Creating Sub-Areas
+                  ...... bin size: 1920
+VG: elapsed time: 3.00
+Begin Summary ...
+  Cells       : 0
+  SameNet     : 0
+  Wiring      : 0
+  Antenna     : 0
+  Short       : 0
+  Overlap     : 0
+End Summary
+
+  Verification Complete : 0 Viols.  0 Wrngs.
+
+**********End: VERIFY GEOMETRY**********
+ *** verify geometry (CPU: 0:00:03.4  MEM: 767.6M)
+
+<CMD> clearDrc
+<CMD> all_constraint_modes 
+0100_mode
+<CMD> get_constraint_mode  $mode -sdc_files 
+../DesignDataIn/sdc/alu.sdc
+<CMD> update_constraint_mode -name 0100_mode -sdc "../DesignDataIn/sdc/alu.sdc"
+Reading timing constraints file '../DesignDataIn/sdc/alu.sdc' ...
+Current (total cpu=0:00:28.1, real=0:00:34.0, peak res=2201.6M, current mem=1654.4M)
+INFO (CTE): Constraints read successfully.
+Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1665.7M, current mem=1665.7M)
+Current (total cpu=0:00:28.1, real=0:00:34.0, peak res=2201.6M, current mem=1665.7M)
+**WARN: (TA-976):	Path groups asserted by the group_path constraint are considered by the software to be global in nature - they cannot be restricted to specific constraint modes. Due to this restriction, the group_path constraint is not supported directly in the constraint files which are configured in mode-specific commands such as create_constraint_mode. The current group_path entry will be ignored. You can enter the group_path constraint interactively or as part of a general command script -  where it will be interpreted as global and will be in effect for all modes.
+Current (total cpu=0:00:28.1, real=0:00:34.0, peak res=2201.6M, current mem=1665.7M)
+INFO (CTE): Constraints read successfully.
+Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1667.5M, current mem=1667.5M)
+Current (total cpu=0:00:28.2, real=0:00:34.0, peak res=2201.6M, current mem=1667.5M)
+Current (total cpu=0:00:28.2, real=0:00:34.0, peak res=2201.6M, current mem=1667.5M)
+INFO (CTE): Constraints read successfully.
+Ending "Constraint file reading stats" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1669.3M, current mem=1669.3M)
+Current (total cpu=0:00:28.2, real=0:00:34.0, peak res=2201.6M, current mem=1669.3M)
+<CMD> saveDesign ../DesignDataOut/floorplan.enc
+#% Begin save design ... (date=05/08 11:27:08, mem=1672.6M)
+% Begin Save ccopt configuration ... (date=05/08 11:27:08, mem=1672.6M)
+% End Save ccopt configuration ... (date=05/08 11:27:08, total cpu=0:00:00.0, real=0:00:00.0, peak res=1674.2M, current mem=1674.2M)
+% Begin Save netlist data ... (date=05/08 11:27:08, mem=1674.3M)
+Writing Binary DB to ../DesignDataOut/floorplan.enc.dat.tmp/sparc_exu_alu.v.bin in single-threaded mode...
+% End Save netlist data ... (date=05/08 11:27:08, total cpu=0:00:00.0, real=0:00:00.0, peak res=1674.6M, current mem=1674.6M)
+Saving symbol-table file ...
+Saving congestion map file ../DesignDataOut/floorplan.enc.dat.tmp/sparc_exu_alu.route.congmap.gz ...
+% Begin Save AAE data ... (date=05/08 11:27:09, mem=1674.7M)
+Saving AAE Data ...
+% End Save AAE data ... (date=05/08 11:27:09, total cpu=0:00:00.0, real=0:00:00.0, peak res=1674.9M, current mem=1674.9M)
+Saving preference file ../DesignDataOut/floorplan.enc.dat.tmp/gui.pref.tcl ...
+Saving mode setting ...
+Saving global file ...
+% Begin Save floorplan data ... (date=05/08 11:27:09, mem=1678.3M)
+Saving floorplan file ...
+% End Save floorplan data ... (date=05/08 11:27:09, total cpu=0:00:00.0, real=0:00:00.0, peak res=1678.3M, current mem=1678.3M)
+Saving PG file ../DesignDataOut/floorplan.enc.dat.tmp/sparc_exu_alu.pg.gz, version#2, (Created by Innovus v21.17-s075_1 on Thu May  8 11:27:09 2025)
+*** Completed savePGFile (cpu=0:00:00.0 real=0:00:00.0 mem=1919.6M) ***
+Saving Drc markers ...
+... No Drc file written since there is no markers found.
+% Begin Save placement data ... (date=05/08 11:27:09, mem=1678.6M)
+** Saving stdCellPlacement_binary (version# 2) ...
+Save Adaptive View Pruning View Names to Binary file
+% End Save placement data ... (date=05/08 11:27:09, total cpu=0:00:00.0, real=0:00:00.0, peak res=1678.7M, current mem=1678.7M)
+% Begin Save routing data ... (date=05/08 11:27:09, mem=1678.7M)
+Saving route file ...
+*** Completed saveRoute (cpu=0:00:00.0 real=0:00:00.0 mem=1919.6M) ***
+% End Save routing data ... (date=05/08 11:27:09, total cpu=0:00:00.0, real=0:00:00.0, peak res=1679.0M, current mem=1679.0M)
+Saving property file ../DesignDataOut/floorplan.enc.dat.tmp/sparc_exu_alu.prop
+*** Completed saveProperty (cpu=0:00:00.0 real=0:00:00.0 mem=1922.6M) ***
+Saving preRoute extracted patterns in file '../DesignDataOut/floorplan.enc.dat.tmp/sparc_exu_alu.techData.gz' ...
+Saving preRoute extraction data in directory '../DesignDataOut/floorplan.enc.dat.tmp/extraction/' ...
+Saving CPF database ...
+AV_0100_wc_rc125_setup_dc AV_0100_bc_rc0_hold_dc AV_0100_wc_rc125_hold_dc
+*** End saving CPF database: cpu=0:00:00.01 real=0:00:00.00 ***
+% Begin Save power constraints data ... (date=05/08 11:27:10, mem=1683.4M)
+% End Save power constraints data ... (date=05/08 11:27:10, total cpu=0:00:00.0, real=0:00:00.0, peak res=1683.7M, current mem=1683.7M)
+rc0 default_rc_corner rc125
+rc0 default_rc_corner rc125
+rc0 default_rc_corner rc125
+rc0 default_rc_corner rc125
+rc0 default_rc_corner rc125
+Generated self-contained design floorplan.enc.dat.tmp
+#% End save design ... (date=05/08 11:27:10, total cpu=0:00:00.5, real=0:00:02.0, peak res=1683.7M, current mem=1677.5M)
+*** Message Summary: 0 warning(s), 0 error(s)
+
+<CMD> saveDesign ../DesignDataIn/dbs/floorplan.enc
+#% Begin save design ... (date=05/08 11:27:10, mem=1677.5M)
+% Begin Save ccopt configuration ... (date=05/08 11:27:10, mem=1677.5M)
+% End Save ccopt configuration ... (date=05/08 11:27:10, total cpu=0:00:00.0, real=0:00:00.0, peak res=1677.5M, current mem=1677.5M)
+% Begin Save netlist data ... (date=05/08 11:27:10, mem=1677.5M)
+Writing Binary DB to ../DesignDataIn/dbs/floorplan.enc.dat.tmp/sparc_exu_alu.v.bin in single-threaded mode...
+% End Save netlist data ... (date=05/08 11:27:10, total cpu=0:00:00.0, real=0:00:00.0, peak res=1677.5M, current mem=1677.5M)
+Saving symbol-table file ...
+Saving congestion map file ../DesignDataIn/dbs/floorplan.enc.dat.tmp/sparc_exu_alu.route.congmap.gz ...
+% Begin Save AAE data ... (date=05/08 11:27:11, mem=1677.5M)
+Saving AAE Data ...
+% End Save AAE data ... (date=05/08 11:27:11, total cpu=0:00:00.0, real=0:00:00.0, peak res=1677.5M, current mem=1677.5M)
+Saving preference file ../DesignDataIn/dbs/floorplan.enc.dat.tmp/gui.pref.tcl ...
+Saving mode setting ...
+Saving global file ...
+% Begin Save floorplan data ... (date=05/08 11:27:11, mem=1677.6M)
+Saving floorplan file ...
+% End Save floorplan data ... (date=05/08 11:27:11, total cpu=0:00:00.0, real=0:00:00.0, peak res=1677.6M, current mem=1677.6M)
+Saving PG file ../DesignDataIn/dbs/floorplan.enc.dat.tmp/sparc_exu_alu.pg.gz, version#2, (Created by Innovus v21.17-s075_1 on Thu May  8 11:27:11 2025)
+*** Completed savePGFile (cpu=0:00:00.0 real=0:00:00.0 mem=1980.4M) ***
+Saving Drc markers ...
+... No Drc file written since there is no markers found.
+% Begin Save placement data ... (date=05/08 11:27:11, mem=1677.6M)
+** Saving stdCellPlacement_binary (version# 2) ...
+Save Adaptive View Pruning View Names to Binary file
+% End Save placement data ... (date=05/08 11:27:11, total cpu=0:00:00.0, real=0:00:00.0, peak res=1677.6M, current mem=1677.6M)
+% Begin Save routing data ... (date=05/08 11:27:11, mem=1677.6M)
+Saving route file ...
+*** Completed saveRoute (cpu=0:00:00.0 real=0:00:00.0 mem=1980.4M) ***
+% End Save routing data ... (date=05/08 11:27:11, total cpu=0:00:00.0, real=0:00:00.0, peak res=1677.6M, current mem=1677.6M)
+Saving property file ../DesignDataIn/dbs/floorplan.enc.dat.tmp/sparc_exu_alu.prop
+*** Completed saveProperty (cpu=0:00:00.0 real=0:00:00.0 mem=1983.4M) ***
+Saving preRoute extracted patterns in file '../DesignDataIn/dbs/floorplan.enc.dat.tmp/sparc_exu_alu.techData.gz' ...
+Saving preRoute extraction data in directory '../DesignDataIn/dbs/floorplan.enc.dat.tmp/extraction/' ...
+Saving CPF database ...
+AV_0100_wc_rc125_setup_dc AV_0100_bc_rc0_hold_dc AV_0100_wc_rc125_hold_dc
+*** End saving CPF database: cpu=0:00:00.00 real=0:00:00.00 ***
+% Begin Save power constraints data ... (date=05/08 11:27:11, mem=1677.6M)
+% End Save power constraints data ... (date=05/08 11:27:11, total cpu=0:00:00.0, real=0:00:00.0, peak res=1677.6M, current mem=1677.6M)
+rc0 default_rc_corner rc125
+rc0 default_rc_corner rc125
+rc0 default_rc_corner rc125
+rc0 default_rc_corner rc125
+rc0 default_rc_corner rc125
+Generated self-contained design floorplan.enc.dat.tmp
+#% End save design ... (date=05/08 11:27:12, total cpu=0:00:00.4, real=0:00:02.0, peak res=1678.1M, current mem=1678.1M)
+*** Message Summary: 0 warning(s), 0 error(s)
+
+<CMD> win
+<CMD> fit
+<CMD> uiSetTool ruler
+<CMD> pan 54.15600 -15.76250
+<CMD> pan -9.65550 36.29450
+<CMD> pan -88.16050 -0.64900
+<CMD> pan 82.28350 112.28000
+<CMD> zoomBox 103.14750 111.00950 337.60950 320.90300
+<CMD> zoomBox 135.08650 134.30400 334.37900 312.71350
+<CMD> zoomBox 230.51300 207.34650 318.94150 286.50900
+<CMD> zoomBox 280.36350 248.20700 308.71300 273.58600
+<CMD> zoomBox 249.83550 216.46850 325.00550 283.76150
+<CMD> pan -3.50100 -67.01400
+<CMD> zoomBox 167.69650 102.63400 367.00800 281.06050
+<CMD> zoomBox 148.17600 89.98450 382.66050 299.89800
+<CMD> pan -64.91550 -63.65200
+<CMD> pan -126.19100 26.13750
+<CMD> pan 29.72750 154.75550
+<CMD> pan 104.35000 122.90450
+<CMD> zoomBox 74.49900 88.39600 350.36300 335.35300
+<CMD> zoomBox -74.53450 10.09100 453.93450 483.18350
+<CMD> zoomBox 103.77100 67.80350 379.63550 314.76100
+<CMD> zoomBox 131.92850 76.15450 366.41350 286.06850
+<CMD> zoomBox 223.28800 128.16100 311.72450 207.33050
+<CMD> zoomBox 244.96400 141.89050 299.27500 190.51050
+<CMD> zoomBox 262.66300 152.79200 291.01400 178.17200
+<CMD> uiSetTool ruler
+<CMD> uiSetTool select
+<CMD> selectWire 275.0000 3.0200 287.0000 260.5100 6 VSS
+<CMD> zoomBox 231.89200 132.49900 307.06550 199.79550
+<CMD> zoomBox 127.39400 63.45200 361.89050 273.37650
+<CMD> deselectAll
+<CMD> pan -97.07500 -96.40150
+<CMD> zoomBox 30.31850 -6.05300 306.19700 240.91700
+<CMD> pan -57.10300 -89.90550
+<CMD> zoomBox 36.98900 9.48500 180.99950 138.40500
+<CMD> zoomBox 47.38450 20.77500 169.79350 130.35700
+<CMD> zoomBox -49.38250 -82.65100 275.18100 207.90250
+<CMD> zoomBox 39.91750 -4.63650 183.92800 124.28350
+<CMD> zoomBox -96.38900 -96.07200 285.45050 245.75600
+<CMD> zoomBox -143.37450 -109.40900 305.84850 292.74150
+<CMD> pan 117.39050 61.86050
+<CMD> pan -41.84250 -65.40950
+<CMD> zoomBox -18.13900 -61.23200 363.70050 280.59600
+<CMD> zoomBox 26.83650 -34.85400 351.40050 255.70000
+<CMD> zoomBox 65.06600 -12.37000 340.94550 234.60100
+<CMD> zoomBox 97.56100 6.74100 332.05900 216.66700
+<CMD> zoomBox 123.77100 23.03150 323.09450 201.46850
+<CMD> zoomBox 136.26400 35.17650 305.68900 186.84800
+<CMD> zoomBox 155.12350 53.37150 277.53350 162.95450
+<CMD> zoomBox 162.43950 60.33150 266.48800 153.47700
+<CMD> zoomBox 173.83500 70.89400 249.01000 138.19150
+<CMD> zoomBox 182.57850 78.39600 236.89250 127.01850
+<CMD> zoomBox 185.95100 81.38900 232.11800 122.71850
+<CMD> zoomBox 177.12550 75.09100 241.02500 132.29450
+<CMD> pan 2.06650 -68.05950
+<CMD> pan -0.82650 -42.84650
+<CMD> pan 1.57050 -13.33550
+<CMD> pan -4.71200 12.95150
+<CMD> zoomBox 168.71800 190.43700 243.89350 257.73500
+<CMD> zoomBox 161.06400 187.55400 249.50550 266.72800
+<CMD> zoomBox 97.08700 163.35500 296.41250 341.79400
+<CMD> zoomBox 214.03550 209.94900 277.93600 267.15350
+<CMD> zoomBox 233.05900 217.68000 272.30250 252.81150
+<CMD> zoomBox 191.29000 201.20500 279.73900 280.38550
+<CMD> pan 43.02300 -4.96000
+<CMD> pan -20.82500 -81.16600
+<CMD> pan 9.15400 -101.19000
+<CMD> zoomBox 211.09200 108.36050 315.14950 201.51400
+<CMD> zoomBox 196.17350 104.67850 318.59400 214.27100
+<CMD> zoomBox 242.37500 119.60750 306.27950 176.81550
+<CMD> zoomBox 272.73600 131.04650 296.83800 152.62300
+<CMD> zoomBox 281.19650 134.20350 293.77850 145.46700
+<CMD> pan -2.84850 -148.06700
+<CMD> zoomBox 265.84600 126.46350 299.20900 156.33050
+<CMD> zoomBox 274.82950 136.89100 289.63350 150.14350
+<CMD> zoomBox 266.92000 127.20400 300.28550 157.07300
+<CMD> setLayerPreference node_net -isVisible 0
+<CMD> setLayerPreference node_net -isVisible 1
+<CMD> setLayerPreference node_net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> zoomBox 223.30400 91.55950 327.38500 184.73400
+<CMD> zoomBox 171.64350 46.31200 371.03100 224.80650
+<CMD> zoomBox 46.53050 -69.30250 495.90300 332.98200
+<CMD> pan -245.90550 -127.45950
+<CMD> zoomBox -30.12500 75.75950 169.26450 254.25550
+<CMD> zoomBox 12.58600 129.66850 135.03650 239.28800
+<CMD> pan -2.85150 135.93300
+<CMD> pan 12.83150 126.58700
+<CMD> zoomBox -100.96700 62.00850 175.00600 309.06300
+<CMD> zoomBox -140.59600 40.65000 184.07850 331.30300
+<CMD> pan 129.78600 107.32300
+<CMD> pan -15.54050 -1.04200
+<CMD> zoomBox 13.15550 70.49300 157.21550 199.45750
+<CMD> setLayerPreference Metal11 -isVisible 0
+<CMD> setLayerPreference Metal11 -isVisible 1
+<CMD> setLayerPreference node_layer -isVisible 0
+<CMD> setLayerPreference node_layer -isVisible 1
+<CMD> setLayerPreference node_net -isVisible 1
+<CMD> setLayerPreference node_net -isVisible 0
+<CMD> zoomBox -73.69400 -69.22800 308.27900 272.71950
+<CMD> pan 15.31850 7.92500
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference power -isVisible 1
+<CMD> setLayerPreference power -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgGround -isVisible 1
+<CMD> setLayerPreference pgGround -isVisible 0
+<CMD> setLayerPreference clock -isVisible 1
+<CMD> setLayerPreference clock -isVisible 0
+<CMD> setLayerPreference node_net -isVisible 1
+<CMD> setLayerPreference node_net -isVisible 0
+<CMD> setLayerPreference node_net -isVisible 1
+<CMD> setLayerPreference node_net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference power -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference power -isVisible 0
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference clock -isVisible 1
+<CMD> setLayerPreference pgGround -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference power -isVisible 1
+<CMD> setLayerPreference node_power -isVisible 1
+<CMD> setLayerPreference node_power -isSelectable 1
+<CMD> setLayerPreference node_floorplan -isVisible 1
+<CMD> setLayerPreference node_floorplan -isVisible 0
+<CMD> setLayerPreference node_floorplan -isVisible 1
+<CMD> setLayerPreference node_row -isVisible 1
+<CMD> setLayerPreference node_row -isVisible 0
+<CMD> setLayerPreference node_row -isVisible 1
+<CMD> setLayerPreference node_blockage -isVisible 1
+<CMD> setLayerPreference node_cell -isVisible 1
+<CMD> setLayerPreference node_cell -isSelectable 1
+<CMD> setLayerPreference node_misc -isVisible 1
+<CMD> setLayerPreference node_gird -isVisible 1
+<CMD> setLayerPreference node_gird -isVisible 0
+<CMD> setLayerPreference node_track -isVisible 1
+<CMD> setLayerPreference node_track -isVisible 0
+<CMD> setLayerPreference node_overlay -isVisible 1
+<CMD> setLayerPreference congestH -color {#000066 #0000c9 #0053ff #00fcfa #00a953 #53a900 #f9fc00 #ff5300 #ff5858 #ffffff}
+<CMD> setLayerPreference congestV -color {#000066 #0000c9 #0053ff #00fcfa #00a953 #53a900 #f9fc00 #ff5300 #ff5858 #ffffff}
+<CMD> fit
+<CMD> setLayerPreference node_overlay -isVisible 0
+<CMD> setLayerPreference node_overlay -isVisible 1
+<CMD> fit
+<CMD> setLayerPreference node_overlay -isVisible 0
+<CMD> zoomBox -82.96200 -71.67550 366.19400 330.41500
+<CMD> setLayerPreference node_overlay -isVisible 1
+<CMD> fit
+<CMD> setLayerPreference node_overlay -isVisible 0
+<CMD> setLayerPreference node_overlay -isVisible 1
+<CMD> fit
+<CMD> setLayerPreference node_overlay -isVisible 0
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference node_net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> zoomBox -58.00400 -37.43100 323.77850 304.34600
+<CMD> zoomBox -104.89550 -65.06000 344.26050 337.03050
+<CMD> zoomBox -58.00450 -37.43150 323.77850 304.34600
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference node_net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> zoomBox -21.25900 -31.65300 303.25700 258.85800
+<CMD> zoomBox 12.36800 -27.68600 288.20650 219.24850
+<CMD> zoomBox 119.16550 -16.76850 241.55700 92.79800
+<CMD> zoomBox 164.99400 -10.29500 219.30000 38.32050
+<CMD> zoomBox 174.80000 -8.01400 214.03600 27.11050
+<CMD> zoomBox 189.17250 -3.97000 206.58200 11.61500
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> zoomBox 182.34550 -11.68300 215.69700 18.17350
+<CMD> zoomBox 179.49050 -14.62200 218.72750 20.50350
+<CMD> zoomBox 176.13150 -18.07950 222.29250 23.24450
+<CMD> zoomBox 170.92550 -22.18950 225.23250 26.42700
+<CMD> zoomBox 165.04850 -27.11150 228.93950 30.08450
+<CMD> pan -13.05950 -178.85300
+<CMD> zoomBox 112.06450 -60.94000 256.06050 67.96700
+<CMD> zoomBox 9.53450 -157.39800 334.06650 133.12750
+<CMD> pan -3.77850 -106.47600
+<CMD> setLayerPreference node_route -isVisible 0
+<CMD> setLayerPreference node_route -isVisible 1
+<CMD> zoomBox 45.88700 -68.04850 280.36100 141.85600
+<CMD> zoomBox 78.50100 -45.65850 247.90900 105.99800
+<CMD> pan 29.14750 -111.66800
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> zoomBox 81.42650 -47.09000 280.73050 131.32950
+<CMD> zoomBox 50.66850 -63.51550 285.14400 146.39000
+<CMD> pan 77.34950 -35.92450
+<CMD> pan -19.41300 -60.49400
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> pan -62.79000 -167.26700
+<CMD> pan -2.12350 -112.66700
+<CMD> zoomBox 144.68500 -26.54600 233.11700 52.61950
+<CMD> zoomBox 167.90800 -17.00550 222.21700 31.61250
+<CMD> zoomBox 185.50050 -6.57050 209.59800 15.00200
+<CMD> selectPhyPin 195.7000 0.0000 200.7000 5.0000 4 VDD1
+<CMD> zoomBox 162.40050 -29.32650 226.29500 27.87250
+<CMD> zoomBox 157.64500 -35.89050 232.81500 31.40250
+<CMD> pan -9.04400 -172.91950
+<CMD> zoomBox 138.68200 -20.74900 227.11750 58.41950
+<CMD> zoomBox 127.19450 -27.20950 231.23600 65.93000
+<CMD> zoomBox 78.90400 -55.17850 248.31900 96.48400
+<CMD> zoomBox 30.88350 -83.04150 265.36800 126.87200
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> zoomBox -25.57700 -147.71950 356.24250 194.09050
+<CMD> pan -72.60950 -51.01450
+<CMD> zoomBox 91.37900 24.85950 235.38250 153.77350
+<CMD> zoomBox 144.54700 53.53250 219.71800 120.82650
+<CMD> zoomBox 153.21150 58.22950 217.10700 115.42950
+<CMD> zoomBox 174.48700 70.31400 207.84100 100.17300
+<CMD> zoomBox 184.20450 78.72600 199.00500 91.97550
+<CMD> zoomBox 188.29800 82.69850 194.86550 88.57800
+<CMD> zoomBox 187.03150 81.46850 196.12150 89.60600
+<CMD> zoomBox 184.16450 78.68250 198.96650 91.93350
+<CMD> zoomBox 182.65400 77.82100 200.06800 93.41000
+<CMD> zoomBox 176.32700 74.21200 204.68200 99.59600
+<CMD> zoomBox 173.43300 72.56150 206.79200 102.42500
+<CMD> zoomBox 166.02350 68.33450 212.19550 109.66850
+<CMD> zoomBox 142.01200 54.16800 230.46350 133.35100
+<CMD> zoomBox 110.44850 35.54600 254.47750 164.48250
+<CMD> zoomBox -62.91050 -66.73150 386.37100 335.47150
+<CMD> zoomBox 26.79200 -13.35800 351.39800 277.23350
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgGround -isVisible 0
+<CMD> setLayerPreference pgGround -isVisible 1
+<CMD> setLayerPreference pgGround -isVisible 0
+<CMD> setLayerPreference pgGround -isVisible 1
+<CMD> setLayerPreference pgGround -isVisible 0
+<CMD> setLayerPreference pgGround -isVisible 1
+<CMD> setLayerPreference pgGround -isVisible 0
+<CMD> setLayerPreference pgGround -isVisible 1
+<CMD> setLayerPreference pgGround -isVisible 0
+<CMD> setLayerPreference pgGround -isVisible 1
+<CMD> setLayerPreference pgGround -isVisible 0
+<CMD> setLayerPreference pgGround -isVisible 1
+<CMD> setLayerPreference pgGround -isVisible 0
+<CMD> setLayerPreference pgGround -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> deselectAll
+<CMD> selectVia 261.0000 234.5100 273.0000 246.5100 6 VDD
+<CMD> zoomBox 142.40900 106.47350 311.85550 258.16450
+<CMD> zoomBox 212.76950 179.27350 287.95450 246.58000
+<CMD> zoomBox 221.18750 187.98300 285.09500 245.19400
+<CMD> zoomBox 239.94600 206.74100 279.19350 241.87600
+<CMD> deselectAll
+<CMD> selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+<CMD> deselectAll
+<CMD> selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+<CMD> deselectAll
+<CMD> selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+<CMD> deselectAll
+<CMD> selectVia 261.0000 234.5100 273.0000 246.5100 6 VDD
+<CMD> zoomBox 226.56800 199.17450 280.89000 247.80450
+<CMD> zoomBox 218.06050 194.36300 281.96900 251.57450
+<CMD> zoomBox 208.05200 188.70200 283.23850 256.01000
+<CMD> zoomBox 196.27700 182.04200 284.73200 261.22800
+<CMD> deselectAll
+<CMD> selectVia 261.0000 234.5100 273.0000 246.5100 6 VDD
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> deselectAll
+<CMD> selectVia 257.0500 234.5100 259.3500 246.5100 6 VDD
+**WARN: (IMPSYT-3056):	The type of selected object is wrong, VDD(257.0500,234.5100,259.3500,246.5100)6 is used
+<CMD> zoomBox 235.96200 216.61200 269.32400 246.47800
+<CMD> zoomBox 244.93850 224.90100 265.42700 243.24250
+<CMD> zoomBox 252.88550 232.22900 261.97650 240.36750
+<CMD> zoomBox 255.12250 234.18350 260.70550 239.18150
+<CMD> zoomBox 254.47750 233.64550 261.04600 239.52550
+<CMD> zoomBox 253.71900 233.01250 261.44650 239.93050
+<CMD> zoomBox 252.82600 232.26800 261.91750 240.40700
+<CMD> zoomBox 250.52250 230.35900 263.10700 241.62500
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> zoomBox 236.86850 220.33000 270.23650 250.20150
+<CMD> deselectAll
+<CMD> selectWire 17.0000 234.5100 273.0000 246.5100 5 VDD
+<CMD> zoomBox 213.59750 194.78550 288.80000 262.10800
+<CMD> zoomBox 163.17150 164.52300 332.66050 316.25200
+<CMD> pan -46.48350 -34.82650
+<CMD> zoomBox 40.35400 28.56250 365.04250 319.22800
+<CMD> zoomBox -34.56400 -45.10400 414.83200 357.20150
+<CMD> zoomBox 0.57950 -14.05900 382.56600 327.90050
+<CMD> pan -77.58300 -94.69300
+<CMD> zoomBox -119.64650 -135.44850 329.74900 266.85650
+<CMD> pan 28.48700 8.03400
+<CMD> setLayerPreference io -isVisible 0
+<CMD> setLayerPreference io -isVisible 1
+<CMD> setLayerPreference io -isVisible 0
+<CMD> setLayerPreference io -isVisible 1
+<CMD> setLayerPreference node_layer -isVisible 0
+<CMD> setLayerPreference io -isVisible 0
+<CMD> setLayerPreference io -isVisible 1
+<CMD> setLayerPreference io -isVisible 0
+<CMD> setLayerPreference io -isVisible 1
+<CMD> setLayerPreference areaIo -isVisible 0
+<CMD> setLayerPreference areaIo -isVisible 1
+<CMD> setLayerPreference node_layer -isVisible 1
+<CMD> zoomBox 0.14400 -46.74250 276.12950 200.32350
+<CMD> zoomBox 22.15500 -33.19300 256.74250 176.81300
+<CMD> zoomBox 65.52950 -17.82300 235.02000 133.90700
+<CMD> zoomBox 80.29700 -14.17250 224.36400 114.79800
+<CMD> zoomBox 158.49950 12.86550 212.83500 61.50750
+<CMD> zoomBox 187.38900 24.22450 207.88250 42.57050
+<CMD> zoomBox 198.29150 29.45100 206.02100 36.37050
+<CMD> zoomBox 202.26400 31.45900 205.17950 34.06900
+<CMD> pan 0.27550 -169.21350
+<CMD> pan 0.10200 -168.44800
+<CMD> zoomBox 202.32000 33.88050 205.75000 36.95100
+<CMD> zoomBox 201.97750 33.62600 206.01300 37.23850
+<CMD> zoomBox 201.12300 32.97450 206.70850 37.97450
+<CMD> zoomBox 200.57850 32.57250 207.14950 38.45500
+<CMD> zoomBox 203.06700 34.29950 205.17450 36.18600
+<CMD> zoomBox 203.59300 34.71350 204.69400 35.69900
+<CMD> zoomBox 203.95300 34.99800 204.36900 35.37050
+<CMD> zoomBox 203.98600 35.02400 204.33950 35.34050
+<CMD> zoomBox 204.08300 35.10050 204.24050 35.24150
+<CMD> zoomBox 204.13550 35.14150 204.18650 35.18700
+<CMD> zoomBox 204.15050 35.15300 204.17000 35.17050
+<CMD> zoomBox 204.11550 35.12600 204.20300 35.20450
+<CMD> zoomBox 203.95500 35.00850 204.33700 35.35050
+<CMD> zoomBox 203.26600 34.51000 204.91550 35.98650
+<CMD> zoomBox 200.28450 32.38050 207.40800 38.75750
+<CMD> zoomBox 193.87600 27.81450 212.76500 44.72400
+<CMD> zoomBox 166.45750 8.44400 235.78000 70.50250
+<CMD> zoomBox 71.78850 -50.94450 288.03150 142.63900
+<CMD> pan 48.11600 -38.80950
+<CMD> zoomBox 101.24400 21.27900 355.64750 249.02450
+<CMD> pan -37.84800 -131.63550
+<CMD> setLayerPreference node_overlay -isVisible 1
+<CMD> fit
+<CMD> setLayerPreference node_overlay -isVisible 0
+<CMD> setLayerPreference node_overlay -isVisible 1
+<CMD> fit
+<CMD> pan 59.19350 -26.17400
+<CMD> deselectAll
+<CMD> pan -50.79700 -59.33950
+<CMD> setLayerPreference node_track -isVisible 1
+<CMD> pan 83.54250 -25.33500
+<CMD> zoomBox 133.35350 43.06050 302.75300 194.70900
+<CMD> zoomBox 200.81750 97.12650 255.12400 145.74250
+<CMD> zoomBox 218.99050 106.55550 243.08650 128.12650
+<CMD> zoomBox 226.85900 110.90300 237.55100 120.47450
+<CMD> zoomBox 219.37850 106.26950 243.47750 127.84300
+<CMD> zoomBox 228.13500 113.39500 237.22400 121.53150
+<CMD> zoomBox 231.30550 116.08300 234.73450 119.15250
+<CMD> zoomBox 226.21150 111.86550 238.79750 123.13250
+<CMD> zoomBox 197.06050 88.97700 260.99200 146.20950
+<CMD> zoomBox 70.29650 -0.47050 346.32300 246.63200
+<CMD> setLayerPreference node_power -isVisible 0
+<CMD> setLayerPreference node_power -isVisible 1
+<CMD> setLayerPreference allLayers -isVisible 0
+<CMD> setLayerPreference allLayers -isVisible 1
+<CMD> setLayerPreference allLayers -isVisible 0
+<CMD> setLayerPreference allLayers -isVisible 1
+<CMD> setLayerPreference allLayers -isSelectable 0
+<CMD> setLayerPreference allLayers -isSelectable 1
+<CMD> setLayerPreference allLayers -isSelectable 0
+<CMD> setLayerPreference allLayers -isSelectable 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> setLayerPreference pgPower -isVisible 0
+<CMD> setLayerPreference pgPower -isVisible 1
+<CMD> zoomBox 160.14500 21.75300 248.63350 100.96900
+<CMD> zoomBox 179.95450 26.46900 226.14650 67.82050
+<CMD> zoomBox 187.88700 30.91900 216.25450 56.31400
+<CMD> selectWire 195.7000 0.0000 200.7000 105.0200 4 VDD1
+<CMD> zoomBox 165.30000 10.58150 240.51650 77.91650
+<CMD> zoomBox 118.20900 -31.26300 287.72900 120.49350
+<CMD> pan -157.02000 -100.12900
+<CMD> zoomBox -83.47100 1.28400 345.58600 221.61750
+<CMD> zoomBox -135.73900 -19.29550 369.03400 239.92050
+<CMD> zoomBox -271.78950 -79.68500 426.85850 279.09150
+<CMD> zoomBox -198.31150 -46.85300 395.53900 258.10700
+<CMD> pan -14.28400 183.59700
+<CMD> zoomBox -70.44350 9.83650 358.61350 230.17000
+<CMD> zoomBox -16.06950 21.25300 348.62900 208.53650
+<CMD> zoomBox 26.56250 33.29250 336.55650 192.48350
+<CMD> zoomBox 61.03850 44.36500 324.53350 179.67750
+<CMD> zoomBox 89.24950 54.27550 313.22050 169.29150
+<CMD> zoomBox 113.22850 62.72000 303.60450 160.48350
+<CMD> zoomBox 190.46800 90.03950 274.93900 133.41800
+<CMD> zoomBox 207.63450 96.10700 268.66550 127.44800
+<CMD> pan 23.45100 -112.33450
+<CMD> deselectAll
+<CMD> selectVia 275.0000 116.0800 287.0000 118.3800 6 VSS
+<CMD> zoomBox 265.09800 106.77450 288.11600 118.59500
+<CMD> zoomBox 275.09700 109.95150 285.31150 115.19700
+<CMD> zoomBox 278.49650 111.11000 283.83000 113.84900
+<CMD> zoomBox 273.34750 109.32950 287.48900 116.59150
+<CMD> zoomBox 263.16950 105.29900 295.04350 121.66700
+<CMD> pan -11.07850 -157.88950
+<CMD> pan -1.36100 -147.40500
+<CMD> zoomBox 261.18650 109.32850 273.20900 115.50250
+<CMD> zoomBox 258.82550 108.24250 275.46650 116.78800
+<CMD> zoomBox 257.32650 107.54850 276.90400 117.60200
+<CMD> zoomBox 262.17150 109.74600 272.39150 114.99450
+<CMD> zoomBox 264.60800 110.84050 269.94350 113.58050
+<CMD> zoomBox 266.29050 111.58600 268.30400 112.62000
+<CMD> zoomBox 266.86200 111.83950 267.75700 112.29900
+<CMD> zoomBox 265.63800 111.29700 268.92700 112.98600
+<CMD> zoomBox 264.08900 110.60450 270.39100 113.84100
+<CMD> zoomBox 263.51650 110.34850 270.93150 114.15650
+<CMD> zoomBox 262.05100 109.70400 272.31550 114.97500
+<CMD> zoomBox 261.11950 109.29400 273.19550 115.49550
+<CMD> zoomBox 258.73750 108.26800 275.45150 116.85100
+<CMD> pan -3.92000 -149.92700
+<CMD> deselectAll
+<CMD> setLayerPreference substrateNoise -isVisible 0
+<CMD> setLayerPreference substrateNoise -isVisible 1
+<CMD> selectWire 260.0000 113.7500 287.0000 113.8700 1 VSS
+<CMD> pan 2.85450 -145.39400
+<CMD> pan -0.70400 -148.24850
+<CMD> zoomBox 260.22400 111.20550 268.95000 115.68650
+<CMD> zoomBox 259.25950 110.45950 271.33750 116.66200
+<CMD> pan -2.89050 -149.09800
+<CMD> deselectAll
+<CMD> selectWire 260.0000 112.0400 273.0000 112.1600 1 VDD
+<CMD> deselectAll
+<CMD> selectWire 257.0500 17.0200 259.3500 246.5100 6 VDD
+<CMD> zoomBox 250.10750 105.52300 282.13300 121.96900
+<CMD> pan -7.02900 -152.65350
+<CMD> setLayerPreference net -isVisible 0
+<CMD> zoomBox 206.54050 84.62000 306.44200 135.92250
+<CMD> zoomBox 174.04700 78.50100 336.72050 162.03850
+<CMD> pan -22.89000 -151.98750
+<CMD> pan -12.71650 -176.14850
+<CMD> pan -19.56400 -166.07350
+<CMD> setLayerPreference net -isVisible 1
+<CMD> zoomBox 143.05000 -21.60150 260.58150 38.75450
+<CMD> zoomBox 152.14600 -19.02550 252.04750 32.27700
+<CMD> zoomBox 170.96450 -12.70250 232.31650 18.80350
+<CMD> zoomBox 175.32450 -11.03150 227.47450 15.74900
+<CMD> zoomBox 187.05200 -5.99550 214.27550 7.98450
+<CMD> zoomBox 182.54950 -8.65200 220.22900 10.69750
+<CMD> zoomBox 179.66600 -10.35150 223.99550 12.41300
+<CMD> zoomBox 171.89900 -14.69300 233.25500 16.81500
+<CMD> setLayerPreference net -isVisible 0
+<CMD> setLayerPreference net -isVisible 1
+<CMD> setLayerPreference Metal4 -isVisible 0
+<CMD> setLayerPreference Metal4 -isVisible 1
+<CMD> setLayerPreference Metal10 -isVisible 0
+<CMD> setLayerPreference Metal10 -isVisible 1
+<CMD> setLayerPreference Metal10 -isVisible 0
+<CMD> setLayerPreference Metal10 -isVisible 1
+<CMD> zoomBox 187.27350 -4.88300 214.49900 9.09800
+<CMD> deselectAll
+<CMD> selectPhyPin 195.7000 0.0000 200.7000 5.0000 4 VDD1
+<CMD> zoomBox 171.16000 -14.34550 232.52100 17.16500
+<CMD> zoomBox 144.70050 -26.27550 244.61700 25.03450
+<CMD> deselectAll
+<CMD> pan -4.26600 -162.20400
+<CMD> setLayerPreference Poly -isVisible 0
+<CMD> setLayerPreference Poly -isVisible 1
+<CMD> zoomBox 102.50450 -42.05050 265.20200 41.49950
+<CMD> pan -4.79350 -89.86600
+<CMD> zoomBox -63.43350 -58.99700 367.95450 162.53350
+<CMD> pan -12.71100 65.65600
+<CMD> zoomBox -121.51000 -14.02850 386.00600 246.59600
+<CMD> pan -2.13650 132.20100
+<CMD> zoomBox -175.18600 -8.64300 421.89150 297.97400
+<CMD> pan -17.59250 139.97400
+<CMD> setLayerPreference Poly -isVisible 0
+<CMD> setLayerPreference Poly -isVisible 1
+<CMD> setLayerPreference Poly -isVisible 0
+<CMD> setLayerPreference Poly -isVisible 1
+<CMD> setLayerPreference Cont -isVisible 0
+<CMD> setLayerPreference Cont -isVisible 1
+<CMD> setLayerPreference Metal1 -isVisible 0
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> setLayerPreference Metal1 -isVisible 0
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> zoomBox 125.37700 144.09800 316.78700 242.39250
+<CMD> zoomBox 206.56600 190.71100 291.49600 234.32500
+<CMD> setLayerPreference Metal1 -isVisible 0
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> setLayerPreference Metal1 -isVisible 0
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> setLayerPreference Metal1 -isVisible 0
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> zoomBox 163.30150 165.79800 326.00100 249.34900
+<CMD> zoomBox 147.57300 156.18100 338.98450 254.47650
+<CMD> zoomBox 92.52000 120.29700 404.20250 280.35500
+<CMD> pan -65.03550 17.28100
+<CMD> zoomBox -8.26900 92.13900 358.41650 280.44300
+<CMD> zoomBox -50.33200 71.36050 381.06300 292.89450
+<CMD> zoomBox -99.81800 46.91500 407.70550 307.54350
+<CMD> pan -7.01900 123.23350
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> zoomBox -160.58550 -4.05100 436.50100 302.57050
+<CMD> zoomBox -225.27650 -35.85800 477.17850 324.87350
+<CMD> zoomBox -305.33400 -72.97950 521.08350 351.41050
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> zoomBox 102.80300 124.58300 367.73500 260.63350
+<CMD> zoomBox 187.52700 171.11000 325.82300 242.12900
+<CMD> zoomBox 210.88250 185.68200 310.80200 236.99350
+<CMD> zoomBox 238.75900 204.96500 290.91800 231.75000
+<CMD> zoomBox 247.12300 210.77850 284.80800 230.13100
+<CMD> zoomBox 238.38350 204.99900 290.54400 231.78500
+<CMD> pan 0.47050 -26.70350
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> zoomBox 223.81850 205.76450 296.01400 242.83900
+<CMD> zoomBox 203.00900 197.56100 302.93400 248.87550
+<CMD> zoomBox 174.20700 186.13550 312.51150 257.15900
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> zoomBox 188.36600 191.88650 305.92500 252.25650
+<CMD> zoomBox 200.40100 196.77500 300.32650 248.08950
+<CMD> zoomBox 210.63100 200.93000 295.56750 244.54750
+<CMD> zoomBox 219.31050 204.46950 291.50700 241.54450
+<CMD> zoomBox 226.68150 207.47800 288.04900 238.99200
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> zoomBox 200.27200 195.19250 300.19900 246.50800
+<CMD> zoomBox 137.28050 165.01850 328.71150 263.32400
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> zoomBox 174.26800 178.64600 312.57750 249.67200
+<CMD> zoomBox 188.41500 183.93550 305.97800 244.30750
+<CMD> zoomBox 200.31250 188.45250 300.24150 239.76900
+<CMD> zoomBox 210.26350 192.35550 295.20300 235.97450
+<CMD> zoomBox 232.07800 200.79800 284.24350 227.58650
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> zoomBox 250.29150 208.16000 273.43800 220.04650
+<CMD> zoomBox 252.50600 209.09300 272.18150 219.19700
+<CMD> zoomBox 254.38850 209.89350 271.11300 218.48200
+<CMD> zoomBox 261.02200 212.81450 267.33050 216.05400
+<CMD> zoomBox 262.88400 213.67750 266.17700 215.36850
+<CMD> zoomBox 263.17200 213.82700 265.97150 215.26450
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal1 -isVisible 0
+<CMD> selectVia 263.4000 214.6400 270.6000 214.7600 6 VDD
+<CMD> setLayerPreference Via5 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> deselectAll
+<CMD> selectVia 263.4000 214.6400 270.6000 214.7600 5 VDD
+<CMD> setLayerPreference Via1 -isVisible 0
+<CMD> setLayerPreference Via1 -isVisible 1
+<CMD> setLayerPreference Via1 -isVisible 0
+<CMD> setLayerPreference Via1 -isVisible 1
+<CMD> setLayerPreference Via4 -isVisible 0
+<CMD> setLayerPreference Via4 -isVisible 1
+<CMD> setLayerPreference Via4 -isVisible 0
+<CMD> setLayerPreference Via3 -isVisible 0
+<CMD> setLayerPreference Via2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Via1 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Via1 -isVisible 1
+<CMD> setLayerPreference Via1 -isVisible 0
+<CMD> setLayerPreference Via1 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> deselectAll
+<CMD> selectVia 263.4000 214.6400 270.6000 214.7600 2 VDD
+<CMD> deselectAll
+<CMD> selectVia 263.4000 214.6400 270.6000 214.7600 2 VDD
+<CMD> deselectAll
+<CMD> selectVia 263.4000 214.6400 270.6000 214.7600 2 VDD
+<CMD> setLayerPreference Via1 -isVisible 0
+<CMD> deselectAll
+<CMD> selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+<CMD> setLayerPreference Metal2 -isVisible 0
+<CMD> setLayerPreference Metal2 -isVisible 1
+<CMD> setLayerPreference Via1 -isVisible 1
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> setLayerPreference Metal1 -isVisible 0
+<CMD> setLayerPreference Via2 -isVisible 1
+<CMD> setLayerPreference Via2 -isVisible 0
+<CMD> setLayerPreference Metal3 -isVisible 0
+<CMD> setLayerPreference Metal3 -isVisible 1
+<CMD> setLayerPreference Via2 -isVisible 1
+<CMD> setLayerPreference Via2 -isVisible 0
+<CMD> zoomBox 259.59600 212.44200 267.02000 216.25450
+<CMD> zoomBox 258.58250 212.04950 267.31700 216.53500
+<CMD> zoomBox 252.48800 209.67300 269.22200 218.26650
+<CMD> zoomBox 243.23100 206.82750 270.48050 220.82100
+<CMD> zoomBox 234.01650 203.99500 271.73300 223.36350
+<CMD> setLayerPreference Via2 -isVisible 1
+<CMD> setLayerPreference Via2 -isVisible 0
+<CMD> setLayerPreference Via2 -isVisible 1
+<CMD> setLayerPreference Via2 -isVisible 0
+<CMD> setLayerPreference Via2 -isVisible 1
+<CMD> setLayerPreference M2ContPin -isVisible 1
+<CMD> setLayerPreference M2ContRB -isVisible 1
+<CMD> setLayerPreference M2ContVio -isVisible 1
+<CMD> setLayerPreference M2ContEOL -isVisible 1
+<CMD> zoomBox 254.73300 210.48650 268.95800 217.79150
+<CMD> zoomBox 260.77200 212.42450 268.19750 216.23750
+<CMD> zoomBox 263.22200 213.26300 267.78250 215.60500
+<CMD> setLayerPreference Via2 -isVisible 0
+<CMD> setLayerPreference Via2 -isVisible 1
+<CMD> setLayerPreference Metal3 -isVisible 0
+<CMD> setLayerPreference Metal3 -isVisible 1
+<CMD> setLayerPreference Via2 -isVisible 0
+<CMD> deselectAll
+<CMD> selectVia 263.4000 214.6400 270.6000 214.7600 2 VDD
+<CMD> deselectAll
+<CMD> selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+<CMD> setLayerPreference Via2 -isVisible 1
+<CMD> deselectAll
+<CMD> selectVia 263.4000 214.6400 270.6000 214.7600 3 VDD
+<CMD> deselectAll
+<CMD> selectVia 263.4000 214.6400 270.6000 214.7600 3 VDD
+<CMD> zoomBox 262.47400 213.05750 267.83900 215.81250
+<CMD> zoomBox 261.60900 212.81400 267.92100 216.05550
+<CMD> zoomBox 260.59800 212.52650 268.02400 216.34000
+<CMD> zoomBox 259.41300 212.18700 268.14950 216.67350
+<CMD> zoomBox 256.38850 211.31300 268.48050 217.52250
+<CMD> zoomBox 249.50800 209.13800 269.19800 219.24950
+<CMD> pan 2.94800 -39.89650
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> pan 7.96850 -44.07600
+<CMD> setLayerPreference Via3 -isVisible 1
+<CMD> setLayerPreference Via4 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal4 -isVisible 0
+<CMD> setLayerPreference Metal4 -isVisible 1
+<CMD> setLayerPreference Metal4 -isVisible 0
+<CMD> setLayerPreference Metal4 -isVisible 1
+<CMD> setLayerPreference Via5 -isVisible 1
+<CMD> setLayerPreference Metal6 -isVisible 0
+<CMD> setLayerPreference Metal6 -isVisible 1
+<CMD> setLayerPreference Metal6 -isVisible 0
+<CMD> zoomBox 257.30700 207.68850 280.47200 219.58450
+<CMD> zoomBox 249.32450 205.91750 281.38700 222.38250
+<CMD> zoomBox 244.23800 204.79150 281.95850 224.16200
+<CMD> setLayerPreference Metal6 -isVisible 1
+<CMD> setLayerPreference Metal6 -isVisible 0
+<CMD> setLayerPreference Metal6 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> zoomBox 241.34800 202.16150 285.72500 224.95050
+<CMD> zoomBox 237.83000 199.19000 290.03850 226.00050
+<CMD> pan -5.46250 -33.93100
+<CMD> deselectAll
+<CMD> selectWire 3.0000 218.6800 287.0000 220.9800 5 VSS
+<CMD> setLayerPreference Via4 -isVisible 0
+<CMD> setLayerPreference Via4 -isVisible 1
+<CMD> setLayerPreference Via4 -isVisible 0
+<CMD> setLayerPreference Via4 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal4 -isVisible 0
+<CMD> setLayerPreference Metal4 -isVisible 1
+<CMD> setLayerPreference Metal4 -isVisible 0
+<CMD> setLayerPreference Metal4 -isVisible 1
+<CMD> setLayerPreference Via4 -isVisible 0
+<CMD> setLayerPreference Via4 -isVisible 1
+<CMD> setLayerPreference Via4 -isVisible 0
+<CMD> setLayerPreference Via4 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> zoomBox 239.95550 205.55350 277.67650 224.92450
+<CMD> zoomBox 242.91850 206.20000 274.98200 222.66550
+<CMD> zoomBox 239.85300 205.46850 277.57450 224.83950
+<CMD> zoomBox 232.00350 203.59550 284.21300 230.40650
+<CMD> pan -2.44900 -29.03550
+<CMD> pan -0.09400 -25.89600
+<CMD> pan 0.59650 -27.21500
+<CMD> zoomBox 237.99850 206.11350 275.72000 225.48450
+<CMD> zoomBox 241.09800 207.62400 273.16150 224.08950
+<CMD> zoomBox 243.74400 208.96900 270.99800 222.96450
+<CMD> zoomBox 241.28600 207.28000 273.34950 223.74550
+<CMD> zoomBox 238.39400 205.29300 276.11550 224.66400
+<CMD> zoomBox 234.99150 202.95550 279.37000 225.74500
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> deselectAll
+<CMD> selectWire 3.0000 218.6800 287.0000 220.9800 5 VSS
+<CMD> setLayerPreference Metal5 -isVisible 0
+<CMD> setLayerPreference Metal5 -isVisible 1
+<CMD> setLayerPreference Metal6 -isVisible 0
+<CMD> setLayerPreference Metal6 -isVisible 1
+<CMD> deselectAll
+<CMD> setLayerPreference Metal6 -isVisible 0
+<CMD> setLayerPreference Metal6 -isVisible 1
+<CMD> setLayerPreference Metal6 -isVisible 0
+<CMD> setLayerPreference Metal6 -isVisible 1
+<CMD> setLayerPreference Metal6 -isVisible 0
+<CMD> setLayerPreference Metal6 -isVisible 1
+<CMD> setLayerPreference Metal7 -isVisible 0
+<CMD> setLayerPreference Metal7 -isVisible 1
+<CMD> zoomBox 127.28900 171.31100 318.89500 269.70650
+<CMD> zoomBox -169.64500 84.13500 428.04750 391.06800
+<CMD> zoomBox -48.36800 119.74050 383.46600 341.50000
+<CMD> setLayerPreference Metal7 -isVisible 0
+<CMD> setLayerPreference Metal7 -isVisible 1
+<CMD> pan -28.56400 58.52700
+<CMD> setLayerPreference Via6 -isVisible 0
+<CMD> setLayerPreference Via6 -isVisible 1
+<CMD> zoomBox -131.69250 -3.86350 376.34800 257.03050
+<CMD> zoomBox -196.27850 -20.36050 401.41700 286.57400
+<CMD> setLayerPreference Metal7 -isVisible 0
+<CMD> setLayerPreference Metal7 -isVisible 1
+<CMD> setLayerPreference Metal7 -isVisible 0
+<CMD> setLayerPreference Metal7 -isVisible 1
+<CMD> setLayerPreference Via6 -isVisible 0
+<CMD> setLayerPreference Via6 -isVisible 1
+<CMD> setLayerPreference Via6 -isVisible 0
+<CMD> setLayerPreference Via6 -isVisible 1
+<CMD> setLayerPreference Metal6 -isVisible 0
+<CMD> setLayerPreference Metal6 -isVisible 1
+<CMD> setLayerPreference Metal6 -isVisible 0
+<CMD> setLayerPreference Metal6 -isVisible 1
+<CMD> setLayerPreference Metal7 -isVisible 0
+<CMD> setLayerPreference Metal7 -isVisible 1
+<CMD> setLayerPreference Via7 -isVisible 0
+<CMD> setLayerPreference Via7 -isVisible 1
+<CMD> setLayerPreference Metal8 -isVisible 0
+<CMD> setLayerPreference Metal8 -isVisible 1
+<CMD> setLayerPreference Via8 -isVisible 0
+<CMD> setLayerPreference Via8 -isVisible 1
+<CMD> setLayerPreference Metal9 -isVisible 0
+<CMD> setLayerPreference Metal9 -isVisible 1
+<CMD> setLayerPreference Via9 -isVisible 0
+<CMD> setLayerPreference Via9 -isVisible 1
+<CMD> setLayerPreference Metal10 -isVisible 0
+<CMD> setLayerPreference Via10 -isVisible 0
+<CMD> setLayerPreference Metal11 -isVisible 0
+<CMD> setLayerPreference Bondpad -isVisible 0
+<CMD> setLayerPreference node_bump -isVisible 0
+<CMD> zoomBox 52.71800 76.32650 278.14000 192.08750
+<CMD> zoomBox 142.50400 111.55050 242.52550 162.91450
+<CMD> zoomBox 169.40900 122.15200 230.83500 153.69600
+<CMD> zoomBox 175.77500 124.68400 227.98700 151.49650
+<CMD> zoomBox 191.05200 131.57250 218.30750 145.56900
+<CMD> selectWire 30.0000 139.4000 260.0000 139.5200 1 VDD
+<CMD> zoomBox 199.14400 135.58300 213.37250 142.89000
+<CMD> zoomBox 192.45950 131.93950 219.71900 145.93800
+<CMD> deselectAll
+<CMD> selectWire 30.0000 141.1100 260.0000 141.2300 1 VSS
+<CMD> zoomBox 199.43300 136.32650 213.66300 143.63400
+<CMD> zoomBox 200.59450 137.04900 212.69000 143.26050
+<CMD> setLayerPreference Metal1 -isVisible 0
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> setLayerPreference Metal1 -isVisible 0
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> zoomBox 202.42100 138.05900 211.16050 142.54700
+<CMD> pan -0.25200 -62.75350
+<CMD> pan -0.05250 -60.51500
+<CMD> deselectAll
+<CMD> selectWire 30.0000 144.5300 260.0000 144.6500 1 VSS
+<CMD> zoomBox 204.92350 143.48350 208.22050 145.17650
+<CMD> zoomBox 205.86700 144.09950 207.33050 144.85100
+<CMD> zoomBox 206.24950 144.36600 206.90100 144.70050
+<CMD> zoomBox 206.39950 144.46900 206.73950 144.64350
+<CMD> deselectAll
+<CMD> selectWire 30.0000 144.5300 260.0000 144.6500 1 VSS
+<CMD> zoomBox 206.23100 144.36850 206.88250 144.70300
+<CMD> zoomBox 206.16850 144.33200 206.93500 144.72550
+<CMD> pan 0.01800 -62.07800
+<CMD> zoomBox 206.00950 144.00300 207.07100 144.54800
+<CMD> zoomBox 205.89700 143.95300 207.14550 144.59400
+<CMD> zoomBox 205.76500 143.91750 207.23400 144.67200
+<CMD> pan 0.04300 -62.37300
+<CMD> zoomBox 205.46700 143.29050 207.50100 144.33500
+<CMD> zoomBox 204.99050 143.20600 207.80600 144.65200
+<CMD> pan 0.08950 -62.51050
+<CMD> zoomBox 205.97650 142.70400 207.04000 143.25000
+<CMD> zoomBox 206.17850 142.75400 206.83200 143.08950
+<CMD> zoomBox 206.36050 142.81700 206.65050 142.96600
+<CMD> deselectAll
+<CMD> selectWire 30.0000 142.8200 260.0000 142.9400 1 VDD
+<CMD> zoomBox 205.54400 142.47000 207.02400 143.23000
+<CMD> zoomBox 204.90150 142.20350 207.31300 143.44200
+<CMD> zoomBox 203.86450 141.76150 207.79100 143.77800
+<CMD> pan 0.06600 -61.28100
+<CMD> zoomBox 201.58200 141.76500 209.10750 145.62950
+<CMD> zoomBox 203.55000 142.78300 207.47950 144.80100
+<CMD> zoomBox 204.45800 143.14250 206.87250 144.38250
+<CMD> zoomBox 205.06950 143.41150 206.33050 144.05900
+<CMD> zoomBox 205.45700 143.58150 206.01700 143.86900
+<CMD> zoomBox 205.50200 143.60200 205.97800 143.84650
+<CMD> zoomBox 205.58900 143.64600 205.88200 143.79650
+<CMD> pan -0.06250 -61.96500
+<CMD> deselectAll
+**ERROR: (IMPSYT-6000):	No Object Selected.
+<CMD> zoomBox 205.03800 143.41600 206.11900 143.97100
+<CMD> zoomBox 204.05750 143.22750 206.49650 144.48000
+<CMD> zoomBox 202.43150 142.90900 207.10400 145.30850
+<CMD> pan 0.32550 -60.10950
+<CMD> zoomBox 202.15650 142.10000 207.65350 144.92300
+<CMD> zoomBox 201.44950 141.83850 207.91750 145.16000
+<CMD> zoomBox 200.60050 141.57500 208.21000 145.48250
+<CMD> pan 0.41650 -59.52400
+<CMD> zoomBox 196.94200 138.98500 211.52100 146.47200
+<CMD> zoomBox 195.14650 138.28100 212.29950 147.08950
+<CMD> zoomBox 202.17250 140.47050 209.78350 144.37900
+<CMD> zoomBox 202.96900 140.72500 209.43900 144.04750
+<CMD> pan 0.03900 -63.21650
+<CMD> selectWire 203.0500 3.0200 205.3500 260.5100 6 VSS
+<CMD> zoomBox 198.77650 137.55850 211.17100 143.92350
+<CMD> panCenter 207.34750 142.38800
+<CMD> zoomBox 195.77100 136.19150 215.95500 146.55650
+<CMD> zoomBox 186.25250 131.57700 219.12050 148.45550
+<CMD> zoomBox 175.75900 128.65850 221.25050 152.01950
+<CMD> zoomBox 196.36700 134.95500 216.55300 145.32100
+<CMD> zoomBox 200.98150 136.42700 215.56600 143.91650
+<CMD> zoomBox 202.91550 137.10050 215.31200 143.46650
+<CMD> pan 4.47250 -65.57650
+<CMD> zoomBox 187.35250 129.96000 226.02500 149.81950
+<CMD> zoomBox 175.55200 125.81900 229.07750 153.30600
+<CMD> pan 22.49800 -48.18800
+<CMD> zoomBox 145.06850 96.72200 312.03850 182.46600
+<CMD> zoomBox -38.72900 6.87800 482.11500 274.34700
+<CMD> zoomBox 133.80950 79.48950 330.24650 180.36550
+<CMD> zoomBox 189.01000 107.90200 276.17150 152.66200
+<CMD> zoomBox 212.19750 120.47200 250.87150 140.33250
+<CMD> zoomBox 222.97250 126.29300 240.13400 135.10600
+<CMD> zoomBox 227.71300 128.87550 235.32900 132.78650
+<CMD> pan -0.36600 -98.55350
+<CMD> zoomBox 225.47800 128.22850 236.01950 133.64200
+<CMD> zoomBox 222.95400 127.02800 237.54500 134.52100
+<CMD> zoomBox 221.35100 126.26450 238.51750 135.08000
+<CMD> zoomBox 224.25400 127.62250 236.65750 133.99200
+<CMD> zoomBox 225.38250 128.14700 235.92600 133.56150
+<CMD> pan -0.65300 -98.94100
+<CMD> zoomBox 223.45600 124.78050 238.04950 132.27450
+<CMD> zoomBox 221.96000 123.95000 239.12900 132.76700
+<CMD> setLayerPreference node_layer -isVisible 1
+<CMD> setLayerPreference node_layer -isVisible 0
+<CMD> setLayerPreference Metal1 -isVisible 1
+<CMD> setLayerPreference node_net -isVisible 0
+<CMD> setLayerPreference node_net -isVisible 1
+<CMD> setLayerPreference node_gird -isVisible 1
+<CMD> setLayerPreference node_gird -isVisible 0
+<CMD> setLayerPreference node_row -isVisible 0
+<CMD> setLayerPreference node_track -isVisible 0
+<CMD> zoomBox 209.80650 120.91700 242.69850 137.80800
+<CMD> zoomBox 193.95750 117.12800 247.51750 144.63250
+<CMD> deselectAll
+<CMD> zoomBox 179.87350 114.72250 254.00500 152.79100
+<CMD> zoomBox 147.88700 108.78450 268.59750 170.77300
+<CMD> zoomBox 71.84950 93.09800 303.09300 211.84850
+<CMD> zoomBox 143.13350 110.99050 285.14600 183.91800
+<CMD> zoomBox 174.05800 119.63950 276.66250 172.33000
+<CMD> zoomBox 92.45600 102.58050 289.01450 203.51900
+<CMD> zoomBox -1.62100 77.92400 318.44300 242.28650
+<CMD> zoomBox 77.76950 108.07600 274.32900 209.01500
+<CMD> setLayerPreference node_layer -isVisible 1
+<CMD> zoomBox 152.62750 135.75900 255.23350 188.45000
+<CMD> zoomBox 184.38700 147.59100 247.40100 179.95050
+<CMD> zoomBox 203.92150 154.87250 242.61950 174.74500
+<CMD> zoomBox 215.90850 159.34400 239.67450 171.54850
+<CMD> zoomBox 222.99350 162.30350 237.58950 169.79900
+<CMD> zoomBox 216.00500 159.42400 239.77400 171.63000
+<CMD> zoomBox 199.42300 152.61350 244.95700 175.99650
+<CMD> zoomBox 186.27500 146.50450 249.29800 178.86850
+<CMD> zoomBox 168.16200 138.38200 255.39150 183.17700
+<CMD> zoomBox 191.62950 147.63150 245.19950 175.14150
+<CMD> zoomBox 168.43300 138.58400 255.66400 183.37950
+<CMD> zoomBox 191.66050 147.48900 245.23200 174.99950
+<CMD> zoomBox 209.32600 154.32850 237.29150 168.68950
+<CMD> zoomBox 195.18900 147.85000 248.76200 175.36150
+<CMD> zoomBox 168.16200 135.14000 270.79200 187.84350
+<CMD> zoomBox 112.55450 112.59150 309.16350 213.55600
+<CMD> zoomBox 90.35550 105.18500 321.66050 223.96700
+<CMD> zoomBox 172.59550 129.05250 293.33850 191.05750
+<CMD> zoomBox 198.76950 136.37700 286.00600 181.17550
+<CMD> zoomBox 147.21000 122.68050 289.25950 195.62700
+<CMD> zoomBox 25.66200 93.66200 297.78550 233.40550
+<CMD> zoomBox 96.36250 111.41650 292.97250 212.38150
+<CMD> zoomBox 150.81050 124.01450 292.86150 196.96200
+<CMD> zoomBox 216.92600 140.42750 291.07850 178.50700
+<CMD> zoomBox 244.78200 147.34400 290.32200 170.73000
+<CMD> zoomBox 251.43200 148.99100 290.14150 168.86950
+<CMD> zoomBox 216.99200 141.29700 291.14750 179.37800
+<CMD> zoomBox 228.07500 143.99250 291.10750 176.36150
+<CMD> zoomBox 258.02600 151.29650 290.93050 168.19400
+<CMD> zoomBox 276.12400 155.85800 290.72400 163.35550
+<CMD> zoomBox 281.64050 157.22750 290.60700 161.83200
+<CMD> zoomBox 286.27350 158.38400 290.25300 160.42750
+<CMD> zoomBox 281.84500 157.02450 290.81600 161.63150
+<CMD> zoomBox 285.60400 158.48900 290.28750 160.89400
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> zoomBox 284.01800 150.03250 290.50000 153.36100
+<CMD> zoomBox 280.42700 148.85500 290.98250 154.27550
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> panPage 0 -1
+<CMD> zoomBox 276.24400 140.85400 296.46700 151.23900
+<CMD> panPage -1 0
+<CMD> zoomBox 258.72550 136.30350 297.46800 156.19900
+<CMD> panPage -1 0
+<CMD> zoomBox 233.92450 132.51000 287.54750 160.04700
+<CMD> panPage -1 0
+<CMD> panPage -1 0
+<CMD> zoomBox 179.93550 119.96350 282.66100 172.71600
+<CMD> zoomBox 133.28350 98.67250 330.07400 199.73050
+<CMD> zoomBox 79.57800 69.45150 400.02000 234.00800
+<CMD> panPage -1 0
+<CMD> panPage -1 0
+<CMD> zoomBox -37.83800 95.91650 158.95400 196.97500
+<CMD> zoomBox 19.04350 115.89400 121.77050 168.64750
+<CMD> zoomBox 48.27400 127.38500 101.89900 154.92300
+<CMD> zoomBox 27.37400 118.61200 114.69250 163.45250
+<CMD> zoomBox 57.40050 131.40500 96.14500 151.30150
+<CMD> zoomBox 35.68900 123.14100 123.01200 167.98400
+<CMD> zoomBox -12.14450 100.64800 155.14000 186.55350
+<CMD> zoomBox -77.18300 70.87800 195.21200 210.76100
+**INFO (INTERRUPT): One more Ctrl-C to exit Innovus ...
+Innovus terminated by user interrupt.
+
+*** Memory Usage v#1 (Current mem = 2179.938M, initial mem = 485.867M) ***
+*** Message Summary: 31438 warning(s), 2 error(s)
+
+--- Ending "Innovus" (totcpu=0:07:09, real=0:55:00, mem=2179.9M) ---

@@ -1,0 +1,39 @@
+; Vector file for a simple nand
+; Transfer to PWL (T1 V1 T2 V2 T3 V3 ... Tn Vn ... )
+
+radix           1 1  1   ; Indicate whether signal is a bit, a hexa, or something else. Specifies the size (in bits) of the vector. This statement must be located before any other statements, and can only be specified once. Valid vector sizes include 1 (binary), 2, 3 (octal), or 4 (hexadecimal).
+vname           A B  out ; Show the spice names
+io              i i  o   ; Indicate whether input or output
+tunit           ns      ; Indicate the time unit
+period          1       ; Indicate the time between the digital transitions in the list below
+tdelay    0.1   0 0 1   ; Indicate the delay on a signal. The first input vector of out[1] has delay of 0.1 ns.
+vih       1.0   1 1	0   ; The high value for inputs
+Vth       0.5   0 0	1   ; The threshold value for determining the logical value of the output
+vil       0.0   1 1	0   ; The low value for inputs
+trise     0.001 1 1 0   ; Rise time for the inputs. The first input vector of A[1] and B[1] has a rise time of 0.001 ns. out remains the same.
+tfall     0.001 1 1	0   ; Fall time for the inputs. The first input vector of A[1] and B[1] has a fall time of 0.001 ns. out remains the same.
+
+;Bit patterns that will be applied. Inputs will be applied as PWL voltage sources, outputs will be checked for correct behaviour
+; INCLUDE HERE A PATTERN OF YOUR ELECTION
+;               A        B       OUTPUT
+            0 1 1
+            1 1 0;a rise out down
+            0 1 1;a down out rise
+            1 0 1    
+            1 1 0;b rise out down
+            
+            1 0 1; b down out rise
+            1 1 0;
+            0 0 1;both down out rise
+            1 1 0
+            
+            0 0 1
+            1 0 1
+            
+            0 1 1
+            1 1 0
+            0 0 1
+            1 0 1
+            0 1 1
+            1 1 0
+            0 1 1

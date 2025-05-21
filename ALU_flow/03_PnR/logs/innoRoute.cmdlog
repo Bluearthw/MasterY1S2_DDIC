@@ -1,0 +1,118 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Wed Apr 24 15:13:10 2024                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v21.17-s075_1 (64bit) 03/15/2023 11:17 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: NanoRoute 21.17-s075_1 NR230308-2354/21_17-UB (database version 18.20.604) {superthreading v2.17}
+#@(#)CDS: AAE 21.17-s026 (64bit) 03/15/2023 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: CTE 21.17-s025_1 () Mar 14 2023 11:00:06 ( )
+#@(#)CDS: SYNTECH 21.17-s007_1 () Feb 20 2023 06:56:35 ( )
+#@(#)CDS: CPE v21.17-s068
+#@(#)CDS: IQuantus/TQuantus 21.1.1-s939 (64bit) Wed Nov 9 09:34:24 PST 2022 (Linux 3.10.0-693.el7.x86_64)
+
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+suppressMessage ENCLF 200
+suppressMessage ENCESI 3010
+suppressMessage IMPESI 2013 2014 3086 3140
+suppressMessage IMPCCOPT 2187 2311
+setDesignMode -process 45
+setAnalysisMode -analysisType onChipVariation -cppr both -checkType setup
+is_common_ui_mode
+restoreDesign /users/micas/wjiang/WeijiePhd/Teaching/ALU_flow/DesignDataIn/dbs/cts.enc.dat sparc_exu_alu
+set_analysis_view -setup { AV_0100_wc_rc125_setup} -hold {AV_0100_bc_rc0_hold}
+all_constraint_modes -active 
+set_interactive_constraint_modes [ all_constraint_modes -active ]
+set_propagated_clock [ all_clocks ]
+setAnalysisMode -analysisType onChipVariation -cppr both -checkType setup
+set_timing_derate -early 0.925 -late 1.0 -delay_corner AV_0100_wc_rc125_setup_dc
+set_timing_derate -early 1.0 -late 1.12 -delay_corner AV_0100_bc_rc0_hold_dc
+setFillerMode -doDRC false -corePrefix FILL -core {FILL64 FILL32 FILL16 FILL8 FILL4 FILL2 FILL1}
+addFiller
+setNanoRouteMode -routeWithSiDriven true
+setNanoRouteMode -routeInsertAntennaDiode true
+setNanoRouteMode -routeAntennaCellName ANTENNA
+routeDesign
+timeDesign -postRoute -numPaths 10 -outDir timingReports/route -prefix route
+defOut -floorplan -placement -netlist -routing ../DesignDataOut/route.def.gz
+all_constraint_modes 
+get_constraint_mode  $mode -sdc_files 
+update_constraint_mode -name 0100_mode -sdc "/users/micas/wjiang/WeijiePhd/Teaching/ALU_flow/DesignDataIn/dbs/cts.enc.dat/mmmc/modes/0100_mode/0100_mode.sdc"
+saveDesign ../DesignDataOut/route.enc
+saveDesign ../DesignDataIn/dbs/route.enc
+win
+fit
+zoomBox -69.48250 42.67050 310.41950 252.56450
+zoomBox -11.24900 113.06100 187.06300 222.62750
+zoomBox 11.56100 143.62500 133.35000 210.91300
+zoomBox 25.79300 161.56250 100.58650 202.88550
+zoomBox 9.04850 145.25000 130.83800 212.53800
+zoomBox -18.47950 117.63400 179.83500 227.20200
+zoomBox 1.06700 146.37850 122.85750 213.66700
+zoomBox 9.78950 160.23650 97.78300 208.85250
+zoomBox 14.89200 170.75300 78.46750 205.87800
+zoomBox 20.10500 180.61700 59.14900 202.18850
+zoomBox 23.76550 186.19450 47.74350 199.44200
+zoomBox 26.02550 189.62150 40.75150 197.75750
+zoomBox 27.93750 192.23250 35.62550 196.48000
+zoomBox 25.82100 189.57450 40.54950 197.71200
+zoomBox 23.03850 186.08100 47.02150 199.33150
+zoomBox 18.48150 180.39200 57.53450 201.96850
+setLayerPreference node_layer -isVisible 0
+zoomBox 8.15150 171.73500 71.74300 206.86900
+zoomBox -0.17250 162.85050 87.84350 211.47900
+zoomBox 12.04000 172.80900 66.09300 202.67300
+zoomBox 19.15450 179.16000 52.35000 197.50050
+zoomBox 23.36000 182.96500 43.74650 194.22850
+zoomBox 26.45700 185.67700 37.09950 191.55700
+zoomBox 27.73000 186.77850 34.26600 190.38950
+zoomBox 28.79900 187.63900 32.21150 189.52450
+zoomBox 29.32850 188.00100 31.42550 189.15950
+zoomBox 28.55700 187.47550 32.57400 189.69500
+zoomBox 28.28400 187.27400 33.01050 189.88550
+zoomBox 27.96050 187.03450 33.52100 190.10650
+zoomBox 27.58000 186.75250 34.12150 190.36650
+fit
+zoomBox -14.25800 56.17350 365.64300 266.06700
+zoomBox 96.68800 124.40650 329.99500 253.30750
+zoomBox 177.94300 176.16700 299.73150 243.45450
+zoomBox 218.55050 203.11850 282.12550 238.24350
+zoomBox 238.35500 217.30450 271.54250 235.64050
+zoomBox 248.70350 224.85350 266.02750 234.42500
+zoomBox 253.79850 229.32450 262.84200 234.32100
+zoomBox 256.56850 231.55050 261.29000 234.15900
+zoomBox 257.75200 232.46800 260.65150 234.07000
+fit
+zoomBox -72.27550 82.13300 250.64050 260.54250
+zoomBox -36.64500 140.46900 161.66600 250.03500
+zoomBox -8.42600 185.32950 95.09450 242.52400
+zoomBox 6.02200 204.14500 69.59650 239.26950
+zoomBox 18.06050 218.40400 51.24750 236.73950
+zoomBox 22.88500 224.43100 43.26700 235.69200
+zoomBox 26.24150 228.96550 36.88200 234.84450
+fit
+zoomBox -57.81150 3.46400 265.10400 181.87350
+zoomBox -16.19150 17.88500 152.37300 111.01600
+zoomBox 0.92150 22.43200 104.44200 79.62650
+zoomBox 14.66300 26.32400 68.70150 56.18000
+zoomBox 20.53850 27.62100 53.72600 45.95700
+zoomBox 25.05500 28.58100 42.37950 38.15250
+zoomBox 27.52100 29.18700 36.56550 34.18400
+zoomBox 28.22950 30.10700 34.76450 33.71750
+selectInst regzcmp/FILL_TOP_T_1_25
+fit
+zoomBox -46.34900 28.29250 276.56650 206.70200
+zoomBox -15.25400 48.63850 218.05300 177.53950
+zoomBox 7.16050 63.84750 175.72550 156.97900
+zoomBox 15.95100 69.82400 159.23200 148.98600
+fit
+zoomBox -81.88750 12.04500 365.05450 258.97850
+zoomBox -7.43650 44.44250 315.47900 222.85200
+zoomBox 67.62150 79.29200 265.93250 188.85800
+fit
+deselectAll
+timeDesign
+timeDesign -hold -postRoute

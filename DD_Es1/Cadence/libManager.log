@@ -1,6 +1,6 @@
 \o Program:		@(#)$CDS: libManager version 6.1.8 - CAT37 03/12/2021 04:24 (sjfdcl1035) $
 \o Sub version:		sub-version  s175 
-\o Arguments:		-unmapped -mpssession virtuoso105334 -mpshost pc-klas1-13.esat.kuleuven.be 
+\o Arguments:		-unmapped -mpssession virtuoso10782 -mpshost pc-klas1-13.esat.kuleuven.be 
 \o Working Directory:	pc-klas1-13.esat.kuleuven.be:/users/students/r0926826/kuleuven/6/DDIC/DD_Es1/Cadence
 \o 64-bit offsets
 \o Qt version: 		5.9.1
@@ -12,105 +12,25 @@
 \o MPS service: map window
 \o Library Manager customization server connected.
 \a nrSetCurrentWindow(cdsLibManager)
-\a nrResizeWindow(cdsLibManager list(989 273 849 491))
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrResizeWindow(cdsLibManager list(1013 519 849 491))
+\a nrResizeWindow(cdsLibManager list(146 209 1733 833))
+\a cdsLibManager->libListBox->value = "US_8ths"
+\a cdsLibManager->libLineEdit->value = "US_8ths"
+\a cdsLibManager->libListBox->value = "basic"
+\a cdsLibManager->libLineEdit->value = "basic"
 \a cdsLibManager->libListBox->value = "gpdk045"
 \a cdsLibManager->libLineEdit->value = "gpdk045"
-\a nrResizeWindow(cdsLibManager list(1011 528 849 491))
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrResizeWindow(cdsLibManager list(0 32 1920 1027))
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrResizeWindow(cdsLibManager list(1011 528 849 491))
-\a cdsLibManager->FileNewLibButton->value = t
-\a nrSetWindowVisibility(NewLibShell "show")
-\a nrSetCurrentWindow(NewLibShell)
-\a nrSetCurrentWindow(NewLibShell->subDialog)
-\a nrResizeWindow(NewLibShell list(1172 454 507 559))
-\a NewLibShell->newLibNameText->value = "DDIC"
-\a NewLibShell->newLibOKButton->value = t
-\a nrSetWindowVisibility(workingDialogForm "show")
-\a nrSetCurrentWindow(workingDialogForm)
-\o Created new library "DDIC" at /users/students/r0926826/kuleuven/6/DDIC/DD_Es1/Cadence/DDIC.
-\a cdsLibManager->libListBox->value = nil
-\a cdsLibManager->libLineEdit->value = ""
-\a cdsLibManager->libListBox->value = "gpdk045"
-\a cdsLibManager->libLineEdit->value = "gpdk045"
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrResizeWindow(workingDialogForm list(1289 646 272 133))
-\a nrResizeWindow(NewLibShell list(1172 433 507 559))
-\a cdsLibManager->libListBox->value = nil
-\a cdsLibManager->libLineEdit->value = ""
-\a cdsLibManager->libListBox->value = "gpdk045"
-\a cdsLibManager->libLineEdit->value = "gpdk045"
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrSetCurrentWindow(cdsLibManager)
-\a cdsLibManager->libListBox->value = "DDIC"
-\a cdsLibManager->libLineEdit->value = "DDIC"
-\a cdsLibManager->libListBox->value = "gpdk045"
-\a cdsLibManager->libLineEdit->value = "gpdk045"
-\a cdsLibManager->libListBox->value = "DDIC"
-\a cdsLibManager->libLineEdit->value = "DDIC"
-\a nrSetCurrentWindow(cdsLibManager)
-\a lmgrLogShowPopup("mainListPopup0" 23 3 2 "DDIC")
-\a cdsLibManager->FileNewCVButton->value = t
-\a cdsLibManager->libListBox->value = nil
-\a cdsLibManager->libLineEdit->value = ""
-\a cdsLibManager->libListBox->value = "DDIC"
-\a cdsLibManager->libLineEdit->value = "DDIC"
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrSetCurrentWindow(cdsLibManager)
-\a cdsLibManager->libListBox->value = nil
-\a cdsLibManager->libLineEdit->value = ""
-\a cdsLibManager->libListBox->value = "DDIC"
-\a cdsLibManager->libLineEdit->value = "DDIC"
-\a cdsLibManager->cellListBox->value = "invertor"
-\a cdsLibManager->cellLineEdit->value = "invertor"
-\a cdsLibManager->viewListBox->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = "schematic"
-\a cdsLibManager->cellLineEdit->value = ""
-\a cdsLibManager->cellListBox->value = nil
-\a cdsLibManager->viewLineEdit->value = ""
-\a cdsLibManager->viewListBox->value = nil
-\a cdsLibManager->cellListBox->value = "invertor"
-\a cdsLibManager->cellLineEdit->value = "invertor"
-\a cdsLibManager->viewListBox->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = ""
-\a cdsLibManager->viewListBox->value = nil
-\a cdsLibManager->viewListBox->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = "schematic"
-\a cdsLibManager->libListBox->value = nil
-\a cdsLibManager->libLineEdit->value = ""
-\a cdsLibManager->cellListBox->value = nil
-\a cdsLibManager->viewLineEdit->value = ""
-\a cdsLibManager->viewListBox->value = nil
-\a cdsLibManager->cellLineEdit->value = ""
-\a cdsLibManager->libListBox->value = "DDIC"
-\a cdsLibManager->libLineEdit->value = "DDIC"
-\a cdsLibManager->cellListBox->value = "invertor"
-\a cdsLibManager->cellLineEdit->value = "invertor"
-\a cdsLibManager->viewListBox->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = "schematic"
-\a cdsLibManager->cellLineEdit->value = ""
-\a cdsLibManager->cellListBox->value = nil
-\a cdsLibManager->viewLineEdit->value = ""
-\a cdsLibManager->viewListBox->value = nil
-\a cdsLibManager->cellListBox->value = "invertor"
-\a cdsLibManager->cellLineEdit->value = "invertor"
-\a cdsLibManager->viewListBox->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = ""
-\a cdsLibManager->viewListBox->value = nil
-\a cdsLibManager->viewListBox->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = ""
-\a cdsLibManager->viewListBox->value = nil
-\a cdsLibManager->viewListBox->value = "schematic"
-\a cdsLibManager->viewLineEdit->value = "schematic"
-\a nrSetCurrentWindow(cdsLibManager)
-\a nrSetCurrentWindow(cdsLibManager)
+\a cdsLibManager->libListBox->value = "cdsDefTechLib"
+\a cdsLibManager->libLineEdit->value = "cdsDefTechLib"
+\a cdsLibManager->libListBox->value = "basic"
+\a cdsLibManager->libLineEdit->value = "basic"
+\a cdsLibManager->libListBox->value = "cdsDefTechLib"
+\a cdsLibManager->libLineEdit->value = "cdsDefTechLib"
+\a cdsLibManager->libListBox->value = "analogLib"
+\a cdsLibManager->libLineEdit->value = "analogLib"
+\a cdsLibManager->libListBox->value = "US_8ths"
+\a cdsLibManager->libLineEdit->value = "US_8ths"
+\a nrSetWindowVisibility(cdsLibManager "hide")
+\a _lmgrCloseIconify("cdsLibManager" 1)
 \o MPS service: shutdown
 \o libManager is exiting.
 \a exit(0)

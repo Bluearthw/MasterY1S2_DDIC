@@ -1,0 +1,1 @@
+cell HDRSID2HPBWPHVT supply TVDD switched VDD ron 19.3 idsat 0.778mA ileak 1.246e-07mA

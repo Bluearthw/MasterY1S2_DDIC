@@ -1,0 +1,315 @@
+ ****** HSPICE -- O-2018.09-SP2 linux64 (Feb 25 2019) ******                    
+  Copyright (c) 1986 - 2025 by Synopsys, Inc. All Rights Reserved.              
+  This software and the associated documentation are proprietary
+  to Synopsys, Inc. This software may only be used in accordance
+  with the terms and conditions of a written license agreement with
+  Synopsys, Inc. All other use, reproduction, or distribution of
+  this software is strictly prohibited.
+  Input File: NAND.sp                                                           
+  Command line options: /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/linux64/hspice -i NAND.sp -o spicefiles NAND.sp
+  Start time: Fri Mar 21 10:25:22 2025
+ lic:  
+ lic: FLEXlm: SDK_11.7.3 
+ lic: USER:   r0926826             HOSTNAME: pc-klas1-13.esat.kuleuven.be 
+ lic: HOSTID: bc0ff3bfbc54         PID:      25619 
+ lic: Using FLEXlm license file: 
+ lic: 1709@licserv 
+ lic: Checkout 1 hspice 
+ lic: License/Maintenance for hspice will expire on 31-dec-2025/2024.09 
+ lic: 1(in_use)/20(total) FLOATING license(s) on SERVER 1709@licserv 
+ lic:   
+  **warning** (NAND.sp:26) Syntax error for output type v, the left parenthese is expected. This output is ignored.
+1****** HSPICE -- O-2018.09-SP2 linux64 (Feb 25 2019) ******                    
+ ******  
+ *--------------------------------------
+
+ ****** circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 xnand.                          mynand             1.00 
+        2 xnot1.                          mynot              1.00 
+        3 xnand.xm3.                      mosn               1.00 
+        4 xnand.xm4.                      mosn               1.00 
+        5 xnand.xm1.                      mosp               1.00 
+        6 xnand.xm2.                      mosp               1.00 
+        7 xnot1.xm1.                      mosn               1.00 
+        8 xnot1.xm2.                      mosp               1.00 
+  **warning** (nmos_lp:m1 (./Resources/Technology/tech_wrapper.lib:10)) Warning:  Acde = 0.280299 may be too small in BSIM4 model with w=2.4e-07 l=4.5e-08.
+  
+      
+
+Element variations(Local):   element              parameter
+ *****************************************************************
+ ******  option summary
+ ******
+ absh    = 0         abstol  = 1.0000n   absin   = 0         absmos  = 1.0000u   
+ abstol  = 1.0000n   vntol   = 50.0000u  absvar  = 500.0000m absvdc  = 50.0000u  
+ accurate= 0         add_variation= 0         altcc   = 0         altchk  = 0         
+ appendall= 0         artist  = 0         aspec   = 0         auto_inc_off= 0         
+ autoflat= 0         autost  = 0         ba_activehier= 0         ba_coupling= 0         
+ ba_error= exit      ba_geoshrink= 1.0000    ba_mergeport= 0         ba_netfmt= 0         
+ ba_print= ideal     ba_scale= 1.0000    bacc    = 0         badchr  = 0         
+ bdfatol = 1.0000m   bdfrtol = 1.0000m   biasfmt = 0         biasinte= 3         
+ biasnode= 0         biaspara= 0         biawarn = 0         binprnt = 0         
+ bisec_pushout_init= 0         bisec_pushout_minmax_abs= 1         bisec_bound_skip= 1         bisec_output= 0         
+ bkpsiz  = 50000     blkbytol= 10.0000u  block_name= 1         break_vloop= 0         
+ brief   = 0         bsim4pds= 0         bypass  = 2.0000    bytol   = 100.0000u 
+ captab  = 1         sda     = 0         cflflag = 0         chgtol  = 1.0000f   
+ cmi00opt= -1.23457e-29 cmi01opt= -1.23457e-29 cmi02opt= -1.23457e-29 cmi03opt= -1.23457e-29 
+ cmi04opt= -1.23457e-29 cmi05opt= -1.23457e-29 cmi06opt= -1.23457e-29 cmi07opt= -1.23457e-29 
+ cmi08opt= -1.23457e-29 cmi09opt= -1.23457e-29 cmiflag = 0         cmimcflag= 0         
+ cmivth  = 0         co      = 78        converge= 0         cptime  = 10.0000x  
+ cpuopt  = 1         crdparmod= 0         cscal   = 1.0000t   csdf    = 0         
+ cshdc   = 1.0000p   cshunt  = 0         custcmi = 0         cvtol   = 200.0000m 
+ bdfatol = 1.0000m   bdfrtol = 1.0000m   dcap    = 2         dccap   = 0         
+ dcfor   = 0         dchold  = 1         dcic    = 1         dcon    = 0         
+ dcstep  = 0         converge= 0         defad   = 0         defas   = 0         
+ defl    = 100.0000u defnrd  = 0         defnrs  = 0         defpd   = 0         
+ defps   = 0         defsa   = 0         defsb   = 0         defsd   = 0         
+ defw    = 100.0000u degf    = 100.0000m degfn   = 100.0000m degfp   = 100.0000m 
+ delmax  = 0         dev_stack= 0         di      = 100.0000  diagno  = 0         
+ dlencsdf= 5         do_not_vary= 0         dp_worker_pending_time= 1800      dumpcfl = 0         
+ dv      = 1.0000k   dvdt    = 3         dvtr    = 1.0000k   dynacc  = 0         
+ em_recovery= 1.0000    epsmin  = 1e-28     etmiagechk= 1         etmiallinst= 0         
+ etmif_sharemod= 1         etmiidsmod= 0         etmiprint= 0         tmiupdateonly= 0         
+ expli   = 0         expmax  = 80.0000   ext_delim= 0         ext_op  = 0         
+ extend_bisection_window= 0         external_file= 0         external_file= 0         extmodparchk= 0         
+ fast    = 1         fft_accu= -1        fftout  = 0         fmax    = 1.0000t   
+ force_hppmc= 0         fs      = 250.0000m fscal   = 1.0000n   ft      = 250.0000m 
+ g_clamp = 1         gdcpath = 1.0000p   ge_statev= 0         gen_cur_pol= off       
+ genk    = 1         geocheck= 0         geoshrink= 1.0000    gmax    = 100.0000  
+ g_clamp = 1         gmin    = 1.0000p   gmindc  = 1.0000p   gramp   = 0         
+ gscal   = 1.0000k   gshdc   = 0         gshunt  = 0         hier_delim= 0         
+ hier_sca= 0         histogram_bins= 4         histogram_file= 1         hpp_block_bypass= 1         
+ ic_accurate= 0         icsweep = 1         ignore_variation= 0         ignore_global_variation= 0         
+ ignore_local_variation= 0         itl4    = 8         itl3    = 3         ingold  = 0         
+ interp  = 0         intervals= 1         iprop   = 0         itl1    = 200       
+ itl2    = 50        itl3    = 3         itl4    = 8         itl5    = 0         
+ itlptran= 30        itlpz   = 100       itrprt  = 0         ivdmargin= 0         
+ ivth    = 0         ivth_model= 0         ivthn   = 0         ivthp   = 0         
+ kcltes  = 0         klim    = 10.0000m  la_freq = 1.0000g   la_maxr = 1.0000y   
+ la_minc = 100.0000a la_time = 1.0000n   la_tol  = 50.0000m  large_scale_mc= 0         
+ lennam  = 8         limtim  = 2         lis_new = 0         lislvl  = 0         
+ list    = none      lmacc   = 0         lscal   = 1.0000x   lvltim  = 4         
+ xmult_in_expr= no        macmod  = 0         maxamp  = 0         maxord  = 2         
+ maxwarns= 5         mbypas  = 2.0000    mc_file_only= 0         mc_plots= yes       
+ mcbrief = 0         measdg  = 4         measerrp= 0         measfail= 1         
+ measfile= 0         measform= 0         measou  = 1         measure_file= 0         
+ method  = trap      min_ver_abort= 0         minval  = 1.0000p   mirror_component= 0         
+ mixed_num_format= 0         model_explim= 0         modmon  = 0         modparchk= 1         
+ modprt  = 0         module_def_rule= 0         montecon= 1         mppfile_form= 0         
+ mra_postsim_mode= 0         mraapi  = 0         mradtempba= 1         mraext  = 0         
+ mramcfile= 0         mrapaged= 0         mt_check= 0         mtthresh= 0         
+ mu      = 500.0000m mult_less_1= 1         ncfilter= -1.0000p  ncwarn  = 0         
+ new_soa = 0         newtol  = 0         node    = 0         noelck  = 0         
+ noise_method= 1         noisefile= 0         noisem  = 10.0000u  noiseunit= v^2/Hz    
+ noisum  = 0         nomod   = 1         nopiv   = 0         notop   = 0         
+ nowarn  = 0         numdgt  = 4         brief   = 0         off     = 0         
+ off_output= none      op_noise_out= 0         opfile  = 0         optcon  = 0         
+ optlst  = 0         optparhier= global    opts    = 1         other_percentile= 0         
+ out_dev_stack= 0         output_sigma_value= 1         parhier = local     parse_module_netlist= 0         
+ pathnu  = 0         pcb_scale_format= 0         phd     = 0         pivot   = 0         
+ pivtol  = 1.0000f   plim    = 0         port_voltage_scale_to_2x= 0         post    = binary    
+ post_ver= 9601      postlvl = 0         posttop = 0         probe   = 0         
+ pseudotrandbg= 0         psf     = 0         puretp  = 0         putmeas = 1         
+ pz_method= muller    pz_num  = 10        pzabs   = 10.0000m  pztol   = 1.0000u   
+ qbypass = -1        qbypass_reuse= 0         qqnorm_file= 1         radegoutput= yes       
+ randgen = 3lc       random_generator= 0         redefmodel= 0         redefsub= 0         
+ redefsubport= 0         relh    = 50.0000m  reli    = 10.0000m  relin   = 1.0000m   
+ relmos  = 50.0000m  relq    = 10.0000m  reltol  = 1.0000m   reltol  = 1.0000m   
+ relvar  = 300.0000m relvdc  = 1.0000m   replicates= 1         res_bits= 0         
+ resmin  = 10.0000u  risetime= 1.0000p   ritol   = 1.0000u   rm_rmin = 10.0000u  
+ rmax    = 5.0000    rmin    = 1.0000n   runlvl  = 3         s_prune = 0         
+ s_rational_func= -1        s_rational_func_cache= 1         s_rational_func_hfilter= 0         saetablefmt= 0         
+ sampling_method= 1         scale   = 1.0000    scalm   = 1.0000    sda     = 0         
+ seed    = 1         sensitivity_analysis= 1         sep_vecerr= 0         set_missing_values= 1         
+ shrink  = 1.0000    si_scale_symbols= 0         sim_la  = 0         la_freq = 1.0000g   
+ la_time = 1.0000n   la_minc = 100.0000a la_maxr = 1.0000y   la_tol  = 50.0000m  
+ posttop = 0         skip_ignored_irvs= 0         slopetol= 500.0000m soa_warn_skipwindow= 0         
+ soiq0   = 0         pivot   = 0         spice   = 0         split_dp= 0         
+ splitma = 0         spmodel = 0         sstamp  = 0         statfl  = 0         
+ stream  = 1         strict_check= 0         subtmplt_cap_rule= 0         sx_factor= 1.0000    
+ symb    = 0         tail_samples= 1         term_s_open_end= 0         timeres = 1.0000p   
+ tmevthmod= 0         tmiage  = 0         tmiba   = 0         tmiflag = 0         
+ tmirtn  = 0         tmisave = 0         tmiupdateonly= 0         tmplt_pol= 0         
+ tnom    = 25.0000   tran_wave_res= -1.23457e-29 trcon   = 1         trtol   = 7.0000    
+ unwrap  = 0         use_agauss_format= 0         use_temp= all       va_bypass= -1        
+ vamodel = 0         vary_only= 0         vcd     = 0         vec_check= 0         
+ vecbus  = 0         ver_control= 0         vfloor  = 500.0000n vntol   = 50.0000u  
+ wacc    = -1.0000   warn    = 1         warn_sep= 0         warnli  = 1         
+ wave_pop= 100.0000m wavecompress= 0         wdelayopt= 0         wdf     = 0         
+ wdf_op  = 1         wincludegdimag= no        wl      = 0         wnflag  = 1         
+ x0i     = 0         x0r     = -123.4560k x1i     = 0         x1r     = -1.2346x  
+ x2i     = 0         x2r     = 1.2346x   xdtemp  = 0         xgeo_ivth= 0         
+ xmult   = 1         xmult_in_expr= no        zuken   = 0         
+ biasfile=  
+ cmipath =  
+ tmipath =  
+ tmiinput=  
+ mra00path=  
+ mra01path=  
+ mra02path=  
+ mra03path=  
+ radegfile=  
+ tmisort =  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/ad
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/behave
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/bjt
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/burr_brn
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/comlinear
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/dio
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/fet
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/lin_tech
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/pci
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/signet
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/ti
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/tline
+  
+ search = /esat/micas-data/software/Synopsys/hspice_2018.09/hspice/parts/xilinx
+  
+  Opening plot unit= 15
+ file=spicefiles/NAND.pa0
+
+ **info** dc convergence successful at Newton-Raphson method 
+ ******  
+ *--------------------------------------
+
+ ****** operating point information tnom=  25.000 temp=  25.000 ******
+ ****** operating point status is all       simulation time is     0.     
+    node    =voltage      node    =voltage      node    =voltage
+
+ +0:a       =   0.      0:b       =   1.0000  0:out     = 999.9995m
+ +0:out_bar =  31.5931n 0:vdd     =   1.0000  0:vss     =   0.     
+ +1:xm4d    =  24.4266n
+
+
+ maximum nodal capacitance=   1.137E-14         on node     0:vdd             
+
+    nodal  capacitance table 
+
+    node    =    cap      node    =    cap      node    =    cap
+
+ +0:a       = 627.7318a 0:b       = 663.4954a 0:out     =   7.6565f
+ +0:out_bar =   5.8237f 0:vdd     =  11.3750f 0:vss     =   6.6886f
+ +1:xm4d    = 687.1038a
+
+ 
+
+ **** voltage sources
+
+ subckt                        
+ element  0:vdd      0:vss     
+  volts      1.0000     0.     
+  current -180.9941p    8.7880p
+  power    180.9941p    0.     
+
+     total voltage source power dissipation=  180.9941p       watts
+
+
+
+
+ **** mosfets
+
+
+ subckt   xnand.xm3  xnand.xm4  xnand.xm1  xnand.xm2  xnot1.xm1  xnot1.xm2 
+ element  3:m1       4:m1       5:m1       6:m1       7:m1       8:m1      
+ model    0:nmos_lp  0:nmos_lp  0:pmos_lp  0:pmos_lp  0:nmos_lp  0:pmos_lp 
+ region   Cutoff     Linear     Linear     Cutoff     Linear     Cutoff    
+  id         4.7174p   11.1416p -114.4846p   -8.5905a  117.8229p  -63.4644p
+  ibs     -2.444e-20  7.058e-27 -1.100e-26    0.       5.892e-26 -9.579e-25
+  ibd       -1.0100p -3.393e-20  7.514e-19  7.514e-19 -4.389e-20    1.0100p
+  vgs      -24.4266n    1.0000    -1.0000     0.       999.9995m -540.8800n
+  vds      999.9994m   24.4266n -540.8800n -540.8800n   31.5931n   -1.0000 
+  vbs      -24.4266n    0.         0.         0.         0.         0.     
+  vth      561.4259m  623.4812m -587.6970m -587.6970m  623.4812m -515.5350m
+  vdsat     41.5941m  264.0336m -320.9076m  -44.0262m  264.9792m  -43.8564m
+  vod     -561.4259m  376.5188m -412.3030m  587.6970m  376.5183m  515.5345m
+  beta       2.8800m    2.1518m  684.4402u  713.2195u   17.8691m   12.9247m
+  gam eff  400.0000m  400.0000m  400.0000m  400.0000m  400.0000m  400.0000m
+  gm       125.9063p   14.5020p  191.3930p  230.0333a  151.1096p    1.6976n
+  gds        8.5411p  456.1245u  211.6634u   15.8823p    3.7294m  140.2073p
+  gmb       37.0523p    4.6678p   55.6764p   66.8441a   48.6230p  466.6210p
+  cdtot    154.4321a  403.6012a  391.4076a  211.5909a    3.3152f    2.5085f
+  cgtot    204.5157a  428.3151a  423.2162a  235.1803a    3.5485f    3.3506f
+  cstot    283.5026a  343.6976a  346.2145a  283.4470a    2.7959f    4.5950f
+  cbtot    340.6704a  355.9150a  354.8106a  362.8927a    2.8525f    5.4326f
+  cgs       91.8884a  232.7210a  232.4049a   91.8327a    1.9326f    1.5292f
+  cgd       59.0025a  193.3204a  186.7951a   91.8309a    1.6054f  981.5935a
+
+
+
+ ******
+ *--------------------------------------
+
+ ****** transient analysis tnom=  25.000 temp=  25.000 ******
+ rise_delay_a=  81.3223p  targ=   1.0818n   trig=   1.0005n
+ fall_delay_a=  89.1788p  targ=   2.0897n   trig=   2.0005n
+ rise_delay_b=  86.0282p  targ=   4.0865n   trig=   4.0005n
+ fall_delay_b=  92.8478p  targ=   5.0933n   trig=   5.0005n
+
+          ***** job concluded
+ ******  
+ *--------------------------------------
+
+ ****** job statistics summary tnom=  25.000 temp=  25.000 ******
+  
+ ******  Machine Information  ******
+ CPU:
+ model name	: 12th Gen Intel(R) Core(TM) i5-12500
+ cpu MHz	: 800.326
+  
+ OS:
+ Linux version 5.14.0-503.31.1.el9_5.x86_64 (mockbuild@iad1-prod-build001.bld.equ.rockylinux.org) (gcc (GCC) 11.5.0 20240719 (Red Hat 11.5.0-5), GNU ld version 2.35.2-54.el9) #1 SMP PREEMPT_DYNAMIC Tue Mar 11 16:53:43 UTC 2025
+
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    12
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =      32 # elements   =      11
+  # resistors   =       0 # capacitors =       0 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       2
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =       6 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       3 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.00           1          13
+  transient          0.02       10001         804         300 rev=        17
+  readin             0.01
+  errchk             0.01
+  setup              0.00
+  output             0.00
+
+
+           peak memory used        269.64 megabytes
+           total cpu time            0.04 seconds
+           total elapsed time        0.04 seconds
+           job started at     10:25:22 03/21/2025
+           job ended   at     10:25:22 03/21/2025
+
+
+ lic: Release hspice token(s) 
+ lic: total license checkout elapse time:        0.02(s)

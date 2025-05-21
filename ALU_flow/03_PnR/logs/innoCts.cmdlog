@@ -1,0 +1,220 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Wed Apr 24 13:52:14 2024                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v21.17-s075_1 (64bit) 03/15/2023 11:17 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: NanoRoute 21.17-s075_1 NR230308-2354/21_17-UB (database version 18.20.604) {superthreading v2.17}
+#@(#)CDS: AAE 21.17-s026 (64bit) 03/15/2023 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: CTE 21.17-s025_1 () Mar 14 2023 11:00:06 ( )
+#@(#)CDS: SYNTECH 21.17-s007_1 () Feb 20 2023 06:56:35 ( )
+#@(#)CDS: CPE v21.17-s068
+#@(#)CDS: IQuantus/TQuantus 21.1.1-s939 (64bit) Wed Nov 9 09:34:24 PST 2022 (Linux 3.10.0-693.el7.x86_64)
+
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+suppressMessage ENCLF 200
+suppressMessage ENCESI 3010
+suppressMessage IMPESI 2013 2014 3086 3140
+suppressMessage IMPCCOPT 2187 2311
+setDesignMode -process 45
+setAnalysisMode -analysisType onChipVariation -cppr both -checkType setup
+is_common_ui_mode
+restoreDesign /users/micas/wjiang/WeijiePhd/Teaching/ALU_flow/DesignDataIn/dbs/place.enc.dat sparc_exu_alu
+set_analysis_view -setup {AV_0100_wc_rc125_setup } -hold {AV_0100_bc_rc0_hold}
+setAnalysisMode -analysisType onChipVariation -cppr both -checkType setup
+set_timing_derate -early 0.925 -late 1.0 -delay_corner AV_0100_wc_rc125_setup_dc
+set_timing_derate -early 1.0 -late 1.12 -delay_corner AV_0100_bc_rc0_hold_dc
+getPlaceMode -doneQuickCTS -quiet
+add_ndr -name default_2x_space -spacing {Metal1 0.38 Metal2:Metal5 0.42 Metal6 0.84}
+create_route_type -name leaf_rule -non_default_rule default_2x_space -top_preferred_layer Metal4 -bottom_preferred_layer Metal2
+create_route_type -name trunk_rule -non_default_rule default_2x_space -top_preferred_layer Metal4 -bottom_preferred_layer Metal2 -shield_net VSS -shield_side both_side
+create_route_type -name top_rule -non_default_rule default_2x_space -top_preferred_layer Metal4 -bottom_preferred_layer Metal2 -shield_net VSS -shield_side both_side
+set_ccopt_property route_type -net_type leaf leaf_rule
+set_ccopt_property route_type -net_type trunk trunk_rule
+set_ccopt_property route_type -net_type top top_rule
+set_ccopt_property target_max_trans 0.100
+set_ccopt_property target_skew 0.150
+set_ccopt_property update_io_latency 0
+set_ccopt_property buffer_cells {CLKBUFX4 CLKBUFX8 CLKBUFX12}
+set_ccopt_property inverter_cells {CLKINVX4 CLKINVX8 CLKINVX12}
+create_ccopt_clock_tree_spec -views {AV_0100_wc_rc125_setup AV_0100_bc_rc0_hold } -file ../DesignDataIn/cts/ctsSpec_ccopt.tcl
+get_ccopt_clock_trees
+ccopt_check_and_flatten_ilms_no_restore
+set_ccopt_property cts_is_sdc_clock_root -pin rclk true
+create_ccopt_clock_tree -name RCLK -source rclk -no_skew_group
+set_ccopt_property target_max_trans_sdc -delay_corner AV_0100_wc_rc125_setup_dc -early -clock_tree RCLK 0.040
+set_ccopt_property target_max_trans_sdc -delay_corner AV_0100_wc_rc125_setup_dc -late -clock_tree RCLK 0.040
+set_ccopt_property source_output_max_trans -delay_corner AV_0100_wc_rc125_setup_dc -early -clock_tree RCLK 0.200
+set_ccopt_property source_output_max_trans -delay_corner AV_0100_bc_rc0_hold_dc -early -clock_tree RCLK 0.200
+set_ccopt_property source_output_max_trans -delay_corner AV_0100_wc_rc125_setup_dc -late -clock_tree RCLK 0.200
+set_ccopt_property source_output_max_trans -delay_corner AV_0100_bc_rc0_hold_dc -late -clock_tree RCLK 0.200
+set_ccopt_property clock_period -pin rclk 4
+set_ccopt_property timing_connectivity_info {}
+create_ccopt_skew_group -name RCLK/0100_mode -sources rclk -auto_sinks
+set_ccopt_property include_source_latency -skew_group RCLK/0100_mode true
+set_ccopt_property extracted_from_clock_name -skew_group RCLK/0100_mode RCLK
+set_ccopt_property extracted_from_constraint_mode_name -skew_group RCLK/0100_mode 0100_mode
+set_ccopt_property extracted_from_delay_corners -skew_group RCLK/0100_mode {AV_0100_wc_rc125_setup_dc AV_0100_bc_rc0_hold_dc}
+check_ccopt_clock_tree_convergence
+get_ccopt_property auto_design_state_for_ilms
+ccopt_design
+timeDesign -postCTS -numPaths 10 -outDir timingReports/cts
+timeDesign -postCTS -hold -numPaths 10 -outDir timingReports/cts
+all_constraint_modes 
+get_constraint_mode  $mode -sdc_files 
+update_constraint_mode -name 0100_mode -sdc "/users/micas/wjiang/WeijiePhd/Teaching/ALU_flow/DesignDataIn/dbs/place.enc.dat/mmmc/modes/0100_mode/0100_mode.sdc"
+saveDesign ../DesignDataOut/cts.enc
+saveDesign ../DesignDataIn/dbs/cts.enc
+win
+zoomBox -23.38250 26.18750 557.14150 346.92450
+zoomBox -11.48950 67.32900 407.93900 299.06150
+zoomBox -10.35450 115.54150 292.68300 282.96850
+zoomBox -6.79900 164.24800 179.30400 267.06900
+zoomBox -5.77350 201.23850 91.37400 254.91200
+zoomBox -5.33700 221.00750 45.37450 249.02550
+zoomBox -18.80750 199.45900 78.34100 253.13300
+zoomBox -36.48650 171.73300 121.70400 259.13250
+zoomBox -51.12700 152.03800 167.82200 273.00650
+zoomBox -102.65800 94.36750 316.77950 326.10500
+zoomBox -143.69600 50.00250 436.84150 370.74700
+zoomBox -243.52150 -4.61950 701.78700 517.65950
+zoomBox -132.72050 -2.70000 447.81700 318.04450
+zoomBox -59.32800 4.89150 243.71700 172.32250
+zoomBox -15.80500 10.50100 118.65850 84.79150
+zoomBox -11.92400 26.49250 85.22600 80.16750
+zoomBox -7.38050 41.13900 52.28250 74.10250
+zoomBox -16.38800 16.83300 118.07950 91.12550
+zoomBox -32.46350 -22.12850 225.13400 120.19300
+zoomBox -45.74650 -53.97300 310.79000 143.01200
+zoomBox -93.98700 -93.57000 399.49000 179.07400
+zoomBox 15.29500 -21.78450 371.83300 175.20100
+zoomBox 120.78350 49.18900 339.74200 170.16250
+zoomBox -35.65050 7.94050 383.80700 239.68900
+zoomBox -235.97950 -37.15450 447.03850 340.21000
+zoomBox -154.86400 2.87400 425.70150 323.63400
+zoomBox 16.85000 86.16050 373.39050 283.14750
+zoomBox -30.15000 62.66050 389.30950 294.41000
+zoomBox -25.97350 110.77350 277.08600 278.21250
+zoomBox -16.45200 148.95050 169.66450 251.77900
+zoomBox -10.63500 169.57200 103.66450 232.72200
+zoomBox -6.76350 179.74400 63.43050 218.52600
+zoomBox -4.20850 185.81200 38.90050 209.62950
+zoomBox -2.52400 189.75300 23.95150 204.38050
+zoomBox -1.32850 193.39700 12.49250 201.03300
+zoomBox -0.82800 195.64750 7.66100 200.33750
+zoomBox -0.64700 196.55150 5.48650 199.94000
+zoomBox -0.42550 197.65650 2.77700 199.42600
+zoomBox -0.29450 198.01900 1.67250 199.10600
+zoomBox -0.22250 198.23650 0.98550 198.90400
+selectPhyPin 0.0000 198.6050 0.5200 198.6850 4 rclk
+zoomBox -0.48000 197.86600 1.83700 199.14600
+zoomBox -1.27150 196.80500 3.95200 199.69100
+zoomBox -2.16650 195.61250 6.34050 200.31250
+zoomBox -3.63250 193.72300 10.22000 201.37650
+zoomBox -6.01950 190.70200 16.53650 203.16400
+zoomBox -9.93650 186.31850 26.79300 206.61150
+zoomBox -15.98750 178.71850 43.82050 211.76200
+zoomBox -18.93050 175.20600 51.43200 214.08100
+zoomBox -11.36250 183.92800 31.84950 207.80250
+zoomBox -6.79750 189.35600 19.74050 204.01800
+zoomBox -3.25350 193.67100 10.60000 201.32500
+zoomBox -1.76050 195.49000 6.74750 200.19050
+deselectAll
+selectPhyPin 0.0000 198.6050 0.5200 198.6850 4 rclk
+deselectAll
+zoomBox -2.87050 194.30150 8.90550 200.80750
+zoomBox -3.57650 193.54550 10.27800 201.20000
+selectWire 0.0600 198.0350 3.3400 198.1150 3 VSS
+deselectAll
+selectPhyPin 0.0000 195.7550 0.5200 195.8350 3 save
+zoomBox -2.50150 194.14750 7.50850 199.67800
+zoomBox -3.06700 193.81400 8.70950 200.32050
+zoomBox -3.73300 193.42150 10.12250 201.07650
+zoomBox -6.62500 191.79300 15.93650 204.25800
+zoomBox -16.33000 186.10550 34.51950 214.19950
+zoomBox -19.52700 183.90200 40.29600 216.95400
+zoomBox -11.23050 187.31100 25.50950 207.60950
+zoomBox -5.01450 189.78900 14.16500 200.38550
+zoomBox -2.35650 190.95250 9.42300 197.46050
+deselectAll
+selectWire -0.0400 192.9050 52.3400 192.9850 3 ifu_lsu_casa_e
+setLayerPreference Metal3 -isVisible 0
+zoomBox -5.63000 189.30850 13.55300 199.90700
+zoomBox -12.73550 185.83150 24.01450 206.13550
+zoomBox -22.27450 181.26000 37.56750 214.32250
+zoomBox -31.94100 176.48600 50.88700 222.24800
+zoomBox -53.64950 164.90050 81.22300 239.41700
+zoomBox -75.52400 152.59550 111.15150 255.73300
+zoomBox -106.25250 135.11250 152.12250 277.86350
+zoomBox -130.73750 124.09950 173.23300 292.04200
+zoomBox -160.28250 111.38900 197.33000 308.96850
+zoomBox -75.80850 140.99800 143.81150 262.33700
+zoomBox -31.19700 159.27400 103.67750 233.79150
+zoomBox -21.51700 164.17200 93.12650 227.51200
+setLayerPreference node_layer -isVisible 1
+deselectAll
+zoomBox -26.11350 158.42600 108.76150 232.94400
+zoomBox -31.52200 151.66650 127.15550 239.33500
+zoomBox -18.16000 169.23050 79.28850 223.07050
+zoomBox -9.31200 182.71750 41.55700 210.82250
+zoomBox -4.80700 189.92950 21.74800 204.60100
+zoomBox -2.45400 193.77400 11.40850 201.43300
+zoomBox -1.46300 195.53500 7.05100 200.23900
+zoomBox -0.70650 196.87550 3.73800 199.33100
+selectWire 0.6600 148.8250 0.7400 198.6850 4 rclk
+zoomBox -1.72500 195.47800 6.79000 200.18250
+zoomBox -3.71500 192.48200 12.59800 201.49500
+zoomBox -7.51300 186.91150 23.73950 204.17850
+zoomBox -12.50850 179.73800 38.38150 207.85450
+zoomBox -20.69050 168.21700 62.17550 214.00000
+zoomBox -16.08600 177.30700 43.78450 210.38500
+zoomBox -8.61650 185.92200 28.15250 206.23650
+zoomBox -2.90200 192.16200 16.29200 202.76650
+zoomBox -0.80750 194.57950 10.98100 201.09250
+zoomBox -1.54100 192.73250 14.77600 201.74750
+zoomBox -2.59150 190.17600 19.99350 202.65400
+zoomBox -6.10900 184.35400 30.66800 204.67300
+zoomBox -9.60200 178.62400 41.30050 206.74750
+zoomBox -14.43650 170.69350 56.01700 209.61900
+zoomBox -21.12850 159.71750 76.38550 213.59350
+zoomBox -31.31900 145.39900 103.64900 219.96800
+zoomBox -54.77100 113.62700 165.00200 235.05050
+zoomBox -39.51100 136.74000 119.27500 224.46850
+zoomBox -23.84400 161.55350 73.67000 215.42950
+zoomBox -14.92900 177.36500 44.95750 210.45200
+zoomBox -9.18250 187.03250 27.59550 207.35200
+zoomBox -6.62650 191.08350 19.94550 205.76450
+deselectAll
+selectWire 0.6600 148.8250 0.7400 198.6850 4 rclk
+zoomBox -11.33500 186.28050 31.93400 210.18650
+zoomBox -19.17200 172.05000 63.72050 217.84750
+zoomBox -35.23050 145.34050 123.56650 233.07500
+zoomBox -58.41500 111.79450 200.16000 254.65600
+zoomBox -96.16650 57.17150 324.87950 289.79750
+zoomBox -159.46050 -28.88950 526.14300 349.90350
+zoomBox -91.76550 40.15500 329.28100 272.78150
+zoomBox -53.73500 89.55800 204.84100 232.42000
+zoomBox -32.66950 131.69000 126.12900 219.42550
+zoomBox -19.90850 158.44300 77.61450 212.32400
+zoomBox -12.89300 174.78650 46.99900 207.87650
+zoomBox -8.23800 184.63900 28.54400 204.96100
+zoomBox -224.81300 8.12000 322.09150 310.28250
+zoomBox -311.03750 -63.41050 445.92500 354.80800
+zoomBox -208.73000 -7.13000 338.17500 295.03250
+zoomBox -98.01100 49.84950 237.85750 235.41550
+zoomBox -34.21350 84.57400 172.05250 198.53500
+zoomBox 5.82900 106.82500 132.50250 176.81150
+zoomBox 30.19850 118.46300 107.99200 161.44350
+zoomBox 45.06150 125.59300 92.83650 151.98850
+zoomBox 56.30700 131.02700 81.24650 144.80600
+zoomBox 61.02200 133.35800 76.33850 141.82050
+ctd_win -side none -id ctd_window
+selectInst {addsub_sub_dff_lo/q_reg[58]}
+zoomSelected
+deselectInst {addsub_sub_dff_lo/q_reg[58]}
+selectInst RC_CG_HIER_INST0/RC_CGIC_INST
+zoomSelected
+deselectInst RC_CG_HIER_INST0/RC_CGIC_INST

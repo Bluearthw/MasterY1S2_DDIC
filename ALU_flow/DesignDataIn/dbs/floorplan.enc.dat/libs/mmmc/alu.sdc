@@ -1,0 +1,1 @@
+/users/students/r0926826/kuleuven/6/DDIC/ALU_flow/DesignDataIn/sdc/alu.sdc

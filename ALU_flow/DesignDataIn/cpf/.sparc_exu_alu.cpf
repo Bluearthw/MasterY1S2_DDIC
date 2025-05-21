@@ -1,0 +1,167 @@
+set_cpf_version 2.0
+set_hierarchy_separator /
+set_design sparc_exu_alu
+
+############################
+## Define WC library sets ##
+## SS/0.9*VDD/125C        ##
+############################
+define_library_set -name gpdk045_wc_hi_lib  -libraries {\
+ ../Library/timing/slow_vdd1v2_basicCells.lib \
+ ../Library/timing/slow_vdd1v2_extvdd1v2.lib \
+ ../Library/timing/slow_vdd1v2_extvdd1v0.lib \
+ ../Library/timing/slow_vdd1v0_extvdd1v2.lib \
+ ../Library/timing/slow_vdd1v2_basicCells_lvt.lib }
+
+define_library_set -name gpdk045_wc_lo_lib  -libraries {\
+ ../Library/timing/slow_vdd1v0_basicCells.lib \
+ ../Library/timing/slow_vdd1v0_extvdd1v0.lib \
+ ../Library/timing/slow_vdd1v0_extvdd1v2.lib \
+ ../Library/timing/slow_vdd1v0_basicCells_lvt.lib }
+ 
+############################
+## Define BC library sets ##
+##  FF/1.1*VDD/0C         ##
+############################
+define_library_set -name gpdk045_bc_hi_lib  -libraries {\
+ ../Library/timing/fast_vdd1v2_basicCells.lib \
+ ../Library/timing/fast_vdd1v2_extvdd1v2.lib \
+ ../Library/timing/fast_vdd1v2_extvdd1v0.lib \
+ ../Library/timing/fast_vdd1v0_extvdd1v2.lib \
+ ../Library/timing/fast_vdd1v2_basicCells_lvt.lib }
+
+define_library_set -name gpdk045_bc_lo_lib  -libraries {\
+ ../Library/timing/fast_vdd1v0_basicCells.lib \
+ ../Library/timing/fast_vdd1v0_extvdd1v0.lib \
+ ../Library/timing/fast_vdd1v0_extvdd1v2.lib \
+ ../Library/timing/fast_vdd1v0_basicCells_lvt.lib }
+
+############################
+## Defining Power Domains ##
+############################
+# default one, always on
+create_power_domain -name TOP -default -boundary_ports *
+
+# virtual one, VDD1 container
+create_power_domain -name virtual_PDaon
+
+# switchable one
+create_power_domain -name KERNEL_PSO -instances { addsub/spr_sw addsub/sub_dff_sw } -base_domains TOP -shutoff_condition {!nsleep_in}
+create_power_domain -name KERNEL_LO -instances { addsub/spr_lo addsub/sub_dff_lo } -base_domains virtual_PDaon
+
+#################################
+### Defining Power/Ground Nets ##
+#################################
+create_power_nets  -nets VDD -voltage {1.2}
+create_power_nets  -nets VDD1 -voltage {1.0:1.2}
+create_power_nets  -nets VDDSW -internal -voltage {0.0:1.2}
+create_ground_nets -nets VSS
+
+update_power_domain -name TOP -primary_power_net VDD -primary_ground_net VSS
+update_power_domain -name KERNEL_PSO -primary_power_net VDDSW -primary_ground_net VSS
+update_power_domain -name KERNEL_LO -primary_power_net VDD1 -primary_ground_net VSS
+update_power_domain -name virtual_PDaon -primary_power_net VDD1 -primary_ground_net VSS
+
+create_global_connection -net VDD -pins VDD -domain TOP
+create_global_connection -net VSS -pins VSS -domain TOP
+create_global_connection -net VDDSW -pins VDD -domain KERNEL_PSO
+create_global_connection -net VSS -pins VSS -domain KERNEL_PSO
+create_global_connection -net VDD1 -pins VDD -domain KERNEL_LO
+create_global_connection -net VSS -pins VSS -domain KERNEL_LO
+#######
+#Define instance power domains (virtual domains) to avoid following ERROR
+#floorplan.log:**ERROR: (ENCMSMV-3502):  Power net VDD1 is not associated with any power domain. 
+#It is probably because this power net is not specified as any domain's primary power net. 
+#You need to modify CPF to create a virtual power domain using 'create_power_domain' without 
+#-instances and -default options then specify this power net as its primary power net using 'update_power_domain'.
+#######
+#place.log:**ERROR: (ENCDB-1221):        A global net connection rule for connecting P/G pins of the pattern 'VDD1' was specified.  But the connections cannot be made because there is no such pin in any cell.  Check the pin name pattern and make sure it is correct.
+#
+
+##############################
+## Define Nominal Condition ##
+##############################
+create_nominal_condition -name high -voltage 1.2 -state on
+update_nominal_condition -name high -library_set gpdk045_wc_hi_lib
+create_nominal_condition -name low  -voltage 1.0 -state on
+update_nominal_condition -name low  -library_set gpdk045_wc_lo_lib
+create_nominal_condition -name off  -voltage 0.0 -state off
+
+#######################
+## Define Power Mode ##
+#######################
+create_power_mode -name fast_mode  -domain_conditions { TOP@high virtual_PDaon@high KERNEL_PSO@high KERNEL_LO@high} -default
+update_power_mode -name fast_mode  -sdc_files "../DesignDataIn/sdc/sparc_exu_alu_fastmode.sdc"
+create_power_mode -name eco_mode   -domain_conditions { TOP@high virtual_PDaon@low KERNEL_PSO@high KERNEL_LO@low}
+update_power_mode -name eco_mode   -sdc_files "../DesignDataIn/sdc/sparc_exu_alu_ecomode.sdc"
+create_power_mode -name sleep_mode -domain_conditions { TOP@high virtual_PDaon@low KERNEL_PSO@off KERNEL_LO@low}
+update_power_mode -name sleep_mode -sdc_files "../DesignDataIn/sdc/sparc_exu_alu_sleepmode.sdc"
+
+#############################
+## Define Operation Corner ##
+#############################
+create_operating_corner -name fast_wc_rc125   -library_set gpdk045_wc_hi_lib  -process 1  -voltage 1.08   -temperature 125
+create_operating_corner -name fast_bc_rc0   -library_set gpdk045_bc_hi_lib  -process 1  -voltage 1.32   -temperature 0
+create_operating_corner -name eco_wc_rc125    -library_set gpdk045_wc_lo_lib  -process 1  -voltage 0.9    -temperature 125
+create_operating_corner -name eco_bc_rc0     -library_set gpdk045_bc_lo_lib  -process 1  -voltage 1.1    -temperature 0
+create_operating_corner -name sleep_wc_rc125  -library_set gpdk045_wc_hi_lib  -process 1  -voltage 0.0    -temperature 125
+create_operating_corner -name sleep_bc_rc0  -library_set gpdk045_bc_hi_lib  -process 1  -voltage 0.0    -temperature 0
+
+##########################
+## Define Analysis View ##
+##########################
+## SETUP
+create_analysis_view -name AV_fast_mode_wc_rc125_setup      -mode fast_mode  -domain_corners {TOP@fast_wc_rc125 KERNEL_PSO@fast_wc_rc125 KERNEL_LO@fast_wc_rc125}
+create_analysis_view -name AV_eco_mode_wc_rc125_setup       -mode eco_mode   -domain_corners {TOP@fast_wc_rc125 KERNEL_PSO@eco_wc_rc125 KERNEL_LO@eco_wc_rc125}
+create_analysis_view -name AV_sleep_mode_wc_rc125_setup     -mode sleep_mode -domain_corners {TOP@fast_wc_rc125 KERNEL_PSO@sleep_wc_rc125 KERNEL_LO@sleep_wc_rc125}
+
+
+## HOLD ##
+create_analysis_view -name AV_fast_mode_wc_rc125_hold       -mode fast_mode  -domain_corners {TOP@fast_wc_rc125 KERNEL_PSO@fast_wc_rc125 KERNEL_LO@fast_wc_rc125}
+create_analysis_view -name AV_eco_mode_wc_rc125_hold 	    -mode eco_mode   -domain_corners {TOP@fast_wc_rc125 KERNEL_PSO@eco_wc_rc125 KERNEL_LO@eco_wc_rc125}
+create_analysis_view -name AV_sleep_mode_wc_rc125_hold      -mode sleep_mode -domain_corners {TOP@fast_wc_rc125 KERNEL_PSO@sleep_wc_rc125 KERNEL_LO@sleep_wc_rc125}
+
+create_analysis_view -name AV_fast_mode_bc_rc0_hold 	    -mode fast_mode  -domain_corners {TOP@fast_bc_rc0 KERNEL_PSO@fast_bc_rc0 KERNEL_LO@fast_bc_rc0}
+create_analysis_view -name AV_eco_mode_bc_rc0_hold 	    -mode eco_mode   -domain_corners {TOP@fast_bc_rc0 KERNEL_PSO@eco_bc_rc0 KERNEL_LO@eco_bc_rc0}
+create_analysis_view -name AV_sleep_mode_bc_rc0_hold      -mode sleep_mode -domain_corners {TOP@fast_bc_rc0 KERNEL_PSO@sleep_bc_rc0 KERNEL_LO@sleep_bc_rc0}
+
+###############################
+## Define Power Switch cells ##
+###############################
+define_power_switch_cell -power_switchable VDD -power ExtVDD -stage_1_enable !PSO -stage_1_output PSO_out -type header -cells "HSWX1"
+create_power_switch_rule -name pd_addsub_sw -domain KERNEL_PSO -external_power_net VDD
+update_power_switch_rule -name pd_addsub_sw -enable_condition_1 {nsleep_in} -acknowledge_receiver_1 nsleep_out -cells "HSWX1"
+
+##########################
+## Define Level Shifter ##
+##########################
+define_level_shifter_cell -input_voltage_range 1.08:1.32 -output_voltage_range 0.90:1.32 -power VDD -direction down -ground VSS -cells "LSHLX1_TO" -valid_location either
+create_level_shifter_rule -name pd_addsub_lvlin -from TOP -to KERNEL_LO
+update_level_shifter_rules -names pd_addsub_lvlin -cells "LSHLX1_TO" -location to
+define_level_shifter_cell -input_voltage_range 0.90:1.32 -output_voltage_range 1.08:1.32 -direction bidir -input_power_pin ExtVDD -output_power_pin VDD -ground VSS -cells "LSLHX1_TO" -valid_location to
+create_level_shifter_rule -name pd_addsub_lvlout -from KERNEL_LO -to TOP
+update_level_shifter_rules -names pd_addsub_lvlout -cells "LSLHX1_TO"
+
+############################
+## Define Isolation cells ##
+############################
+define_isolation_cell -power VDD -ground VSS -enable ISO -valid_location to -cells "ISOLX1_ON"
+create_isolation_rule -name pd_addsub_iso -isolation_condition {!naddsub_on} -from KERNEL_PSO -to TOP -exclude {nsleep_out} -isolation_output low
+update_isolation_rules -names pd_addsub_iso -location to
+
+##########################
+## Desfine Retention FF ##
+##########################
+#define_state_retention_cell -cells {RDFF*} -ground VSS -power ExtVDD -power_switchable VDD -clock_pin CK -save_function SAVE -restore_function !NRESTORE
+define_state_retention_cell -cells {RDFF* SRDFF*} -ground VSS -power ExtVDD -power_switchable VDD -save_function !RT -restore_function RT
+#create_state_retention_rule -name pd_addsub_ret -domain KERNEL -save_level {save} -restore_level {!nrestore} -secondary_domain "virtual_PDaon"
+create_state_retention_rule -name pd_addsub_ret -domain KERNEL_PSO -save_edge {nrestore} -restore_edge {!nrestore} -secondary_domain TOP
+update_state_retention_rules -names pd_addsub_ret -cells {RDFF* SRDFF*}
+
+#############################
+## Define AON Buffer cells ##
+#############################
+define_always_on_cell -cells "PBUFX2" -power_switchable VDD -power ExtVDD -ground VSS 
+identify_always_on_driver -pins {save nrestore}
+
+end_design

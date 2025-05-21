@@ -1,0 +1,86 @@
+# Version:1.0 MMMC View Definition File
+# Do Not Remove Above Line
+######################
+## Create RC corner ##
+######################
+create_rc_corner -name typical \
+ -qx_tech_file ../Library/tech/qrc/RC_QRC_cln65lp_1p9m_6X2Z_alrdl_5corners_12a/typical/qrcTechFile \
+ -T 25
+
+create_rc_corner -name cbest \
+ -qx_tech_file ../Library/tech/qrc/RC_QRC_cln65lp_1p9m_6X2Z_alrdl_5corners_12a/cbest/qrcTechFile \
+ -T 0
+
+create_rc_corner -name rcbest \
+ -qx_tech_file ../Library/tech/qrc/RC_QRC_cln65lp_1p9m_6X2Z_alrdl_5corners_12a/rcbest/qrcTechFile \
+ -T 0
+
+create_rc_corner -name cworst \
+ -qx_tech_file ../Library/tech/qrc/RC_QRC_cln65lp_1p9m_6X2Z_alrdl_5corners_12a/cworst/qrcTechFile \
+ -T 125
+
+create_rc_corner -name rcworst \
+ -qx_tech_file ../Library/tech/qrc/RC_QRC_cln65lp_1p9m_6X2Z_alrdl_5corners_12a/rcworst/qrcTechFile \
+ -T 125
+
+create_op_cond -name eco_bc_cbest_virtual -library_file {../Library/ecsm/tcbn65lphpbwpbc1d1_ecsm.lib} -P {1} -V {1.1} -T {0}
+create_op_cond -name sleep_bc_cbest_virtual -library_file {../Library/ecsm/tcbn65lphpbwpbc1d1_ecsm.lib} -P {1} -V {0} -T {25}
+create_op_cond -name sleep_bc_rcbest_virtual -library_file {../Library/ecsm/tcbn65lphpbwpbc1d1_ecsm.lib} -P {1} -V {0} -T {25}
+create_op_cond -name fast_tc_virtual -library_file {../Library/ecsm/tcbn65lphpbwptc_ecsm.lib} -P {1} -V {1.2} -T {25}
+create_op_cond -name eco_wc_rcworst_virtual -library_file {../Library/ecsm/tcbn65lphpbwpwc0d9_ecsm.lib} -P {1} -V {0.9} -T {125}
+create_op_cond -name fast_wc_rcworst_virtual -library_file {../Library/ecsm/tcbn65lphpbwpwc_ecsm.lib} -P {1} -V {1.08} -T {125}
+create_op_cond -name fast_bc_rcbest_virtual -library_file {../Library/ecsm/tcbn65lphpbwpbc_ecsm.lib} -P {1} -V {1.32} -T {0}
+create_op_cond -name fast_bc_cbest_virtual -library_file {../Library/ecsm/tcbn65lphpbwpbc_ecsm.lib} -P {1} -V {1.32} -T {0}
+create_op_cond -name eco_bc_rcbest_virtual -library_file {../Library/ecsm/tcbn65lphpbwpbc1d1_ecsm.lib} -P {1} -V {1.1} -T {0}
+create_op_cond -name fast_wc_cworst_virtual -library_file {../Library/ecsm/tcbn65lphpbwpwc_ecsm.lib} -P {1} -V {1.08} -T {125}
+create_op_cond -name eco_wc_cworst_virtual -library_file {../Library/ecsm/tcbn65lphpbwpwc0d9_ecsm.lib} -P {1} -V {0.9} -T {125}
+create_library_set -name tsmc_1d2_tc_lib -timing {../Library/ecsm/tcbn65lphpbwptc_ecsm.lib ../Library/ecsm/tcbn65lphpbwptc1d21d2_ecsm.lib ../Library/ecsm/tcbn65lphpbwptc1d01d2_ecsm.lib ../Library/ecsm/tcbn65lphpbwpcghvttc_ecsm.lib}
+create_library_set -name tsmc_1d08_wc_lib -timing {../Library/ecsm/tcbn65lphpbwpwc_ecsm.lib ../Library/ecsm/tcbn65lphpbwpwc1d081d08_ecsm.lib ../Library/ecsm/tcbn65lphpbwpwc0d91d08_ecsm.lib ../Library/ecsm/tcbn65lphpbwpcghvtwc_ecsm.lib}
+create_library_set -name tsmc_0d9_wc_lib -timing {../Library/ecsm/tcbn65lphpbwpwc0d9_ecsm.lib ../Library/ecsm/tcbn65lphpbwpwc1d080d9_ecsm.lib ../Library/ecsm/tcbn65lphpbwpcghvtwc0d9_ecsm.lib}
+create_library_set -name tsmc_1d32_bc_lib -timing {../Library/ecsm/tcbn65lphpbwpbc_ecsm.lib ../Library/ecsm/tcbn65lphpbwpbc1d321d32_ecsm.lib ../Library/ecsm/tcbn65lphpbwpbc1d11d32_ecsm.lib ../Library/ecsm/tcbn65lphpbwpcghvtbc_ecsm.lib}
+create_library_set -name tsmc_1d1_bc_lib -timing {../Library/ecsm/tcbn65lphpbwpbc1d1_ecsm.lib ../Library/ecsm/tcbn65lphpbwpbc1d321d1_ecsm.lib ../Library/ecsm/tcbn65lphpbwpcghvtbc1d1_ecsm.lib}
+create_library_set -name tsmc_1d0_tc_lib -timing {../Library/ecsm/tcbn65lphpbwptc1d0_ecsm.lib}
+create_constraint_mode -name eco_mode -sdc_files {../DesignDataIn/sdc/sparc_exu_alu.sdc}
+create_constraint_mode -name sleep_mode -sdc_files {../DesignDataIn/sdc/sparc_exu_alu.sdc}
+create_constraint_mode -name fast_mode -sdc_files {../DesignDataIn/sdc/sparc_exu_alu.sdc}
+create_delay_corner -name AV_sleep_mode_bc_rcbest_hold_dc -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_rcbest_virtual}
+update_delay_corner -name AV_sleep_mode_bc_rcbest_hold_dc -power_domain TOP -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_rcbest_virtual}
+update_delay_corner -name AV_sleep_mode_bc_rcbest_hold_dc -power_domain ADDSUB -library_set {tsmc_1d1_bc_lib} -opcond_library {tcbn65lphpbwpbc1d1_ecsm} -opcond {sleep_bc_rcbest_virtual}
+create_delay_corner -name AV_sleep_mode_bc_cbest_hold_dc -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_cbest_virtual}
+update_delay_corner -name AV_sleep_mode_bc_cbest_hold_dc -power_domain TOP -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_cbest_virtual}
+update_delay_corner -name AV_sleep_mode_bc_cbest_hold_dc -power_domain ADDSUB -library_set {tsmc_1d1_bc_lib} -opcond_library {tcbn65lphpbwpbc1d1_ecsm} -opcond {sleep_bc_cbest_virtual}
+create_delay_corner -name AV_fast_mode_bc_rcbest_hold_dc -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_rcbest_virtual}
+update_delay_corner -name AV_fast_mode_bc_rcbest_hold_dc -power_domain TOP -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_rcbest_virtual}
+update_delay_corner -name AV_fast_mode_bc_rcbest_hold_dc -power_domain ADDSUB -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_rcbest_virtual}
+create_delay_corner -name AV_fast_mode_wc_cworst_setup_dc -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_cworst_virtual}
+update_delay_corner -name AV_fast_mode_wc_cworst_setup_dc -power_domain TOP -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_cworst_virtual}
+update_delay_corner -name AV_fast_mode_wc_cworst_setup_dc -power_domain ADDSUB -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_cworst_virtual}
+create_delay_corner -name AV_eco_mode_wc_rcworst_setup_dc -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_rcworst_virtual}
+update_delay_corner -name AV_eco_mode_wc_rcworst_setup_dc -power_domain TOP -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_rcworst_virtual}
+update_delay_corner -name AV_eco_mode_wc_rcworst_setup_dc -power_domain ADDSUB -library_set {tsmc_0d9_wc_lib} -opcond_library {tcbn65lphpbwpwc0d9_ecsm} -opcond {eco_wc_rcworst_virtual}
+create_delay_corner -name AV_fast_mode_wc_rcworst_setup_dc -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_rcworst_virtual}
+update_delay_corner -name AV_fast_mode_wc_rcworst_setup_dc -power_domain TOP -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_rcworst_virtual}
+update_delay_corner -name AV_fast_mode_wc_rcworst_setup_dc -power_domain ADDSUB -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_rcworst_virtual}
+create_delay_corner -name AV_eco_mode_bc_rcbest_hold_dc -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_rcbest_virtual}
+update_delay_corner -name AV_eco_mode_bc_rcbest_hold_dc -power_domain TOP -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_rcbest_virtual}
+update_delay_corner -name AV_eco_mode_bc_rcbest_hold_dc -power_domain ADDSUB -library_set {tsmc_1d1_bc_lib} -opcond_library {tcbn65lphpbwpbc1d1_ecsm} -opcond {eco_bc_rcbest_virtual}
+create_delay_corner -name AV_eco_mode_wc_cworst_setup_dc -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_cworst_virtual}
+update_delay_corner -name AV_eco_mode_wc_cworst_setup_dc -power_domain TOP -library_set {tsmc_1d08_wc_lib} -opcond_library {tcbn65lphpbwpwc_ecsm} -opcond {fast_wc_cworst_virtual}
+update_delay_corner -name AV_eco_mode_wc_cworst_setup_dc -power_domain ADDSUB -library_set {tsmc_0d9_wc_lib} -opcond_library {tcbn65lphpbwpwc0d9_ecsm} -opcond {eco_wc_cworst_virtual}
+create_delay_corner -name AV_fast_mode_bc_cbest_hold_dc -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_cbest_virtual}
+update_delay_corner -name AV_fast_mode_bc_cbest_hold_dc -power_domain TOP -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_cbest_virtual}
+update_delay_corner -name AV_fast_mode_bc_cbest_hold_dc -power_domain ADDSUB -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_cbest_virtual}
+create_delay_corner -name AV_eco_mode_bc_cbest_hold_dc -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_cbest_virtual}
+update_delay_corner -name AV_eco_mode_bc_cbest_hold_dc -power_domain TOP -library_set {tsmc_1d32_bc_lib} -opcond_library {tcbn65lphpbwpbc_ecsm} -opcond {fast_bc_cbest_virtual}
+update_delay_corner -name AV_eco_mode_bc_cbest_hold_dc -power_domain ADDSUB -library_set {tsmc_1d1_bc_lib} -opcond_library {tcbn65lphpbwpbc1d1_ecsm} -opcond {eco_bc_cbest_virtual}
+create_analysis_view -name AV_eco_mode_bc_cbest_hold -constraint_mode {eco_mode} -delay_corner {AV_eco_mode_bc_cbest_hold_dc}
+create_analysis_view -name AV_eco_mode_wc_cworst_setup -constraint_mode {eco_mode} -delay_corner {AV_eco_mode_wc_cworst_setup_dc}
+create_analysis_view -name AV_fast_mode_wc_cworst_setup -constraint_mode {fast_mode} -delay_corner {AV_fast_mode_wc_cworst_setup_dc}
+create_analysis_view -name AV_eco_mode_wc_rcworst_setup -constraint_mode {eco_mode} -delay_corner {AV_eco_mode_wc_rcworst_setup_dc}
+create_analysis_view -name AV_eco_mode_bc_rcbest_hold -constraint_mode {eco_mode} -delay_corner {AV_eco_mode_bc_rcbest_hold_dc}
+create_analysis_view -name AV_sleep_mode_bc_rcbest_hold -constraint_mode {sleep_mode} -delay_corner {AV_sleep_mode_bc_rcbest_hold_dc}
+create_analysis_view -name AV_fast_mode_wc_rcworst_setup -constraint_mode {fast_mode} -delay_corner {AV_fast_mode_wc_rcworst_setup_dc}
+create_analysis_view -name AV_fast_mode_bc_rcbest_hold -constraint_mode {fast_mode} -delay_corner {AV_fast_mode_bc_rcbest_hold_dc}
+create_analysis_view -name AV_fast_mode_bc_cbest_hold -constraint_mode {fast_mode} -delay_corner {AV_fast_mode_bc_cbest_hold_dc}
+create_analysis_view -name AV_sleep_mode_bc_cbest_hold -constraint_mode {sleep_mode} -delay_corner {AV_sleep_mode_bc_cbest_hold_dc}
+set_analysis_view -setup {AV_fast_mode_wc_cworst_setup} -hold {AV_fast_mode_bc_cbest_hold}

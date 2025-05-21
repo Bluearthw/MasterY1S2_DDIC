@@ -1,0 +1,1139 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Thu May  8 11:26:51 2025                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v21.17-s075_1 (64bit) 03/15/2023 11:17 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: NanoRoute 21.17-s075_1 NR230308-2354/21_17-UB (database version 18.20.604) {superthreading v2.17}
+#@(#)CDS: AAE 21.17-s026 (64bit) 03/15/2023 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: CTE 21.17-s025_1 () Mar 14 2023 11:00:06 ( )
+#@(#)CDS: SYNTECH 21.17-s007_1 () Feb 20 2023 06:56:35 ( )
+#@(#)CDS: CPE v21.17-s068
+#@(#)CDS: IQuantus/TQuantus 21.1.1-s939 (64bit) Wed Nov 9 09:34:24 PST 2022 (Linux 3.10.0-693.el7.x86_64)
+
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+set defHierChar /
+set init_cpf_file ../DesignDataIn/cpf/sparc_exu_alu.cpf
+set init_lef_file {../Library/lef/gsclib045_tech.lef  ../Library/lef/gsclib045_macro.lef  ../Library/lef/gsclib045_hvt_macro.lef  ../Library/lef/gsclib045_lvt_macro.lef}
+set init_pwr_net {VDD VDD1}
+set init_gnd_net VSS
+set init_top_cell sparc_exu_alu
+set init_verilog ../DesignDataIn/netlist/compile.v
+init_design
+suppressMessage TECHLIB 436 302
+suppressMessage IMPEXT 2773
+suppressMessage IMPOAX 124 332
+setDesignMode -process 45
+setRouteMode -earlyGlobalMaxRouteLayer 4
+setPinAssignMode -maxLayer 4
+setNanoRouteMode -routeTopRoutingLayer 4
+setDesignMode -topRoutingLayer Metal4
+setAnalysisMode -analysisType onChipVariation -cppr both -checkType setup
+set_global report_timing_format {instance pin cell net fanout load slew delay arrival edge incr_delay user_derate }
+create_rc_corner -name rc125 \
+ -qx_tech_file ../Library/qrc/qrcTechFile \
+ -T 125
+create_rc_corner -name rc0 \
+ -qx_tech_file ../Library/qrc/qrcTechFile \
+ -T 0
+update_delay_corner -name AV_0100_wc_rc125_setup_dc \
+    -rc_corner rc125
+update_delay_corner -name AV_0100_wc_rc125_hold_dc \
+    -rc_corner rc125
+update_delay_corner -name AV_0100_bc_rc0_hold_dc \
+    -rc_corner rc0
+set_analysis_view -setup {AV_0100_wc_rc125_setup} -hold {AV_0100_bc_rc0_hold}
+set_timing_derate -early 0.925 -late 1.0 -delay_corner AV_0100_wc_rc125_setup_dc
+set_timing_derate -early 1.0 -late 1.12 -delay_corner AV_0100_bc_rc0_hold_dc
+update_library_set -name gpdk045_wc_lib -si [ list ../Library/cdb/slow.cdb ]
+update_library_set -name gpdk045_bc_lib -si [ list ../Library/cdb/fast.cdb ]
+read_power_intent -cpf ../DesignDataIn/cpf/sparc_exu_alu.cpf
+commit_power_intent
+setPinConstraint -side {top bottom} -layer M2
+setPinConstraint -side {right left} -layer M3
+floorPlan -site CoreSite -s 230 204 30.0 30.0 30.0 30.0
+loadIoFile ../DesignDataIn/misc/sparc_exu_alu.save.io
+addRing -around default_power_domain -nets {VDD VSS} -layer {bottom M5 top M5 right M6 left M6} -width 12 -spacing 2 -offset 1
+addStripe -set_to_set_distance 12 -spacing 12 -xleft_offset 5.05 -direction vertical -layer M6 -width 2.3 -nets VSS
+addStripe -set_to_set_distance 10.26 -spacing 10.26 -ybottom_offset 3.980 -direction horizontal -layer M5 -width 2.3 -nets VSS -area_blockage {49.35 164.08 239.05 212.08}
+addStripe -extend_to design_boundary -set_to_set_distance 96 -spacing 96 -xleft_offset 69.7 -direction vertical -layer M4 -width 5 -area_blockage {0 105.02  290.0 264.1 } -nets VDD1
+addStripe -nets VDD -direction vertical -layer M6 -xleft_offset 11.05 -width 2.3 -spacing 12 -set_to_set_distance 12
+setSrouteMode -corePinJoinLimit 6
+sroute -connect corePin -nets VSS -allowJogging 0 -corePinMaxViaWidth 60
+sroute -connect corePin -nets VDD -powerDomains TOP -allowJogging 0 -corePinMaxViaWidth 60
+sroute -connect { secondaryPowerPin } -layerChangeRange { M1 M6 } -blockPinTarget { nearestTarget } -secondaryPinRailVerticalStripeGrid { M6 0 0 } -checkAlignedSecondaryPin 1 -powerDomains { KERNEL_PSO } -allowJogging 0 -crossoverViaBottomLayer M1 -secondaryPinRailLayer M6 -allowLayerChange 1 -secondaryPinNet { VDD } -targetViaTopLayer M6 -crossoverViaTopLayer M6 -targetViaBottomLayer M1 -nets { VDD } -viaConnectToShape stripe
+timeDesign -prePlace -outDir timingReports -prefix floorplan
+report_timing -format {instance pin cell net  load slew delay arrival}
+timeDesign -prePlace -expandedViews -numPaths 10 -outDir timingReports -prefix floorplan
+timeDesign -prePlace -hold -expandedViews -numPaths 10 -outDir timingReports -prefix floorplan
+reportGateCount -stdCellOnly -outfile ./reports/stdGateCount.rpt
+get_proto_model -type_match {flex_module flex_instgroup blackbox} -committed -name -tcl
+getNanoRouteMode -user -routeTopRoutingLayer
+getNanoRouteMode -quiet -routeTopRoutingLayer
+unplaceAllInsts
+editDelete -type signal
+clearDrc
+all_constraint_modes 
+get_constraint_mode  $mode -sdc_files 
+update_constraint_mode -name 0100_mode -sdc "../DesignDataIn/sdc/alu.sdc"
+saveDesign ../DesignDataOut/floorplan.enc
+saveDesign ../DesignDataIn/dbs/floorplan.enc
+win
+fit
+uiSetTool ruler
+pan 54.15600 -15.76250
+pan -9.65550 36.29450
+pan -88.16050 -0.64900
+pan 82.28350 112.28000
+zoomBox 103.14750 111.00950 337.60950 320.90300
+zoomBox 135.08650 134.30400 334.37900 312.71350
+zoomBox 230.51300 207.34650 318.94150 286.50900
+zoomBox 280.36350 248.20700 308.71300 273.58600
+zoomBox 249.83550 216.46850 325.00550 283.76150
+pan -3.50100 -67.01400
+zoomBox 167.69650 102.63400 367.00800 281.06050
+zoomBox 148.17600 89.98450 382.66050 299.89800
+pan -64.91550 -63.65200
+pan -126.19100 26.13750
+pan 29.72750 154.75550
+pan 104.35000 122.90450
+zoomBox 74.49900 88.39600 350.36300 335.35300
+zoomBox -74.53450 10.09100 453.93450 483.18350
+zoomBox 103.77100 67.80350 379.63550 314.76100
+zoomBox 131.92850 76.15450 366.41350 286.06850
+zoomBox 223.28800 128.16100 311.72450 207.33050
+zoomBox 244.96400 141.89050 299.27500 190.51050
+zoomBox 262.66300 152.79200 291.01400 178.17200
+uiSetTool ruler
+uiSetTool select
+selectWire 275.0000 3.0200 287.0000 260.5100 6 VSS
+zoomBox 231.89200 132.49900 307.06550 199.79550
+zoomBox 127.39400 63.45200 361.89050 273.37650
+deselectAll
+pan -97.07500 -96.40150
+zoomBox 30.31850 -6.05300 306.19700 240.91700
+pan -57.10300 -89.90550
+zoomBox 36.98900 9.48500 180.99950 138.40500
+zoomBox 47.38450 20.77500 169.79350 130.35700
+zoomBox -49.38250 -82.65100 275.18100 207.90250
+zoomBox 39.91750 -4.63650 183.92800 124.28350
+zoomBox -96.38900 -96.07200 285.45050 245.75600
+zoomBox -143.37450 -109.40900 305.84850 292.74150
+pan 117.39050 61.86050
+pan -41.84250 -65.40950
+zoomBox -18.13900 -61.23200 363.70050 280.59600
+zoomBox 26.83650 -34.85400 351.40050 255.70000
+zoomBox 65.06600 -12.37000 340.94550 234.60100
+zoomBox 97.56100 6.74100 332.05900 216.66700
+zoomBox 123.77100 23.03150 323.09450 201.46850
+zoomBox 136.26400 35.17650 305.68900 186.84800
+zoomBox 155.12350 53.37150 277.53350 162.95450
+zoomBox 162.43950 60.33150 266.48800 153.47700
+zoomBox 173.83500 70.89400 249.01000 138.19150
+zoomBox 182.57850 78.39600 236.89250 127.01850
+zoomBox 185.95100 81.38900 232.11800 122.71850
+zoomBox 177.12550 75.09100 241.02500 132.29450
+pan 2.06650 -68.05950
+pan -0.82650 -42.84650
+pan 1.57050 -13.33550
+pan -4.71200 12.95150
+zoomBox 168.71800 190.43700 243.89350 257.73500
+zoomBox 161.06400 187.55400 249.50550 266.72800
+zoomBox 97.08700 163.35500 296.41250 341.79400
+zoomBox 214.03550 209.94900 277.93600 267.15350
+zoomBox 233.05900 217.68000 272.30250 252.81150
+zoomBox 191.29000 201.20500 279.73900 280.38550
+pan 43.02300 -4.96000
+pan -20.82500 -81.16600
+pan 9.15400 -101.19000
+zoomBox 211.09200 108.36050 315.14950 201.51400
+zoomBox 196.17350 104.67850 318.59400 214.27100
+zoomBox 242.37500 119.60750 306.27950 176.81550
+zoomBox 272.73600 131.04650 296.83800 152.62300
+zoomBox 281.19650 134.20350 293.77850 145.46700
+pan -2.84850 -148.06700
+zoomBox 265.84600 126.46350 299.20900 156.33050
+zoomBox 274.82950 136.89100 289.63350 150.14350
+zoomBox 266.92000 127.20400 300.28550 157.07300
+setLayerPreference node_net -isVisible 0
+setLayerPreference node_net -isVisible 1
+setLayerPreference node_net -isVisible 0
+setLayerPreference net -isVisible 1
+zoomBox 223.30400 91.55950 327.38500 184.73400
+zoomBox 171.64350 46.31200 371.03100 224.80650
+zoomBox 46.53050 -69.30250 495.90300 332.98200
+pan -245.90550 -127.45950
+zoomBox -30.12500 75.75950 169.26450 254.25550
+zoomBox 12.58600 129.66850 135.03650 239.28800
+pan -2.85150 135.93300
+pan 12.83150 126.58700
+zoomBox -100.96700 62.00850 175.00600 309.06300
+zoomBox -140.59600 40.65000 184.07850 331.30300
+pan 129.78600 107.32300
+pan -15.54050 -1.04200
+zoomBox 13.15550 70.49300 157.21550 199.45750
+setLayerPreference Metal11 -isVisible 0
+setLayerPreference Metal11 -isVisible 1
+setLayerPreference node_layer -isVisible 0
+setLayerPreference node_layer -isVisible 1
+setLayerPreference node_net -isVisible 1
+setLayerPreference node_net -isVisible 0
+zoomBox -73.69400 -69.22800 308.27900 272.71950
+pan 15.31850 7.92500
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference power -isVisible 1
+setLayerPreference power -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgGround -isVisible 1
+setLayerPreference pgGround -isVisible 0
+setLayerPreference clock -isVisible 1
+setLayerPreference clock -isVisible 0
+setLayerPreference node_net -isVisible 1
+setLayerPreference node_net -isVisible 0
+setLayerPreference node_net -isVisible 1
+setLayerPreference node_net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference power -isVisible 1
+setLayerPreference pgPower -isVisible 1
+setLayerPreference power -isVisible 0
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference clock -isVisible 1
+setLayerPreference pgGround -isVisible 1
+setLayerPreference pgPower -isVisible 1
+setLayerPreference power -isVisible 1
+setLayerPreference node_power -isVisible 1
+setLayerPreference node_power -isSelectable 1
+setLayerPreference node_floorplan -isVisible 1
+setLayerPreference node_floorplan -isVisible 0
+setLayerPreference node_floorplan -isVisible 1
+setLayerPreference node_row -isVisible 1
+setLayerPreference node_row -isVisible 0
+setLayerPreference node_row -isVisible 1
+setLayerPreference node_blockage -isVisible 1
+setLayerPreference node_cell -isVisible 1
+setLayerPreference node_cell -isSelectable 1
+setLayerPreference node_misc -isVisible 1
+setLayerPreference node_gird -isVisible 1
+setLayerPreference node_gird -isVisible 0
+setLayerPreference node_track -isVisible 1
+setLayerPreference node_track -isVisible 0
+setLayerPreference node_overlay -isVisible 1
+setLayerPreference congestH -color {#000066 #0000c9 #0053ff #00fcfa #00a953 #53a900 #f9fc00 #ff5300 #ff5858 #ffffff}
+setLayerPreference congestV -color {#000066 #0000c9 #0053ff #00fcfa #00a953 #53a900 #f9fc00 #ff5300 #ff5858 #ffffff}
+fit
+setLayerPreference node_overlay -isVisible 0
+setLayerPreference node_overlay -isVisible 1
+fit
+setLayerPreference node_overlay -isVisible 0
+zoomBox -82.96200 -71.67550 366.19400 330.41500
+setLayerPreference node_overlay -isVisible 1
+fit
+setLayerPreference node_overlay -isVisible 0
+setLayerPreference node_overlay -isVisible 1
+fit
+setLayerPreference node_overlay -isVisible 0
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference node_net -isVisible 0
+setLayerPreference net -isVisible 1
+zoomBox -58.00400 -37.43100 323.77850 304.34600
+zoomBox -104.89550 -65.06000 344.26050 337.03050
+zoomBox -58.00450 -37.43150 323.77850 304.34600
+setLayerPreference net -isVisible 0
+setLayerPreference node_net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+zoomBox -21.25900 -31.65300 303.25700 258.85800
+zoomBox 12.36800 -27.68600 288.20650 219.24850
+zoomBox 119.16550 -16.76850 241.55700 92.79800
+zoomBox 164.99400 -10.29500 219.30000 38.32050
+zoomBox 174.80000 -8.01400 214.03600 27.11050
+zoomBox 189.17250 -3.97000 206.58200 11.61500
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+zoomBox 182.34550 -11.68300 215.69700 18.17350
+zoomBox 179.49050 -14.62200 218.72750 20.50350
+zoomBox 176.13150 -18.07950 222.29250 23.24450
+zoomBox 170.92550 -22.18950 225.23250 26.42700
+zoomBox 165.04850 -27.11150 228.93950 30.08450
+pan -13.05950 -178.85300
+zoomBox 112.06450 -60.94000 256.06050 67.96700
+zoomBox 9.53450 -157.39800 334.06650 133.12750
+pan -3.77850 -106.47600
+setLayerPreference node_route -isVisible 0
+setLayerPreference node_route -isVisible 1
+zoomBox 45.88700 -68.04850 280.36100 141.85600
+zoomBox 78.50100 -45.65850 247.90900 105.99800
+pan 29.14750 -111.66800
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+zoomBox 81.42650 -47.09000 280.73050 131.32950
+zoomBox 50.66850 -63.51550 285.14400 146.39000
+pan 77.34950 -35.92450
+pan -19.41300 -60.49400
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+pan -62.79000 -167.26700
+pan -2.12350 -112.66700
+zoomBox 144.68500 -26.54600 233.11700 52.61950
+zoomBox 167.90800 -17.00550 222.21700 31.61250
+zoomBox 185.50050 -6.57050 209.59800 15.00200
+selectPhyPin 195.7000 0.0000 200.7000 5.0000 4 VDD1
+zoomBox 162.40050 -29.32650 226.29500 27.87250
+zoomBox 157.64500 -35.89050 232.81500 31.40250
+pan -9.04400 -172.91950
+zoomBox 138.68200 -20.74900 227.11750 58.41950
+zoomBox 127.19450 -27.20950 231.23600 65.93000
+zoomBox 78.90400 -55.17850 248.31900 96.48400
+zoomBox 30.88350 -83.04150 265.36800 126.87200
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+zoomBox -25.57700 -147.71950 356.24250 194.09050
+pan -72.60950 -51.01450
+zoomBox 91.37900 24.85950 235.38250 153.77350
+zoomBox 144.54700 53.53250 219.71800 120.82650
+zoomBox 153.21150 58.22950 217.10700 115.42950
+zoomBox 174.48700 70.31400 207.84100 100.17300
+zoomBox 184.20450 78.72600 199.00500 91.97550
+zoomBox 188.29800 82.69850 194.86550 88.57800
+zoomBox 187.03150 81.46850 196.12150 89.60600
+zoomBox 184.16450 78.68250 198.96650 91.93350
+zoomBox 182.65400 77.82100 200.06800 93.41000
+zoomBox 176.32700 74.21200 204.68200 99.59600
+zoomBox 173.43300 72.56150 206.79200 102.42500
+zoomBox 166.02350 68.33450 212.19550 109.66850
+zoomBox 142.01200 54.16800 230.46350 133.35100
+zoomBox 110.44850 35.54600 254.47750 164.48250
+zoomBox -62.91050 -66.73150 386.37100 335.47150
+zoomBox 26.79200 -13.35800 351.39800 277.23350
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgGround -isVisible 0
+setLayerPreference pgGround -isVisible 1
+setLayerPreference pgGround -isVisible 0
+setLayerPreference pgGround -isVisible 1
+setLayerPreference pgGround -isVisible 0
+setLayerPreference pgGround -isVisible 1
+setLayerPreference pgGround -isVisible 0
+setLayerPreference pgGround -isVisible 1
+setLayerPreference pgGround -isVisible 0
+setLayerPreference pgGround -isVisible 1
+setLayerPreference pgGround -isVisible 0
+setLayerPreference pgGround -isVisible 1
+setLayerPreference pgGround -isVisible 0
+setLayerPreference pgGround -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+deselectAll
+selectVia 261.0000 234.5100 273.0000 246.5100 6 VDD
+zoomBox 142.40900 106.47350 311.85550 258.16450
+zoomBox 212.76950 179.27350 287.95450 246.58000
+zoomBox 221.18750 187.98300 285.09500 245.19400
+zoomBox 239.94600 206.74100 279.19350 241.87600
+deselectAll
+selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+deselectAll
+selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+deselectAll
+selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+deselectAll
+selectVia 261.0000 234.5100 273.0000 246.5100 6 VDD
+zoomBox 226.56800 199.17450 280.89000 247.80450
+zoomBox 218.06050 194.36300 281.96900 251.57450
+zoomBox 208.05200 188.70200 283.23850 256.01000
+zoomBox 196.27700 182.04200 284.73200 261.22800
+deselectAll
+selectVia 261.0000 234.5100 273.0000 246.5100 6 VDD
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+deselectAll
+selectVia 257.0500 234.5100 259.3500 246.5100 6 VDD
+zoomBox 235.96200 216.61200 269.32400 246.47800
+zoomBox 244.93850 224.90100 265.42700 243.24250
+zoomBox 252.88550 232.22900 261.97650 240.36750
+zoomBox 255.12250 234.18350 260.70550 239.18150
+zoomBox 254.47750 233.64550 261.04600 239.52550
+zoomBox 253.71900 233.01250 261.44650 239.93050
+zoomBox 252.82600 232.26800 261.91750 240.40700
+zoomBox 250.52250 230.35900 263.10700 241.62500
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+zoomBox 236.86850 220.33000 270.23650 250.20150
+deselectAll
+selectWire 17.0000 234.5100 273.0000 246.5100 5 VDD
+zoomBox 213.59750 194.78550 288.80000 262.10800
+zoomBox 163.17150 164.52300 332.66050 316.25200
+pan -46.48350 -34.82650
+zoomBox 40.35400 28.56250 365.04250 319.22800
+zoomBox -34.56400 -45.10400 414.83200 357.20150
+zoomBox 0.57950 -14.05900 382.56600 327.90050
+pan -77.58300 -94.69300
+zoomBox -119.64650 -135.44850 329.74900 266.85650
+pan 28.48700 8.03400
+setLayerPreference io -isVisible 0
+setLayerPreference io -isVisible 1
+setLayerPreference io -isVisible 0
+setLayerPreference io -isVisible 1
+setLayerPreference node_layer -isVisible 0
+setLayerPreference io -isVisible 0
+setLayerPreference io -isVisible 1
+setLayerPreference io -isVisible 0
+setLayerPreference io -isVisible 1
+setLayerPreference areaIo -isVisible 0
+setLayerPreference areaIo -isVisible 1
+setLayerPreference node_layer -isVisible 1
+zoomBox 0.14400 -46.74250 276.12950 200.32350
+zoomBox 22.15500 -33.19300 256.74250 176.81300
+zoomBox 65.52950 -17.82300 235.02000 133.90700
+zoomBox 80.29700 -14.17250 224.36400 114.79800
+zoomBox 158.49950 12.86550 212.83500 61.50750
+zoomBox 187.38900 24.22450 207.88250 42.57050
+zoomBox 198.29150 29.45100 206.02100 36.37050
+zoomBox 202.26400 31.45900 205.17950 34.06900
+pan 0.27550 -169.21350
+pan 0.10200 -168.44800
+zoomBox 202.32000 33.88050 205.75000 36.95100
+zoomBox 201.97750 33.62600 206.01300 37.23850
+zoomBox 201.12300 32.97450 206.70850 37.97450
+zoomBox 200.57850 32.57250 207.14950 38.45500
+zoomBox 203.06700 34.29950 205.17450 36.18600
+zoomBox 203.59300 34.71350 204.69400 35.69900
+zoomBox 203.95300 34.99800 204.36900 35.37050
+zoomBox 203.98600 35.02400 204.33950 35.34050
+zoomBox 204.08300 35.10050 204.24050 35.24150
+zoomBox 204.13550 35.14150 204.18650 35.18700
+zoomBox 204.15050 35.15300 204.17000 35.17050
+zoomBox 204.11550 35.12600 204.20300 35.20450
+zoomBox 203.95500 35.00850 204.33700 35.35050
+zoomBox 203.26600 34.51000 204.91550 35.98650
+zoomBox 200.28450 32.38050 207.40800 38.75750
+zoomBox 193.87600 27.81450 212.76500 44.72400
+zoomBox 166.45750 8.44400 235.78000 70.50250
+zoomBox 71.78850 -50.94450 288.03150 142.63900
+pan 48.11600 -38.80950
+zoomBox 101.24400 21.27900 355.64750 249.02450
+pan -37.84800 -131.63550
+setLayerPreference node_overlay -isVisible 1
+fit
+setLayerPreference node_overlay -isVisible 0
+setLayerPreference node_overlay -isVisible 1
+fit
+pan 59.19350 -26.17400
+deselectAll
+pan -50.79700 -59.33950
+setLayerPreference node_track -isVisible 1
+pan 83.54250 -25.33500
+zoomBox 133.35350 43.06050 302.75300 194.70900
+zoomBox 200.81750 97.12650 255.12400 145.74250
+zoomBox 218.99050 106.55550 243.08650 128.12650
+zoomBox 226.85900 110.90300 237.55100 120.47450
+zoomBox 219.37850 106.26950 243.47750 127.84300
+zoomBox 228.13500 113.39500 237.22400 121.53150
+zoomBox 231.30550 116.08300 234.73450 119.15250
+zoomBox 226.21150 111.86550 238.79750 123.13250
+zoomBox 197.06050 88.97700 260.99200 146.20950
+zoomBox 70.29650 -0.47050 346.32300 246.63200
+setLayerPreference node_power -isVisible 0
+setLayerPreference node_power -isVisible 1
+setLayerPreference allLayers -isVisible 0
+setLayerPreference allLayers -isVisible 1
+setLayerPreference allLayers -isVisible 0
+setLayerPreference allLayers -isVisible 1
+setLayerPreference allLayers -isSelectable 0
+setLayerPreference allLayers -isSelectable 1
+setLayerPreference allLayers -isSelectable 0
+setLayerPreference allLayers -isSelectable 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+setLayerPreference pgPower -isVisible 0
+setLayerPreference pgPower -isVisible 1
+zoomBox 160.14500 21.75300 248.63350 100.96900
+zoomBox 179.95450 26.46900 226.14650 67.82050
+zoomBox 187.88700 30.91900 216.25450 56.31400
+selectWire 195.7000 0.0000 200.7000 105.0200 4 VDD1
+zoomBox 165.30000 10.58150 240.51650 77.91650
+zoomBox 118.20900 -31.26300 287.72900 120.49350
+pan -157.02000 -100.12900
+zoomBox -83.47100 1.28400 345.58600 221.61750
+zoomBox -135.73900 -19.29550 369.03400 239.92050
+zoomBox -271.78950 -79.68500 426.85850 279.09150
+zoomBox -198.31150 -46.85300 395.53900 258.10700
+pan -14.28400 183.59700
+zoomBox -70.44350 9.83650 358.61350 230.17000
+zoomBox -16.06950 21.25300 348.62900 208.53650
+zoomBox 26.56250 33.29250 336.55650 192.48350
+zoomBox 61.03850 44.36500 324.53350 179.67750
+zoomBox 89.24950 54.27550 313.22050 169.29150
+zoomBox 113.22850 62.72000 303.60450 160.48350
+zoomBox 190.46800 90.03950 274.93900 133.41800
+zoomBox 207.63450 96.10700 268.66550 127.44800
+pan 23.45100 -112.33450
+deselectAll
+selectVia 275.0000 116.0800 287.0000 118.3800 6 VSS
+zoomBox 265.09800 106.77450 288.11600 118.59500
+zoomBox 275.09700 109.95150 285.31150 115.19700
+zoomBox 278.49650 111.11000 283.83000 113.84900
+zoomBox 273.34750 109.32950 287.48900 116.59150
+zoomBox 263.16950 105.29900 295.04350 121.66700
+pan -11.07850 -157.88950
+pan -1.36100 -147.40500
+zoomBox 261.18650 109.32850 273.20900 115.50250
+zoomBox 258.82550 108.24250 275.46650 116.78800
+zoomBox 257.32650 107.54850 276.90400 117.60200
+zoomBox 262.17150 109.74600 272.39150 114.99450
+zoomBox 264.60800 110.84050 269.94350 113.58050
+zoomBox 266.29050 111.58600 268.30400 112.62000
+zoomBox 266.86200 111.83950 267.75700 112.29900
+zoomBox 265.63800 111.29700 268.92700 112.98600
+zoomBox 264.08900 110.60450 270.39100 113.84100
+zoomBox 263.51650 110.34850 270.93150 114.15650
+zoomBox 262.05100 109.70400 272.31550 114.97500
+zoomBox 261.11950 109.29400 273.19550 115.49550
+zoomBox 258.73750 108.26800 275.45150 116.85100
+pan -3.92000 -149.92700
+deselectAll
+setLayerPreference substrateNoise -isVisible 0
+setLayerPreference substrateNoise -isVisible 1
+selectWire 260.0000 113.7500 287.0000 113.8700 1 VSS
+pan 2.85450 -145.39400
+pan -0.70400 -148.24850
+zoomBox 260.22400 111.20550 268.95000 115.68650
+zoomBox 259.25950 110.45950 271.33750 116.66200
+pan -2.89050 -149.09800
+deselectAll
+selectWire 260.0000 112.0400 273.0000 112.1600 1 VDD
+deselectAll
+selectWire 257.0500 17.0200 259.3500 246.5100 6 VDD
+zoomBox 250.10750 105.52300 282.13300 121.96900
+pan -7.02900 -152.65350
+setLayerPreference net -isVisible 0
+zoomBox 206.54050 84.62000 306.44200 135.92250
+zoomBox 174.04700 78.50100 336.72050 162.03850
+pan -22.89000 -151.98750
+pan -12.71650 -176.14850
+pan -19.56400 -166.07350
+setLayerPreference net -isVisible 1
+zoomBox 143.05000 -21.60150 260.58150 38.75450
+zoomBox 152.14600 -19.02550 252.04750 32.27700
+zoomBox 170.96450 -12.70250 232.31650 18.80350
+zoomBox 175.32450 -11.03150 227.47450 15.74900
+zoomBox 187.05200 -5.99550 214.27550 7.98450
+zoomBox 182.54950 -8.65200 220.22900 10.69750
+zoomBox 179.66600 -10.35150 223.99550 12.41300
+zoomBox 171.89900 -14.69300 233.25500 16.81500
+setLayerPreference net -isVisible 0
+setLayerPreference net -isVisible 1
+setLayerPreference Metal4 -isVisible 0
+setLayerPreference Metal4 -isVisible 1
+setLayerPreference Metal10 -isVisible 0
+setLayerPreference Metal10 -isVisible 1
+setLayerPreference Metal10 -isVisible 0
+setLayerPreference Metal10 -isVisible 1
+zoomBox 187.27350 -4.88300 214.49900 9.09800
+deselectAll
+selectPhyPin 195.7000 0.0000 200.7000 5.0000 4 VDD1
+zoomBox 171.16000 -14.34550 232.52100 17.16500
+zoomBox 144.70050 -26.27550 244.61700 25.03450
+deselectAll
+pan -4.26600 -162.20400
+setLayerPreference Poly -isVisible 0
+setLayerPreference Poly -isVisible 1
+zoomBox 102.50450 -42.05050 265.20200 41.49950
+pan -4.79350 -89.86600
+zoomBox -63.43350 -58.99700 367.95450 162.53350
+pan -12.71100 65.65600
+zoomBox -121.51000 -14.02850 386.00600 246.59600
+pan -2.13650 132.20100
+zoomBox -175.18600 -8.64300 421.89150 297.97400
+pan -17.59250 139.97400
+setLayerPreference Poly -isVisible 0
+setLayerPreference Poly -isVisible 1
+setLayerPreference Poly -isVisible 0
+setLayerPreference Poly -isVisible 1
+setLayerPreference Cont -isVisible 0
+setLayerPreference Cont -isVisible 1
+setLayerPreference Metal1 -isVisible 0
+setLayerPreference Metal1 -isVisible 1
+setLayerPreference Metal1 -isVisible 0
+setLayerPreference Metal1 -isVisible 1
+zoomBox 125.37700 144.09800 316.78700 242.39250
+zoomBox 206.56600 190.71100 291.49600 234.32500
+setLayerPreference Metal1 -isVisible 0
+setLayerPreference Metal1 -isVisible 1
+setLayerPreference Metal1 -isVisible 0
+setLayerPreference Metal1 -isVisible 1
+setLayerPreference Metal1 -isVisible 0
+setLayerPreference Metal1 -isVisible 1
+zoomBox 163.30150 165.79800 326.00100 249.34900
+zoomBox 147.57300 156.18100 338.98450 254.47650
+zoomBox 92.52000 120.29700 404.20250 280.35500
+pan -65.03550 17.28100
+zoomBox -8.26900 92.13900 358.41650 280.44300
+zoomBox -50.33200 71.36050 381.06300 292.89450
+zoomBox -99.81800 46.91500 407.70550 307.54350
+pan -7.01900 123.23350
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+zoomBox -160.58550 -4.05100 436.50100 302.57050
+zoomBox -225.27650 -35.85800 477.17850 324.87350
+zoomBox -305.33400 -72.97950 521.08350 351.41050
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+zoomBox 102.80300 124.58300 367.73500 260.63350
+zoomBox 187.52700 171.11000 325.82300 242.12900
+zoomBox 210.88250 185.68200 310.80200 236.99350
+zoomBox 238.75900 204.96500 290.91800 231.75000
+zoomBox 247.12300 210.77850 284.80800 230.13100
+zoomBox 238.38350 204.99900 290.54400 231.78500
+pan 0.47050 -26.70350
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+zoomBox 223.81850 205.76450 296.01400 242.83900
+zoomBox 203.00900 197.56100 302.93400 248.87550
+zoomBox 174.20700 186.13550 312.51150 257.15900
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+zoomBox 188.36600 191.88650 305.92500 252.25650
+zoomBox 200.40100 196.77500 300.32650 248.08950
+zoomBox 210.63100 200.93000 295.56750 244.54750
+zoomBox 219.31050 204.46950 291.50700 241.54450
+zoomBox 226.68150 207.47800 288.04900 238.99200
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+zoomBox 200.27200 195.19250 300.19900 246.50800
+zoomBox 137.28050 165.01850 328.71150 263.32400
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+zoomBox 174.26800 178.64600 312.57750 249.67200
+zoomBox 188.41500 183.93550 305.97800 244.30750
+zoomBox 200.31250 188.45250 300.24150 239.76900
+zoomBox 210.26350 192.35550 295.20300 235.97450
+zoomBox 232.07800 200.79800 284.24350 227.58650
+setLayerPreference Metal2 -isVisible 1
+zoomBox 250.29150 208.16000 273.43800 220.04650
+zoomBox 252.50600 209.09300 272.18150 219.19700
+zoomBox 254.38850 209.89350 271.11300 218.48200
+zoomBox 261.02200 212.81450 267.33050 216.05400
+zoomBox 262.88400 213.67750 266.17700 215.36850
+zoomBox 263.17200 213.82700 265.97150 215.26450
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal1 -isVisible 0
+selectVia 263.4000 214.6400 270.6000 214.7600 6 VDD
+setLayerPreference Via5 -isVisible 0
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+deselectAll
+selectVia 263.4000 214.6400 270.6000 214.7600 5 VDD
+setLayerPreference Via1 -isVisible 0
+setLayerPreference Via1 -isVisible 1
+setLayerPreference Via1 -isVisible 0
+setLayerPreference Via1 -isVisible 1
+setLayerPreference Via4 -isVisible 0
+setLayerPreference Via4 -isVisible 1
+setLayerPreference Via4 -isVisible 0
+setLayerPreference Via3 -isVisible 0
+setLayerPreference Via2 -isVisible 0
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Via1 -isVisible 0
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Via1 -isVisible 1
+setLayerPreference Via1 -isVisible 0
+setLayerPreference Via1 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+deselectAll
+selectVia 263.4000 214.6400 270.6000 214.7600 2 VDD
+deselectAll
+selectVia 263.4000 214.6400 270.6000 214.7600 2 VDD
+deselectAll
+selectVia 263.4000 214.6400 270.6000 214.7600 2 VDD
+setLayerPreference Via1 -isVisible 0
+deselectAll
+selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+setLayerPreference Metal2 -isVisible 0
+setLayerPreference Metal2 -isVisible 1
+setLayerPreference Via1 -isVisible 1
+setLayerPreference Metal1 -isVisible 1
+setLayerPreference Metal1 -isVisible 0
+setLayerPreference Via2 -isVisible 1
+setLayerPreference Via2 -isVisible 0
+setLayerPreference Metal3 -isVisible 0
+setLayerPreference Metal3 -isVisible 1
+setLayerPreference Via2 -isVisible 1
+setLayerPreference Via2 -isVisible 0
+zoomBox 259.59600 212.44200 267.02000 216.25450
+zoomBox 258.58250 212.04950 267.31700 216.53500
+zoomBox 252.48800 209.67300 269.22200 218.26650
+zoomBox 243.23100 206.82750 270.48050 220.82100
+zoomBox 234.01650 203.99500 271.73300 223.36350
+setLayerPreference Via2 -isVisible 1
+setLayerPreference Via2 -isVisible 0
+setLayerPreference Via2 -isVisible 1
+setLayerPreference Via2 -isVisible 0
+setLayerPreference Via2 -isVisible 1
+setLayerPreference M2ContPin -isVisible 1
+setLayerPreference M2ContRB -isVisible 1
+setLayerPreference M2ContVio -isVisible 1
+setLayerPreference M2ContEOL -isVisible 1
+zoomBox 254.73300 210.48650 268.95800 217.79150
+zoomBox 260.77200 212.42450 268.19750 216.23750
+zoomBox 263.22200 213.26300 267.78250 215.60500
+setLayerPreference Via2 -isVisible 0
+setLayerPreference Via2 -isVisible 1
+setLayerPreference Metal3 -isVisible 0
+setLayerPreference Metal3 -isVisible 1
+setLayerPreference Via2 -isVisible 0
+deselectAll
+selectVia 263.4000 214.6400 270.6000 214.7600 2 VDD
+deselectAll
+selectWire 261.0000 17.0200 273.0000 246.5100 6 VDD
+setLayerPreference Via2 -isVisible 1
+deselectAll
+selectVia 263.4000 214.6400 270.6000 214.7600 3 VDD
+deselectAll
+selectVia 263.4000 214.6400 270.6000 214.7600 3 VDD
+zoomBox 262.47400 213.05750 267.83900 215.81250
+zoomBox 261.60900 212.81400 267.92100 216.05550
+zoomBox 260.59800 212.52650 268.02400 216.34000
+zoomBox 259.41300 212.18700 268.14950 216.67350
+zoomBox 256.38850 211.31300 268.48050 217.52250
+zoomBox 249.50800 209.13800 269.19800 219.24950
+pan 2.94800 -39.89650
+setLayerPreference Metal1 -isVisible 1
+pan 7.96850 -44.07600
+setLayerPreference Via3 -isVisible 1
+setLayerPreference Via4 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal4 -isVisible 0
+setLayerPreference Metal4 -isVisible 1
+setLayerPreference Metal4 -isVisible 0
+setLayerPreference Metal4 -isVisible 1
+setLayerPreference Via5 -isVisible 1
+setLayerPreference Metal6 -isVisible 0
+setLayerPreference Metal6 -isVisible 1
+setLayerPreference Metal6 -isVisible 0
+zoomBox 257.30700 207.68850 280.47200 219.58450
+zoomBox 249.32450 205.91750 281.38700 222.38250
+zoomBox 244.23800 204.79150 281.95850 224.16200
+setLayerPreference Metal6 -isVisible 1
+setLayerPreference Metal6 -isVisible 0
+setLayerPreference Metal6 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+zoomBox 241.34800 202.16150 285.72500 224.95050
+zoomBox 237.83000 199.19000 290.03850 226.00050
+pan -5.46250 -33.93100
+deselectAll
+selectWire 3.0000 218.6800 287.0000 220.9800 5 VSS
+setLayerPreference Via4 -isVisible 0
+setLayerPreference Via4 -isVisible 1
+setLayerPreference Via4 -isVisible 0
+setLayerPreference Via4 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal4 -isVisible 0
+setLayerPreference Metal4 -isVisible 1
+setLayerPreference Metal4 -isVisible 0
+setLayerPreference Metal4 -isVisible 1
+setLayerPreference Via4 -isVisible 0
+setLayerPreference Via4 -isVisible 1
+setLayerPreference Via4 -isVisible 0
+setLayerPreference Via4 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+zoomBox 239.95550 205.55350 277.67650 224.92450
+zoomBox 242.91850 206.20000 274.98200 222.66550
+zoomBox 239.85300 205.46850 277.57450 224.83950
+zoomBox 232.00350 203.59550 284.21300 230.40650
+pan -2.44900 -29.03550
+pan -0.09400 -25.89600
+pan 0.59650 -27.21500
+zoomBox 237.99850 206.11350 275.72000 225.48450
+zoomBox 241.09800 207.62400 273.16150 224.08950
+zoomBox 243.74400 208.96900 270.99800 222.96450
+zoomBox 241.28600 207.28000 273.34950 223.74550
+zoomBox 238.39400 205.29300 276.11550 224.66400
+zoomBox 234.99150 202.95550 279.37000 225.74500
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+deselectAll
+selectWire 3.0000 218.6800 287.0000 220.9800 5 VSS
+setLayerPreference Metal5 -isVisible 0
+setLayerPreference Metal5 -isVisible 1
+setLayerPreference Metal6 -isVisible 0
+setLayerPreference Metal6 -isVisible 1
+deselectAll
+setLayerPreference Metal6 -isVisible 0
+setLayerPreference Metal6 -isVisible 1
+setLayerPreference Metal6 -isVisible 0
+setLayerPreference Metal6 -isVisible 1
+setLayerPreference Metal6 -isVisible 0
+setLayerPreference Metal6 -isVisible 1
+setLayerPreference Metal7 -isVisible 0
+setLayerPreference Metal7 -isVisible 1
+zoomBox 127.28900 171.31100 318.89500 269.70650
+zoomBox -169.64500 84.13500 428.04750 391.06800
+zoomBox -48.36800 119.74050 383.46600 341.50000
+setLayerPreference Metal7 -isVisible 0
+setLayerPreference Metal7 -isVisible 1
+pan -28.56400 58.52700
+setLayerPreference Via6 -isVisible 0
+setLayerPreference Via6 -isVisible 1
+zoomBox -131.69250 -3.86350 376.34800 257.03050
+zoomBox -196.27850 -20.36050 401.41700 286.57400
+setLayerPreference Metal7 -isVisible 0
+setLayerPreference Metal7 -isVisible 1
+setLayerPreference Metal7 -isVisible 0
+setLayerPreference Metal7 -isVisible 1
+setLayerPreference Via6 -isVisible 0
+setLayerPreference Via6 -isVisible 1
+setLayerPreference Via6 -isVisible 0
+setLayerPreference Via6 -isVisible 1
+setLayerPreference Metal6 -isVisible 0
+setLayerPreference Metal6 -isVisible 1
+setLayerPreference Metal6 -isVisible 0
+setLayerPreference Metal6 -isVisible 1
+setLayerPreference Metal7 -isVisible 0
+setLayerPreference Metal7 -isVisible 1
+setLayerPreference Via7 -isVisible 0
+setLayerPreference Via7 -isVisible 1
+setLayerPreference Metal8 -isVisible 0
+setLayerPreference Metal8 -isVisible 1
+setLayerPreference Via8 -isVisible 0
+setLayerPreference Via8 -isVisible 1
+setLayerPreference Metal9 -isVisible 0
+setLayerPreference Metal9 -isVisible 1
+setLayerPreference Via9 -isVisible 0
+setLayerPreference Via9 -isVisible 1
+setLayerPreference Metal10 -isVisible 0
+setLayerPreference Via10 -isVisible 0
+setLayerPreference Metal11 -isVisible 0
+setLayerPreference Bondpad -isVisible 0
+setLayerPreference node_bump -isVisible 0
+zoomBox 52.71800 76.32650 278.14000 192.08750
+zoomBox 142.50400 111.55050 242.52550 162.91450
+zoomBox 169.40900 122.15200 230.83500 153.69600
+zoomBox 175.77500 124.68400 227.98700 151.49650
+zoomBox 191.05200 131.57250 218.30750 145.56900
+selectWire 30.0000 139.4000 260.0000 139.5200 1 VDD
+zoomBox 199.14400 135.58300 213.37250 142.89000
+zoomBox 192.45950 131.93950 219.71900 145.93800
+deselectAll
+selectWire 30.0000 141.1100 260.0000 141.2300 1 VSS
+zoomBox 199.43300 136.32650 213.66300 143.63400
+zoomBox 200.59450 137.04900 212.69000 143.26050
+setLayerPreference Metal1 -isVisible 0
+setLayerPreference Metal1 -isVisible 1
+setLayerPreference Metal1 -isVisible 0
+setLayerPreference Metal1 -isVisible 1
+zoomBox 202.42100 138.05900 211.16050 142.54700
+pan -0.25200 -62.75350
+pan -0.05250 -60.51500
+deselectAll
+selectWire 30.0000 144.5300 260.0000 144.6500 1 VSS
+zoomBox 204.92350 143.48350 208.22050 145.17650
+zoomBox 205.86700 144.09950 207.33050 144.85100
+zoomBox 206.24950 144.36600 206.90100 144.70050
+zoomBox 206.39950 144.46900 206.73950 144.64350
+deselectAll
+selectWire 30.0000 144.5300 260.0000 144.6500 1 VSS
+zoomBox 206.23100 144.36850 206.88250 144.70300
+zoomBox 206.16850 144.33200 206.93500 144.72550
+pan 0.01800 -62.07800
+zoomBox 206.00950 144.00300 207.07100 144.54800
+zoomBox 205.89700 143.95300 207.14550 144.59400
+zoomBox 205.76500 143.91750 207.23400 144.67200
+pan 0.04300 -62.37300
+zoomBox 205.46700 143.29050 207.50100 144.33500
+zoomBox 204.99050 143.20600 207.80600 144.65200
+pan 0.08950 -62.51050
+zoomBox 205.97650 142.70400 207.04000 143.25000
+zoomBox 206.17850 142.75400 206.83200 143.08950
+zoomBox 206.36050 142.81700 206.65050 142.96600
+deselectAll
+selectWire 30.0000 142.8200 260.0000 142.9400 1 VDD
+zoomBox 205.54400 142.47000 207.02400 143.23000
+zoomBox 204.90150 142.20350 207.31300 143.44200
+zoomBox 203.86450 141.76150 207.79100 143.77800
+pan 0.06600 -61.28100
+zoomBox 201.58200 141.76500 209.10750 145.62950
+zoomBox 203.55000 142.78300 207.47950 144.80100
+zoomBox 204.45800 143.14250 206.87250 144.38250
+zoomBox 205.06950 143.41150 206.33050 144.05900
+zoomBox 205.45700 143.58150 206.01700 143.86900
+zoomBox 205.50200 143.60200 205.97800 143.84650
+zoomBox 205.58900 143.64600 205.88200 143.79650
+pan -0.06250 -61.96500
+deselectAll
+zoomBox 205.03800 143.41600 206.11900 143.97100
+zoomBox 204.05750 143.22750 206.49650 144.48000
+zoomBox 202.43150 142.90900 207.10400 145.30850
+pan 0.32550 -60.10950
+zoomBox 202.15650 142.10000 207.65350 144.92300
+zoomBox 201.44950 141.83850 207.91750 145.16000
+zoomBox 200.60050 141.57500 208.21000 145.48250
+pan 0.41650 -59.52400
+zoomBox 196.94200 138.98500 211.52100 146.47200
+zoomBox 195.14650 138.28100 212.29950 147.08950
+zoomBox 202.17250 140.47050 209.78350 144.37900
+zoomBox 202.96900 140.72500 209.43900 144.04750
+pan 0.03900 -63.21650
+selectWire 203.0500 3.0200 205.3500 260.5100 6 VSS
+zoomBox 198.77650 137.55850 211.17100 143.92350
+panCenter 207.34750 142.38800
+zoomBox 195.77100 136.19150 215.95500 146.55650
+zoomBox 186.25250 131.57700 219.12050 148.45550
+zoomBox 175.75900 128.65850 221.25050 152.01950
+zoomBox 196.36700 134.95500 216.55300 145.32100
+zoomBox 200.98150 136.42700 215.56600 143.91650
+zoomBox 202.91550 137.10050 215.31200 143.46650
+pan 4.47250 -65.57650
+zoomBox 187.35250 129.96000 226.02500 149.81950
+zoomBox 175.55200 125.81900 229.07750 153.30600
+pan 22.49800 -48.18800
+zoomBox 145.06850 96.72200 312.03850 182.46600
+zoomBox -38.72900 6.87800 482.11500 274.34700
+zoomBox 133.80950 79.48950 330.24650 180.36550
+zoomBox 189.01000 107.90200 276.17150 152.66200
+zoomBox 212.19750 120.47200 250.87150 140.33250
+zoomBox 222.97250 126.29300 240.13400 135.10600
+zoomBox 227.71300 128.87550 235.32900 132.78650
+pan -0.36600 -98.55350
+zoomBox 225.47800 128.22850 236.01950 133.64200
+zoomBox 222.95400 127.02800 237.54500 134.52100
+zoomBox 221.35100 126.26450 238.51750 135.08000
+zoomBox 224.25400 127.62250 236.65750 133.99200
+zoomBox 225.38250 128.14700 235.92600 133.56150
+pan -0.65300 -98.94100
+zoomBox 223.45600 124.78050 238.04950 132.27450
+zoomBox 221.96000 123.95000 239.12900 132.76700
+setLayerPreference node_layer -isVisible 1
+setLayerPreference node_layer -isVisible 0
+setLayerPreference Metal1 -isVisible 1
+setLayerPreference node_net -isVisible 0
+setLayerPreference node_net -isVisible 1
+setLayerPreference node_gird -isVisible 1
+setLayerPreference node_gird -isVisible 0
+setLayerPreference node_row -isVisible 0
+setLayerPreference node_track -isVisible 0
+zoomBox 209.80650 120.91700 242.69850 137.80800
+zoomBox 193.95750 117.12800 247.51750 144.63250
+deselectAll
+zoomBox 179.87350 114.72250 254.00500 152.79100
+zoomBox 147.88700 108.78450 268.59750 170.77300
+zoomBox 71.84950 93.09800 303.09300 211.84850
+zoomBox 143.13350 110.99050 285.14600 183.91800
+zoomBox 174.05800 119.63950 276.66250 172.33000
+zoomBox 92.45600 102.58050 289.01450 203.51900
+zoomBox -1.62100 77.92400 318.44300 242.28650
+zoomBox 77.76950 108.07600 274.32900 209.01500
+setLayerPreference node_layer -isVisible 1
+zoomBox 152.62750 135.75900 255.23350 188.45000
+zoomBox 184.38700 147.59100 247.40100 179.95050
+zoomBox 203.92150 154.87250 242.61950 174.74500
+zoomBox 215.90850 159.34400 239.67450 171.54850
+zoomBox 222.99350 162.30350 237.58950 169.79900
+zoomBox 216.00500 159.42400 239.77400 171.63000
+zoomBox 199.42300 152.61350 244.95700 175.99650
+zoomBox 186.27500 146.50450 249.29800 178.86850
+zoomBox 168.16200 138.38200 255.39150 183.17700
+zoomBox 191.62950 147.63150 245.19950 175.14150
+zoomBox 168.43300 138.58400 255.66400 183.37950
+zoomBox 191.66050 147.48900 245.23200 174.99950
+zoomBox 209.32600 154.32850 237.29150 168.68950
+zoomBox 195.18900 147.85000 248.76200 175.36150
+zoomBox 168.16200 135.14000 270.79200 187.84350
+zoomBox 112.55450 112.59150 309.16350 213.55600
+zoomBox 90.35550 105.18500 321.66050 223.96700
+zoomBox 172.59550 129.05250 293.33850 191.05750
+zoomBox 198.76950 136.37700 286.00600 181.17550
+zoomBox 147.21000 122.68050 289.25950 195.62700
+zoomBox 25.66200 93.66200 297.78550 233.40550
+zoomBox 96.36250 111.41650 292.97250 212.38150
+zoomBox 150.81050 124.01450 292.86150 196.96200
+zoomBox 216.92600 140.42750 291.07850 178.50700
+zoomBox 244.78200 147.34400 290.32200 170.73000
+zoomBox 251.43200 148.99100 290.14150 168.86950
+zoomBox 216.99200 141.29700 291.14750 179.37800
+zoomBox 228.07500 143.99250 291.10750 176.36150
+zoomBox 258.02600 151.29650 290.93050 168.19400
+zoomBox 276.12400 155.85800 290.72400 163.35550
+zoomBox 281.64050 157.22750 290.60700 161.83200
+zoomBox 286.27350 158.38400 290.25300 160.42750
+zoomBox 281.84500 157.02450 290.81600 161.63150
+zoomBox 285.60400 158.48900 290.28750 160.89400
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+zoomBox 284.01800 150.03250 290.50000 153.36100
+zoomBox 280.42700 148.85500 290.98250 154.27550
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+zoomBox 276.24400 140.85400 296.46700 151.23900
+panPage -1 0
+zoomBox 258.72550 136.30350 297.46800 156.19900
+panPage -1 0
+zoomBox 233.92450 132.51000 287.54750 160.04700
+panPage -1 0
+panPage -1 0
+zoomBox 179.93550 119.96350 282.66100 172.71600
+zoomBox 133.28350 98.67250 330.07400 199.73050
+zoomBox 79.57800 69.45150 400.02000 234.00800
+panPage -1 0
+panPage -1 0
+zoomBox -37.83800 95.91650 158.95400 196.97500
+zoomBox 19.04350 115.89400 121.77050 168.64750
+zoomBox 48.27400 127.38500 101.89900 154.92300
+zoomBox 27.37400 118.61200 114.69250 163.45250
+zoomBox 57.40050 131.40500 96.14500 151.30150
+zoomBox 35.68900 123.14100 123.01200 167.98400
+zoomBox -12.14450 100.64800 155.14000 186.55350
+zoomBox -77.18300 70.87800 195.21200 210.76100

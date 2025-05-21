@@ -1,0 +1,67 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Wed Apr 24 16:51:09 2024                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v21.17-s075_1 (64bit) 03/15/2023 11:17 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: NanoRoute 21.17-s075_1 NR230308-2354/21_17-UB (database version 18.20.604) {superthreading v2.17}
+#@(#)CDS: AAE 21.17-s026 (64bit) 03/15/2023 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: CTE 21.17-s025_1 () Mar 14 2023 11:00:06 ( )
+#@(#)CDS: SYNTECH 21.17-s007_1 () Feb 20 2023 06:56:35 ( )
+#@(#)CDS: CPE v21.17-s068
+#@(#)CDS: IQuantus/TQuantus 21.1.1-s939 (64bit) Wed Nov 9 09:34:24 PST 2022 (Linux 3.10.0-693.el7.x86_64)
+
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+suppressMessage ENCLF 200
+suppressMessage ENCESI 3010
+suppressMessage IMPESI 2013 2014 3086 3140
+suppressMessage IMPCCOPT 2187 2311
+setDesignMode -process 45
+setAnalysisMode -analysisType onChipVariation -cppr both -checkType setup
+is_common_ui_mode
+restoreDesign /users/micas/wjiang/WeijiePhd/Teaching/ALU_flow/DesignDataIn/dbs/route.enc.dat sparc_exu_alu
+set_analysis_view -setup { AV_0100_wc_rc125_setup} -hold {AV_0100_bc_rc0_hold}
+set_timing_derate -early 0.925 -late 1.0 -delay_corner AV_0100_wc_rc125_setup_dc
+set_timing_derate -early 1.0 -late 1.12 -delay_corner AV_0100_bc_rc0_hold_dc
+all_constraint_modes -active 
+set_interactive_constraint_modes [ all_constraint_modes -active ]
+set_propagated_clock [ all_clocks ]
+setAnalysisMode -analysisType onChipVariation -cppr both -checkType setup
+createBasicPathGroups
+setDelayCalMode -reset
+setDelayCalMode -engine Aae -SIAware true
+setDelayCalMode -equivalent_waveform_model_type ecsm -equivalent_waveform_model_propagation true
+setSIMode -reset
+setSIMode -analysisType aae
+setSIMode -detailedReports false
+setSIMode -separate_delta_delay_on_data true
+setSIMode -delta_delay_annotation_mode lumpedOnNet
+setSIMode -num_si_iteration 3
+setSIMode -enable_glitch_report true
+setNanoRouteMode -quiet -routeInsertAntennaDiode true
+setNanoRouteMode -quiet -routeAntennaCellName ANTENNA
+setNanoRouteMode -quiet -routeWithTimingDriven true
+setNanoRouteMode -quiet -routeWithSiDriven true
+setFillerMode -doDRC false -corePrefix FILL -core {FILL64 FILL32 FILL16 FILL8 FILL4 FILL2 FILL1}
+deleteFiller
+set_dont_use [get_lib_cells *LVT] false
+set_dont_use   [get_lib_cells */DLY*] false
+set_dont_touch [get_lib_cells */DLY*] false
+optDesign -postRoute -setup -hold -outDir timingReports/optRoute -prefix optRouteSetupHold -expandedViews
+setOptMode -holdTargetSlack 0.075
+setOptMode -fixHoldAllowSetupTnsDegrade false
+optDesign -postRoute -hold -outDir timingReports/optRoute -prefix optRouteHoldIncr -expandedViews
+addFiller
+timeDesign -postRoute -outDir timingReports/optRoute -prefix optRouteSetupFinal -expandedViews
+timeDesign -postRoute -hold -outDir timingReports/optRoute -prefix optRouteHoldFinal -expandedViews
+defOut -floorplan -placement -netlist -routing ../DesignDataOut/optRoute.def.gz
+saveNetlist ../DesignDataOut/optRoute.v -excludeLeafCell
+saveNetlist ../DesignDataOut/optRoute.phys.v -excludeLeafCell -phys
+all_constraint_modes 
+get_constraint_mode  $mode -sdc_files 
+update_constraint_mode -name 0100_mode -sdc "/users/micas/wjiang/WeijiePhd/Teaching/ALU_flow/DesignDataIn/dbs/route.enc.dat/mmmc/modes/0100_mode/0100_mode.sdc"
+saveDesign ../DesignDataOut/optRoute.enc
+saveDesign ../DesignDataIn/dbs/optRoute.enc

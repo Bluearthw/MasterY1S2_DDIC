@@ -1,0 +1,232 @@
+
+#CPF power intent data
+set ::CPF::AOBufUseCpfPGSpec {0}
+set ::CPF::addDownShifterToTable {0}
+set ::CPF::addIsoToTable {0}
+set ::CPF::addUpShifterToTable {0}
+set ::CPF::alias_commands {source define_library_set define_ecsm_libraries create_analysis_view create_bias_net create_delay_corner create_nominal_condition update_nominal_condition create_operating_condition create_operating_corner create_mode_transition create_power_mode update_power_mode create_power_domain update_power_domain define_always_on_cell define_open_source_input_pin define_power_clamp_cell define_isolation_cell define_level_shifter_cell define_power_switch_cell define_state_retention_cell create_isolation_logic create_level_shifter_logic create_power_switch_logic create_state_retention_logic create_isolation_rule update_isolation_rules create_level_shifter_rule update_level_shifter_rules create_power_switch_rule update_power_switch_rule create_state_retention_rule update_state_retention_rules create_ground_nets create_power_nets create_global_connection create_power_ground_connection identify_always_on_driver identify_power_logic set_cpf_version set_design end_design set_top_design set_macro_model set_floating_ports set_input_voltage_tolerance set_wire_feedthrough_ports end_macro_model set_instance set_scope set_hierarchy_separator set_array_naming_style set_register_naming_style set_power_target set_power_unit set_time_unit set_switching_activity update_delay_corner create_assertion_control set_sim_control assert_illegal_domain_configurations set_power_mode_control_group end_power_mode_control_group get_parameter include identify_secondary_domain set_equivalent_control_pins update_mode_transition define_related_power_pins set_analog_ports set_power_source_reference_pin define_global_cell create_mode create_pad_rule set_diode_ports set_pad_ports define_pad_cell define_power_clamp_pins update_design find_design_objects}
+set ::CPF::allSNetVoltageSet {1}
+array set ::CPF::always_driver {}
+set ::CPF::always_on_libcells ""
+set ::CPF::analog_ports ""
+array set ::CPF::analysis_view {AV_0100_wc_rc125_setup,-domain_corners TOP@wc_rc125 AV_0100_wc_rc125_hold,default_op wc_rc125 AV_0100_bc_rc0_hold,-domain_corners TOP@bc_rc0 AV_0100_wc_rc125_setup,default_op wc_rc125 AV_0100_wc_rc125_hold,-name AV_0100_wc_rc125_hold AV_0100_wc_rc125_setup,-name AV_0100_wc_rc125_setup AV_0100_bc_rc0_hold,-name AV_0100_bc_rc0_hold AV_0100_bc_rc0_hold,delay_corner AV_0100_bc_rc0_hold_dc AV_0100_wc_rc125_hold,-mode 0100_mode AV_0100_wc_rc125_setup,-mode 0100_mode AV_0100_bc_rc0_hold,-mode 0100_mode AV_0100_bc_rc0_hold,default_op bc_rc0 AV_0100_wc_rc125_hold,delay_corner AV_0100_wc_rc125_hold_dc AV_0100_wc_rc125_hold,-domain_corners TOP@wc_rc125 AV_0100_wc_rc125_setup,delay_corner AV_0100_wc_rc125_setup_dc}
+array set ::CPF::aoNets {clkSpec,cellAoPins {} aoDrv {} clkSpec,aoDrv {} swEnPtrs {} clkSpec,srpgEn {} cellAoPins {} swEnVio {} clkSpec,swEnVio {} pdBufList {} isoEn {} srpgEn {} clkSpec,isoEn {}}
+set ::CPF::applyDefaultGncRules {1}
+set ::CPF::array_naming {[%d]}
+set ::CPF::biasNets ""
+set ::CPF::cacheFunctionNet {1}
+set ::CPF::conflict_commands {create_analysis_view create_delay_corner update_delay_corner set_switching_activity}
+set ::CPF::cpfCommitted {31}
+set ::CPF::cpfLoaded {1}
+set ::CPF::cpfPrefix {CPF}
+set ::CPF::cpf_action {31}
+set ::CPF::cpf_debug {0}
+set ::CPF::cpf_dirlist {../DesignDataIn/cpf/}
+set ::CPF::cpf_errcnt {0}
+set ::CPF::cpf_errmsg ""
+set ::CPF::cpf_file {${::IMEX::libVar}/cpf/sparc_exu_alu.cpf}
+set ::CPF::cpf_flow_library_loading_on {No}
+set ::CPF::cpf_incremental {1}
+array set ::CPF::cpf_inputs {17 {update_power_mode -name 0100_mode   -sdc_files "${::IMEX::libVar}/cpf/alu.sdc"
+} 0 {set_cpf_version 2.0
+} 18 {create_operating_corner -name wc_rc125   -library_set gpdk045_wc_lib  -process 1  -voltage 0.9   -temperature 125
+} 1 {set_hierarchy_separator /
+} 20 {create_analysis_view -name AV_0100_wc_rc125_setup   -mode 0100_mode   -domain_corners {TOP@wc_rc125 }
+} 19 {create_operating_corner -name bc_rc0   -library_set gpdk045_bc_lib  -process 1  -voltage 1.1   -temperature 0
+} 2 {set_design sparc_exu_alu
+} 21 {create_analysis_view -name AV_0100_wc_rc125_hold 	-mode 0100_mode   -domain_corners {TOP@wc_rc125 }
+} 3 define_library_set\ -name\ gpdk045_wc_lib\ \ -libraries\ \[list\ \\\n\ \${::IMEX::libVar}/mmmc/slow_vdd1v0_basicCells.lib\ \\\n\ \${::IMEX::libVar}/mmmc/slow_vdd1v0_basicCells_lvt.lib\ \]\n 22 {create_analysis_view -name AV_0100_bc_rc0_hold 	    -mode 0100_mode   -domain_corners {TOP@bc_rc0 }
+} 4 define_library_set\ -name\ gpdk045_bc_lib\ \ -libraries\ \[list\ \\\n\ \${::IMEX::libVar}/mmmc/fast_vdd1v0_basicCells.lib\ \\\n\ \${::IMEX::libVar}/mmmc/fast_vdd1v0_basicCells_lvt.lib\ \]\n 23 {end_design
+} 5 {create_power_domain -name TOP -default -boundary_ports *
+} 6 {create_power_domain -name virtual_PDaon
+} 7 {create_power_nets  -nets VDD -voltage {1.0}
+} 8 {create_ground_nets -nets VSS
+} 9 {create_power_nets  -nets VDD1 -voltage {1.0:1.2}
+} 10 {update_power_domain -name TOP -primary_power_net VDD -primary_ground_net VSS
+} 11 {update_power_domain -name virtual_PDaon -primary_power_net VDD1 -primary_ground_net VSS
+} 12 {create_global_connection -net VDD -pins VDD -domain TOP
+} 13 {create_global_connection -net VSS -pins VSS -domain TOP
+} 14 {create_nominal_condition -name vdd_0100 -voltage 1.0 -state on
+} 15 {update_nominal_condition -name vdd_0100 -library_set gpdk045_wc_lib
+} 16 {create_power_mode -name 0100_mode   -domain_conditions { TOP@vdd_0100 virtual_PDaon@vdd_0100 } -default
+}}
+set ::CPF::cpf_mmmc {1}
+set ::CPF::cpf_records ""
+set ::CPF::cpf_reinit {1}
+set ::CPF::cpf_user_env_vars ""
+set ::CPF::cpf_user_vars ""
+set ::CPF::cpf_version {2.0}
+set ::CPF::cpfscope_list { . }
+set ::CPF::cteShareDelayCorner {0}
+set ::CPF::current_cpfscope {.}
+set ::CPF::current_design {sparc_exu_alu}
+set ::CPF::current_fid {file42}
+set ::CPF::current_file ""
+set ::CPF::current_macro ""
+set ::CPF::current_scope {/}
+set ::CPF::dbgAllowShifterIn3rdPD {1}
+set ::CPF::defaultModeVoltage {1.0}
+set ::CPF::default_pd {TOP}
+array set ::CPF::designs {sparc_exu_alu,TOP,-default 1 sparc_exu_alu,-ports {} sparc_exu_alu,design sparc_exu_alu sparc_exu_alu,TOP,-boundary_ports * sparc_exu_alu,-domains { TOP virtual_PDaon}}
+set ::CPF::domain_mapping_list ""
+set ::CPF::ecoLoad {0}
+set ::CPF::ecsm_lib ""
+set ::CPF::end_lineno {107}
+set ::CPF::evalMacroCommands {0}
+set ::CPF::exe_version {21.17-s075_1}
+set ::CPF::first_input {${::IMEX::libVar}/cpf/sparc_exu_alu.cpf}
+array set ::CPF::followpin {0x7f65495f47e0 {{  VDD } {  VSS } { } { } { } { } { } { }} 0x7f654ad80020 {{  VDD } {  VSS } { } { } { } { } { } { }}}
+array set ::CPF::gnd_nets {0,-nets VSS}
+array set ::CPF::gvoltageRange {virtual_PDaon,high 0 TOP,low 0 virtual_PDaon,low 0 TOP,high 0}
+set ::CPF::handleAssignForPowerMode {0}
+set ::CPF::handleLibStdCellRelatedPG {1}
+set ::CPF::handleNestedPDRows {1}
+set ::CPF::handleNetsExcludedFromAllRules {1}
+set ::CPF::handleNetsExcludedThroughBuffers {1}
+set ::CPF::hidden_commands { exit }
+set ::CPF::hierScript ""
+set ::CPF::hsc {/}
+set ::CPF::implicitRuleToIncludeExcludedPins {1}
+set ::CPF::inline_macro_models {1}
+set ::CPF::inst_list ""
+set ::CPF::internal_pgnet ""
+set ::CPF::isBackslashInNamesHidden {0}
+set ::CPF::isMinimalCPF {0}
+set ::CPF::isoEnPinNotAlwaysOn {0}
+set ::CPF::isoEnableNets ""
+set ::CPF::isoEnableNets_inFromDomain ""
+set ::CPF::isoLSNeededInitialized {1}
+set ::CPF::isolation_libcells ""
+set ::CPF::isoshifter_pgconn ""
+set ::CPF::keepGNC {0}
+set ::CPF::keepPDsPhyData {1}
+set ::CPF::keepRowsData {0}
+set ::CPF::level_shifter_libcells ""
+set ::CPF::lib_map ""
+array set ::CPF::library_set {gpdk045_wc_lib,-name gpdk045_wc_lib gpdk045_wc_lib,-libraries {${::IMEX::libVar}/mmmc/slow_vdd1v0_basicCells.lib ${::IMEX::libVar}/mmmc/slow_vdd1v0_basicCells_lvt.lib} gpdk045_bc_lib,-name gpdk045_bc_lib gpdk045_bc_lib,-libraries {${::IMEX::libVar}/mmmc/fast_vdd1v0_basicCells.lib ${::IMEX::libVar}/mmmc/fast_vdd1v0_basicCells_lvt.lib}}
+set ::CPF::line_number {108}
+set ::CPF::lint_error {0}
+set ::CPF::load_errcnt {0}
+set ::CPF::matchExistingDelayCorner {0}
+set ::CPF::movedInsts ""
+set ::CPF::movedInsts2 ""
+set ::CPF::nmfFile ""
+set ::CPF::nmfLoaded {0}
+set ::CPF::noCpfPowerNetByInstPin {1}
+set ::CPF::noLibraryLoading {1}
+set ::CPF::noReorderDomainsWithinEachOther {1}
+set ::CPF::noTopEnb {1}
+array set ::CPF::nominal_condition {vdd_0100,-name vdd_0100 vdd_0100,-state on vdd_0100,-voltage 1.0 vdd_0100,-library_set gpdk045_wc_lib}
+set ::CPF::numImplicitCPFRules {0}
+set ::CPF::num_always_cell {0}
+set ::CPF::num_always_driver {0}
+set ::CPF::num_bias_net {0}
+set ::CPF::num_clamp_cell {0}
+set ::CPF::num_commands {24}
+set ::CPF::num_cpf_commands {24}
+set ::CPF::num_cpf_inputs {24}
+set ::CPF::num_cpf_iso_cell {0}
+set ::CPF::num_cpf_shifter_cell {0}
+set ::CPF::num_domain_conn {0}
+set ::CPF::num_eq_ctrlpins {0}
+set ::CPF::num_globalAO_cell {0}
+set ::CPF::num_global_cell {0}
+set ::CPF::num_gnd_nets {1}
+set ::CPF::num_iso_cell {0}
+set ::CPF::num_iso_rule {0}
+set ::CPF::num_macro_models {0}
+set ::CPF::num_open_source {0}
+set ::CPF::num_pad_cell {0}
+set ::CPF::num_pad_rule {0}
+set ::CPF::num_pg_conn {2}
+set ::CPF::num_power_clamp_pin {0}
+set ::CPF::num_power_domain {2}
+set ::CPF::num_pso_cell {0}
+set ::CPF::num_pso_rule {0}
+set ::CPF::num_pwr_nets {2}
+set ::CPF::num_related_power_pins {0}
+set ::CPF::num_retention_cell {0}
+set ::CPF::num_retention_rule {0}
+set ::CPF::num_secondary_domain {0}
+set ::CPF::num_shifter_cell {0}
+set ::CPF::num_shifter_rule {0}
+set ::CPF::num_switch_act {0}
+set ::CPF::num_update_pd_primary_pg_net {2}
+array set ::CPF::op_corner {bc_rc0,opcond bc_rc0_virtual wc_rc125,-name wc_rc125 wc_rc125,-voltage 0.9 bc_rc0,-process 1 wc_rc125,opcond_lib slow_vdd1v0 bc_rc0,-voltage 1.1 wc_rc125,-temperature 125 bc_rc0,opcond_lib fast_vdd1v0 wc_rc125,-library_set gpdk045_wc_lib bc_rc0,-temperature 0 bc_rc0,-library_set gpdk045_bc_lib bc_rc0,-name bc_rc0 wc_rc125,opcond wc_rc125_virtual wc_rc125,-process 1}
+set ::CPF::par_mapping_list ""
+array set ::CPF::pd_intnets {TOP,power VDD virtual_PDaon,power VDD1 TOP,ground VSS virtual_PDaon,ground VSS}
+set ::CPF::pd_list {virtual_PDaon TOP}
+array set ::CPF::pd_pgconn {TOP,power {  (VDD:VDD)} TOP,ground {  (VSS:VSS)}}
+array set ::CPF::pd_pgspec {TOP,power { (VDD:VDD)} TOP,ground { (VSS:VSS)}}
+array set ::CPF::pgCmd {TOP { -power {  (VDD:VDD)} -ground {  (VSS:VSS)}}}
+array set ::CPF::pg_conn {1,-pins VSS 0,-net VDD 1,-net VSS 0,-domain TOP 1,-domain TOP 0,-pins VDD}
+array set ::CPF::power_domain {0 TOP virtual_PDaon,nom_cond vdd_0100 1 virtual_PDaon virtual_PDaon,-internal_ground_net VSS TOP,instForIoPin / virtual_PDaon,all_nom vdd_0100 TOP,-boundary_ports * virtual_PDaon,-internal_power_net VDD1 virtual_PDaon,instForIoPin / TOP,hasHInst 1 TOP,all_nom vdd_0100 TOP,-default 1 TOP,all_libset {gpdk045_bc_lib gpdk045_wc_lib} virtual_PDaon,-name virtual_PDaon virtual_PDaon,virtual 1 TOP,-internal_power_net VDD TOP,nom_cond vdd_0100 TOP,cellForIoPin sparc_exu_alu TOP,-name TOP TOP,-internal_ground_net VSS virtual_PDaon,pure_virtual 1 TOP,all_opcorner {bc_rc0 wc_rc125}}
+array set ::CPF::power_mode {0100_mode,-sdc_files ${::IMEX::libVar}/cpf/alu.sdc 0100_mode,-name 0100_mode 0100_mode,-domain_conditions {TOP@vdd_0100 virtual_PDaon@vdd_0100} 0100_mode,-default 1}
+set ::CPF::power_switch_libcells ""
+set ::CPF::power_unit {nW}
+set ::CPF::ptnCpfCellsFirst {1}
+array set ::CPF::pwr_nets {1,-nets VDD1 1,-voltage 1.0:1.2 0,-nets VDD 0,-voltage 1.0}
+set ::CPF::recording_cpf {0}
+set ::CPF::redundantBiasNets ""
+set ::CPF::register_naming {_reg%s}
+set ::CPF::replacePDAssign {1}
+set ::CPF::resizeOnlyInsts ""
+set ::CPF::retention_libcells ""
+set ::CPF::scope_list { / }
+array set ::CPF::scopes {/,-merge_default 0 /,design sparc_exu_alu /,parent {} /,hsc / /,default_domain TOP}
+set ::CPF::setRulePinsConstraint {0}
+set ::CPF::setupMmmcOnly {0}
+set ::CPF::shifterUseCpfPGSpec {0}
+set ::CPF::singlePD {0}
+set ::CPF::skipCheckGNC {0}
+set ::CPF::skipGNCTraceForAOB {0}
+set ::CPF::sorted_iso_rules ""
+set ::CPF::sorted_shifter_rules ""
+set ::CPF::srpgEnableNets ""
+set ::CPF::startCpuTime {25.250000}
+set ::CPF::startRealTime {27.000000}
+set ::CPF::start_lineno {107}
+set ::CPF::strictly_honor_create_global_connection {0}
+set ::CPF::supportHierCPF {false}
+set ::CPF::time_scale {1000000000.0}
+set ::CPF::time_unit {ns}
+set ::CPF::tracingHead ""
+set ::CPF::useFlatTopCPF {1}
+set ::CPF::useHierScript {0}
+set ::CPF::useMacroTopCPF {0}
+set ::CPF::usePowerDomainMinGapZero {0}
+set ::CPF::useViewDefLibSet {1}
+set ::CPF::use_slave_interp {0}
+set ::CPF::use_viewdef_data {0}
+array set ::CPF::voltageRange {virtual_PDaon,high 1.0 TOP,low 1.0 virtual_PDaon,low 1.0 TOP,high 1.0}
+set ::CPF::warnMissingCPFRules {1}
+::MSV::setSNetVoltageForView {VSS} AV_0100_bc_rc0_hold 0
+::MSV::setSNetVoltageForView {VSS} AV_0100_wc_rc125_setup 0
+::MSV::setSNetVoltageForView {VDD1} AV_0100_bc_rc0_hold 1
+::MSV::setSNetVoltageForView {VDD1} AV_0100_wc_rc125_setup 1
+::MSV::setSNetVoltageForView {VDD} AV_0100_bc_rc0_hold 1.1
+::MSV::setSNetVoltageForView {VDD} AV_0100_wc_rc125_setup 0.9
+if {$::rdagVersionName >= 16.12 || ($::rdagVersionName >= 15.25 && $::rdagVersionName < 16.0)} {
+}
+set ::CPF::allSNetVoltageSet 1
+
+
+namespace eval ::pd_physical_data {
+set pd_data {
+POWERDOMAIN: NAME=virtual_PDaon 
+	PRIM_POWER=VDD1 PRIM_GND=VSS LAYER=0 EEQID=0 
+	MINGAPTOP=0.0700 MINGAPBOT=0.0700 MINGAPLEFT=0.0700 MINGAPRIGHT=0.0700 
+	MINGAPS={4,0.0700,0.0700,0.0700,0.0700}
+	ROWFLIP=3 SITE=CoreSite ROWSPACETYPE=2 ROWSPACING=0.0000 
+END_PD
+POWERDOMAIN: NAME=TOP 
+	PRIM_POWER=VDD PRIM_GND=VSS VOLT=0.9000 LAYER=1 ISDEFAULT=1 EEQID=0 
+	NRLIB=2 
+	TIMELIB=slow_vdd1v0(gpdk045_wc_lib) 
+	TIMELIB=fast_vdd1v0(gpdk045_bc_lib) 
+	ROWFLIP=3 SITE=CoreSite ROWSPACETYPE=2 ROWSPACING=0.0000 
+	MODULE=* POWER=(VDD:VDD) GND=(VSS:VSS) 
+	PIN=* 
+END_PD
+}
+}
